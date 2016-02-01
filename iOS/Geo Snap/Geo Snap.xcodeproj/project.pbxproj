@@ -1,0 +1,302 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5A4E116C1C5F7E120095B15D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4E116B1C5F7E120095B15D /* AppDelegate.swift */; };
+		5A4E116E1C5F7E120095B15D /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4E116D1C5F7E120095B15D /* RootViewController.swift */; };
+		5A4E11701C5F7E120095B15D /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4E116F1C5F7E120095B15D /* DataViewController.swift */; };
+		5A4E11721C5F7E120095B15D /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4E11711C5F7E120095B15D /* ModelController.swift */; };
+		5A4E11751C5F7E120095B15D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A4E11731C5F7E120095B15D /* Main.storyboard */; };
+		5A4E11771C5F7E120095B15D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A4E11761C5F7E120095B15D /* Assets.xcassets */; };
+		5A4E117A1C5F7E120095B15D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A4E11781C5F7E120095B15D /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5A4E11681C5F7E120095B15D /* Geo Snap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Geo Snap.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A4E116B1C5F7E120095B15D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5A4E116D1C5F7E120095B15D /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		5A4E116F1C5F7E120095B15D /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
+		5A4E11711C5F7E120095B15D /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
+		5A4E11741C5F7E120095B15D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5A4E11761C5F7E120095B15D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5A4E11791C5F7E120095B15D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5A4E117B1C5F7E120095B15D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5A4E11651C5F7E120095B15D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5A4E115F1C5F7E120095B15D = {
+			isa = PBXGroup;
+			children = (
+				5A4E116A1C5F7E120095B15D /* Geo Snap */,
+				5A4E11691C5F7E120095B15D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5A4E11691C5F7E120095B15D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5A4E11681C5F7E120095B15D /* Geo Snap.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5A4E116A1C5F7E120095B15D /* Geo Snap */ = {
+			isa = PBXGroup;
+			children = (
+				5A4E116B1C5F7E120095B15D /* AppDelegate.swift */,
+				5A4E116D1C5F7E120095B15D /* RootViewController.swift */,
+				5A4E116F1C5F7E120095B15D /* DataViewController.swift */,
+				5A4E11711C5F7E120095B15D /* ModelController.swift */,
+				5A4E11731C5F7E120095B15D /* Main.storyboard */,
+				5A4E11761C5F7E120095B15D /* Assets.xcassets */,
+				5A4E11781C5F7E120095B15D /* LaunchScreen.storyboard */,
+				5A4E117B1C5F7E120095B15D /* Info.plist */,
+			);
+			path = "Geo Snap";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5A4E11671C5F7E120095B15D /* Geo Snap */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5A4E117E1C5F7E120095B15D /* Build configuration list for PBXNativeTarget "Geo Snap" */;
+			buildPhases = (
+				5A4E11641C5F7E120095B15D /* Sources */,
+				5A4E11651C5F7E120095B15D /* Frameworks */,
+				5A4E11661C5F7E120095B15D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Geo Snap";
+			productName = "Geo Snap";
+			productReference = 5A4E11681C5F7E120095B15D /* Geo Snap.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5A4E11601C5F7E120095B15D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Christopher Paterson";
+				TargetAttributes = {
+					5A4E11671C5F7E120095B15D = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = R8W4J98NNX;
+					};
+				};
+			};
+			buildConfigurationList = 5A4E11631C5F7E120095B15D /* Build configuration list for PBXProject "Geo Snap" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5A4E115F1C5F7E120095B15D;
+			productRefGroup = 5A4E11691C5F7E120095B15D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5A4E11671C5F7E120095B15D /* Geo Snap */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5A4E11661C5F7E120095B15D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A4E117A1C5F7E120095B15D /* LaunchScreen.storyboard in Resources */,
+				5A4E11771C5F7E120095B15D /* Assets.xcassets in Resources */,
+				5A4E11751C5F7E120095B15D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5A4E11641C5F7E120095B15D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A4E116E1C5F7E120095B15D /* RootViewController.swift in Sources */,
+				5A4E11721C5F7E120095B15D /* ModelController.swift in Sources */,
+				5A4E11701C5F7E120095B15D /* DataViewController.swift in Sources */,
+				5A4E116C1C5F7E120095B15D /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		5A4E11731C5F7E120095B15D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5A4E11741C5F7E120095B15D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5A4E11781C5F7E120095B15D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5A4E11791C5F7E120095B15D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5A4E117C1C5F7E120095B15D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5A4E117D1C5F7E120095B15D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5A4E117F1C5F7E120095B15D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Geo Snap/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.github.chris-paterson.Geo-Snap";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		5A4E11801C5F7E120095B15D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Geo Snap/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.github.chris-paterson.Geo-Snap";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5A4E11631C5F7E120095B15D /* Build configuration list for PBXProject "Geo Snap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A4E117C1C5F7E120095B15D /* Debug */,
+				5A4E117D1C5F7E120095B15D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5A4E117E1C5F7E120095B15D /* Build configuration list for PBXNativeTarget "Geo Snap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A4E117F1C5F7E120095B15D /* Debug */,
+				5A4E11801C5F7E120095B15D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5A4E11601C5F7E120095B15D /* Project object */;
+}
