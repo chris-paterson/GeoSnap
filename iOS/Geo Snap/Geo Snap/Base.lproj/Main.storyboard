@@ -127,7 +127,6 @@
                                 <state key="normal" title="Log in"/>
                                 <connections>
                                     <action selector="login:" destination="Wpg-i1-Yzn" eventType="touchUpInside" id="5Gw-p4-T8r"/>
-                                    <segue destination="49e-Tb-3d3" kind="show" id="vk1-du-Weg"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Idw-aq-LcF">
@@ -137,7 +136,7 @@
                                 </constraints>
                                 <state key="normal" title="Sign Up"/>
                                 <connections>
-                                    <action selector="signUp:" destination="Wpg-i1-Yzn" eventType="touchUpInside" id="YCs-Rb-MUb"/>
+                                    <segue destination="ASG-8v-pUv" kind="presentation" id="5b2-57-w7L"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XrO-dh-M9c">
@@ -174,7 +173,114 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8l2-X3-vK7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-838" y="0.0"/>
+            <point key="canvasLocation" x="-660" y="70"/>
+        </scene>
+        <!--Sign Up View Controller-->
+        <scene sceneID="T1K-X2-5QI">
+            <objects>
+                <viewController id="ASG-8v-pUv" customClass="SignUpViewController" customModule="Geo_Snap" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="D7s-4S-UG0"/>
+                        <viewControllerLayoutGuide type="bottom" id="1Uq-vV-FsY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3V1-Id-5OF">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Geo Snap" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DOC-eI-TVX">
+                                <rect key="frame" x="248" y="24" width="105" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DHD-FW-eHw">
+                                <rect key="frame" x="183" y="225" width="246" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="246" id="pJo-sR-FsK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Geo Snap" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kkv-ew-ErM">
+                                <rect key="frame" x="248" y="28" width="105" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="105" id="JAQ-7G-vXj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ppg-Hz-mnU">
+                                <rect key="frame" x="177" y="259" width="246" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="246" id="N3x-34-kRa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JEP-4D-jdA">
+                                <rect key="frame" x="177" y="221" width="246" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="246" id="AtC-tc-7Rh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nSQ-GB-EtI">
+                                <rect key="frame" x="273" y="335" width="55" height="30"/>
+                                <state key="normal" title="Sign Up"/>
+                                <connections>
+                                    <action selector="signUp:" destination="ASG-8v-pUv" eventType="touchUpInside" id="kug-Re-OAx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S29-Uh-5Be">
+                                <rect key="frame" x="256" y="550" width="89" height="30"/>
+                                <state key="normal" title="Back to login"/>
+                                <connections>
+                                    <action selector="returnToLogin:" destination="ASG-8v-pUv" eventType="touchUpInside" id="MW5-2z-IuO"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Retype password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F0P-F3-ZeC">
+                                <rect key="frame" x="177" y="297" width="246" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="246" id="CfP-b6-nE8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="JEP-4D-jdA" firstAttribute="centerX" secondItem="3V1-Id-5OF" secondAttribute="centerX" id="1Um-vX-qBr"/>
+                            <constraint firstItem="Kkv-ew-ErM" firstAttribute="top" secondItem="D7s-4S-UG0" secondAttribute="bottom" constant="8" id="23G-Fb-fNJ"/>
+                            <constraint firstItem="nSQ-GB-EtI" firstAttribute="centerX" secondItem="3V1-Id-5OF" secondAttribute="centerX" id="2Ve-4y-5tF"/>
+                            <constraint firstItem="ppg-Hz-mnU" firstAttribute="width" secondItem="JEP-4D-jdA" secondAttribute="width" id="EYc-BL-1rg"/>
+                            <constraint firstItem="JEP-4D-jdA" firstAttribute="top" secondItem="Kkv-ew-ErM" secondAttribute="bottom" constant="164" id="GhG-8e-UsM"/>
+                            <constraint firstItem="Kkv-ew-ErM" firstAttribute="centerX" secondItem="3V1-Id-5OF" secondAttribute="centerX" id="GlU-pf-uMS"/>
+                            <constraint firstItem="ppg-Hz-mnU" firstAttribute="centerX" secondItem="3V1-Id-5OF" secondAttribute="centerX" id="K7s-X7-21b"/>
+                            <constraint firstItem="S29-Uh-5Be" firstAttribute="centerX" secondItem="3V1-Id-5OF" secondAttribute="centerX" id="NfI-fB-i76"/>
+                            <constraint firstItem="1Uq-vV-FsY" firstAttribute="top" secondItem="S29-Uh-5Be" secondAttribute="bottom" constant="20" id="OJR-xr-fbE"/>
+                            <constraint firstItem="F0P-F3-ZeC" firstAttribute="top" secondItem="ppg-Hz-mnU" secondAttribute="bottom" constant="8" id="UUi-sn-dd8"/>
+                            <constraint firstItem="ppg-Hz-mnU" firstAttribute="top" secondItem="JEP-4D-jdA" secondAttribute="bottom" constant="8" id="W9m-Dv-pRg"/>
+                            <constraint firstItem="nSQ-GB-EtI" firstAttribute="top" secondItem="F0P-F3-ZeC" secondAttribute="bottom" constant="8" id="kwE-8f-A9P"/>
+                            <constraint firstItem="F0P-F3-ZeC" firstAttribute="centerX" secondItem="3V1-Id-5OF" secondAttribute="centerX" id="zN9-7a-pSc"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="DOC-eI-TVX"/>
+                                <exclude reference="DHD-FW-eHw"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="password" destination="ppg-Hz-mnU" id="7VP-ZA-biW"/>
+                        <outlet property="retypePassword" destination="F0P-F3-ZeC" id="hFG-yH-WJs"/>
+                        <outlet property="username" destination="JEP-4D-jdA" id="xA2-Kw-ErY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cad-r8-fJG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-660" y="937"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
