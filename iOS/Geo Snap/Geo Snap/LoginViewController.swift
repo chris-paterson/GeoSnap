@@ -40,18 +40,28 @@ class LoginViewController: UIViewController {
             
             spinner.startAnimating()
             UIApplication.sharedApplication().beginIgnoringInteractionEvents() // Prevent the user from pressing buttons while working.
-            
-            var user = PFUser()
-            user.username = username.text
-            user.password = password.text
-            
-            // Default error message in case Parse does not return one.
             var errorMessage = "Please try again later."
             
+            PFUser.logInWithUsernameInBackground(username.text!, password: password.text!, block: { (user, error) -> Void in
+                // Reenable button presses
+                self.spinner.stopAnimating()
+                UIApplication.sharedApplication().endIgnoringInteractionEvents()
+                
+                if user != nil {
+                    // We are logged in
+                    // Redirect to home page
+                    
+                    
+                } else {
+                    if let signUpError = error?.userInfo["error"] as? String {
+                        errorMessage = signUpError
+                    }
+                    
+                    self.displayAlert("Sign up error", message: errorMessage)
+                }
+            })
+            
         }
-    }
-    
-    @IBAction func signUp(sender: UIButton) {
     }
     
     func displayAlert(title: String, message: String) {
