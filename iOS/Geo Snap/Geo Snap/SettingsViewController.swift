@@ -1,5 +1,5 @@
 //
-//  FirstViewController.swift
+//  SecondViewController.swift
 //  Geo Snap
 //
 //  Created by Christopher Paterson on 01/02/2016.
@@ -7,14 +7,13 @@
 //
 
 import UIKit
-import Parse
 
-class FirstViewController: UIViewController {
+class SettingsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-    } 
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

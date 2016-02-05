@@ -32,14 +32,9 @@ class LoginViewController: UIViewController {
         
         } else {
             // Let the user know something is happening
-            spinner = UIActivityIndicatorView(frame: CGRectMake(0, 0, 50, 50))
-            spinner.center = self.view.center
-            spinner.activityIndicatorViewStyle = .Gray
-            spinner.hidesWhenStopped = true
-            view.addSubview(spinner)
-            
-            spinner.startAnimating()
+            displaySpinner()
             UIApplication.sharedApplication().beginIgnoringInteractionEvents() // Prevent the user from pressing buttons while working.
+
             var errorMessage = "Please try again later."
             
             PFUser.logInWithUsernameInBackground(username.text!, password: password.text!, block: { (user, error) -> Void in
@@ -50,6 +45,7 @@ class LoginViewController: UIViewController {
                 if user != nil {
                     // We are logged in
                     // Redirect to home page
+                    self.performSegueWithIdentifier("login", sender: self)
                     
                     
                 } else {
@@ -62,6 +58,15 @@ class LoginViewController: UIViewController {
             })
             
         }
+    }
+    
+    func displaySpinner() {
+        spinner = UIActivityIndicatorView(frame: CGRectMake(0, 0, 50, 50))
+        spinner.center = self.view.center
+        spinner.activityIndicatorViewStyle = .Gray
+        spinner.hidesWhenStopped = true
+        view.addSubview(spinner)
+        spinner.startAnimating()
     }
     
     func displayAlert(title: String, message: String) {

@@ -34,16 +34,10 @@ class SignUpViewController: UIViewController {
             displayAlert("Error", message: "Passwords do not match.")
         } else {
             // Let the user know something is happening
-            spinner = UIActivityIndicatorView(frame: CGRectMake(0, 0, 50, 50))
-            spinner.center = self.view.center
-            spinner.activityIndicatorViewStyle = .Gray
-            spinner.hidesWhenStopped = true
-            view.addSubview(spinner)
-            
-            spinner.startAnimating()
+            displaySpinner()
             UIApplication.sharedApplication().beginIgnoringInteractionEvents() // Prevent the user from pressing buttons while working.
             
-            var user = PFUser()
+            let user = PFUser()
             user.username = username.text
             user.password = password.text
             
@@ -57,6 +51,8 @@ class SignUpViewController: UIViewController {
                 
                 if success {
                     // Sign up successfull
+                    self.signInAndRedirect()
+                    
                 } else {
                     // error is optional so check exists first
                     if let signUpError = error?.userInfo["error"] as? String {
@@ -68,6 +64,21 @@ class SignUpViewController: UIViewController {
             })
         }
 
+    }
+    
+    func signInAndRedirect() {
+        PFUser.logInWithUsernameInBackground(username.text!, password: password.text!)
+        self.performSegueWithIdentifier("login", sender: self)
+        
+    }
+    
+    func displaySpinner() {
+        spinner = UIActivityIndicatorView(frame: CGRectMake(0, 0, 50, 50))
+        spinner.center = self.view.center
+        spinner.activityIndicatorViewStyle = .Gray
+        spinner.hidesWhenStopped = true
+        view.addSubview(spinner)
+        spinner.startAnimating()
     }
     
     
