@@ -1,14 +1,14 @@
 //
-//  Geo_SnapUITests.swift
-//  Geo SnapUITests
+//  GeoSnapUITests.swift
+//  GeoSnapUITests
 //
-//  Created by Christopher Paterson on 01/02/2016.
+//  Created by Christopher Paterson on 07/02/2016.
 //  Copyright © 2016 Christopher Paterson. All rights reserved.
 //
 
 import XCTest
 
-class Geo_SnapUITests: XCTestCase {
+class GeoSnapUITests: XCTestCase {
         
     override func setUp() {
         super.setUp()

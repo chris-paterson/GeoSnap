@@ -1,0 +1,570 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5A4695651C67C2FA008D6413 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A4695641C67C2FA008D6413 /* Assets.xcassets */; };
+		5A4695731C67C2FA008D6413 /* GeoSnapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4695721C67C2FA008D6413 /* GeoSnapTests.swift */; };
+		5A46957E1C67C2FA008D6413 /* GeoSnapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A46957D1C67C2FA008D6413 /* GeoSnapUITests.swift */; };
+		5A46958D1C67C321008D6413 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A46958B1C67C321008D6413 /* Bolts.framework */; };
+		5A46958E1C67C321008D6413 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A46958C1C67C321008D6413 /* Parse.framework */; };
+		5A4695911C67C38D008D6413 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A4695901C67C38D008D6413 /* Main.storyboard */; };
+		5A4695961C67C3A6008D6413 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4695921C67C3A6008D6413 /* HomeViewController.swift */; };
+		5A4695971C67C3A6008D6413 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4695931C67C3A6008D6413 /* LoginViewController.swift */; };
+		5A4695981C67C3A6008D6413 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4695941C67C3A6008D6413 /* SettingsViewController.swift */; };
+		5A4695991C67C3A6008D6413 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4695951C67C3A6008D6413 /* SignUpViewController.swift */; };
+		5A46959B1C67C3AE008D6413 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A46959A1C67C3AE008D6413 /* AppDelegate.swift */; };
+		5A4695A51C67C402008D6413 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A46959C1C67C402008D6413 /* AudioToolbox.framework */; };
+		5A4695A61C67C402008D6413 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A46959D1C67C402008D6413 /* CFNetwork.framework */; };
+		5A4695A71C67C402008D6413 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A46959E1C67C402008D6413 /* CoreGraphics.framework */; };
+		5A4695A81C67C402008D6413 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A46959F1C67C402008D6413 /* CoreLocation.framework */; };
+		5A4695A91C67C402008D6413 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A4695A01C67C402008D6413 /* libsqlite3.tbd */; };
+		5A4695AA1C67C402008D6413 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A4695A11C67C402008D6413 /* libz.tbd */; };
+		5A4695AB1C67C402008D6413 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A4695A21C67C402008D6413 /* QuartzCore.framework */; };
+		5A4695AC1C67C402008D6413 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A4695A31C67C402008D6413 /* Security.framework */; };
+		5A4695AD1C67C402008D6413 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A4695A41C67C402008D6413 /* SystemConfiguration.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5A46956F1C67C2FA008D6413 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5A4695501C67C2FA008D6413 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5A4695571C67C2FA008D6413;
+			remoteInfo = GeoSnap;
+		};
+		5A46957A1C67C2FA008D6413 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5A4695501C67C2FA008D6413 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5A4695571C67C2FA008D6413;
+			remoteInfo = GeoSnap;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5A4695581C67C2FA008D6413 /* GeoSnap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoSnap.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A4695641C67C2FA008D6413 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5A4695691C67C2FA008D6413 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5A46956E1C67C2FA008D6413 /* GeoSnapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeoSnapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A4695721C67C2FA008D6413 /* GeoSnapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoSnapTests.swift; sourceTree = "<group>"; };
+		5A4695741C67C2FA008D6413 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5A4695791C67C2FA008D6413 /* GeoSnapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeoSnapUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A46957D1C67C2FA008D6413 /* GeoSnapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoSnapUITests.swift; sourceTree = "<group>"; };
+		5A46957F1C67C2FA008D6413 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5A46958B1C67C321008D6413 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		5A46958C1C67C321008D6413 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		5A4695901C67C38D008D6413 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		5A4695921C67C3A6008D6413 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		5A4695931C67C3A6008D6413 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		5A4695941C67C3A6008D6413 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		5A4695951C67C3A6008D6413 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		5A46959A1C67C3AE008D6413 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5A46959C1C67C402008D6413 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		5A46959D1C67C402008D6413 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		5A46959E1C67C402008D6413 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		5A46959F1C67C402008D6413 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		5A4695A01C67C402008D6413 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		5A4695A11C67C402008D6413 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		5A4695A21C67C402008D6413 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		5A4695A31C67C402008D6413 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		5A4695A41C67C402008D6413 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5A4695551C67C2FA008D6413 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A4695A51C67C402008D6413 /* AudioToolbox.framework in Frameworks */,
+				5A4695A61C67C402008D6413 /* CFNetwork.framework in Frameworks */,
+				5A4695A71C67C402008D6413 /* CoreGraphics.framework in Frameworks */,
+				5A4695A81C67C402008D6413 /* CoreLocation.framework in Frameworks */,
+				5A4695A91C67C402008D6413 /* libsqlite3.tbd in Frameworks */,
+				5A4695AA1C67C402008D6413 /* libz.tbd in Frameworks */,
+				5A4695AB1C67C402008D6413 /* QuartzCore.framework in Frameworks */,
+				5A4695AC1C67C402008D6413 /* Security.framework in Frameworks */,
+				5A4695AD1C67C402008D6413 /* SystemConfiguration.framework in Frameworks */,
+				5A46958E1C67C321008D6413 /* Parse.framework in Frameworks */,
+				5A46958D1C67C321008D6413 /* Bolts.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5A46956B1C67C2FA008D6413 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5A4695761C67C2FA008D6413 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5A46954F1C67C2FA008D6413 = {
+			isa = PBXGroup;
+			children = (
+				5A46955A1C67C2FA008D6413 /* GeoSnap */,
+				5A4695711C67C2FA008D6413 /* GeoSnapTests */,
+				5A46957C1C67C2FA008D6413 /* GeoSnapUITests */,
+				5A4695591C67C2FA008D6413 /* Products */,
+				5A46958F1C67C335008D6413 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		5A4695591C67C2FA008D6413 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5A4695581C67C2FA008D6413 /* GeoSnap.app */,
+				5A46956E1C67C2FA008D6413 /* GeoSnapTests.xctest */,
+				5A4695791C67C2FA008D6413 /* GeoSnapUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5A46955A1C67C2FA008D6413 /* GeoSnap */ = {
+			isa = PBXGroup;
+			children = (
+				5A46959A1C67C3AE008D6413 /* AppDelegate.swift */,
+				5A4695901C67C38D008D6413 /* Main.storyboard */,
+				5A4695AE1C67C4D7008D6413 /* ViewControllers */,
+				5A4695641C67C2FA008D6413 /* Assets.xcassets */,
+				5A4695691C67C2FA008D6413 /* Info.plist */,
+			);
+			path = GeoSnap;
+			sourceTree = "<group>";
+		};
+		5A4695711C67C2FA008D6413 /* GeoSnapTests */ = {
+			isa = PBXGroup;
+			children = (
+				5A4695721C67C2FA008D6413 /* GeoSnapTests.swift */,
+				5A4695741C67C2FA008D6413 /* Info.plist */,
+			);
+			path = GeoSnapTests;
+			sourceTree = "<group>";
+		};
+		5A46957C1C67C2FA008D6413 /* GeoSnapUITests */ = {
+			isa = PBXGroup;
+			children = (
+				5A46957D1C67C2FA008D6413 /* GeoSnapUITests.swift */,
+				5A46957F1C67C2FA008D6413 /* Info.plist */,
+			);
+			path = GeoSnapUITests;
+			sourceTree = "<group>";
+		};
+		5A46958F1C67C335008D6413 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5A46959C1C67C402008D6413 /* AudioToolbox.framework */,
+				5A46959D1C67C402008D6413 /* CFNetwork.framework */,
+				5A46959E1C67C402008D6413 /* CoreGraphics.framework */,
+				5A46959F1C67C402008D6413 /* CoreLocation.framework */,
+				5A4695A01C67C402008D6413 /* libsqlite3.tbd */,
+				5A4695A11C67C402008D6413 /* libz.tbd */,
+				5A4695A21C67C402008D6413 /* QuartzCore.framework */,
+				5A4695A31C67C402008D6413 /* Security.framework */,
+				5A4695A41C67C402008D6413 /* SystemConfiguration.framework */,
+				5A46958B1C67C321008D6413 /* Bolts.framework */,
+				5A46958C1C67C321008D6413 /* Parse.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5A4695AE1C67C4D7008D6413 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				5A4695921C67C3A6008D6413 /* HomeViewController.swift */,
+				5A4695941C67C3A6008D6413 /* SettingsViewController.swift */,
+				5A4695931C67C3A6008D6413 /* LoginViewController.swift */,
+				5A4695951C67C3A6008D6413 /* SignUpViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5A4695571C67C2FA008D6413 /* GeoSnap */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5A4695821C67C2FA008D6413 /* Build configuration list for PBXNativeTarget "GeoSnap" */;
+			buildPhases = (
+				5A4695541C67C2FA008D6413 /* Sources */,
+				5A4695551C67C2FA008D6413 /* Frameworks */,
+				5A4695561C67C2FA008D6413 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GeoSnap;
+			productName = GeoSnap;
+			productReference = 5A4695581C67C2FA008D6413 /* GeoSnap.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5A46956D1C67C2FA008D6413 /* GeoSnapTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5A4695851C67C2FA008D6413 /* Build configuration list for PBXNativeTarget "GeoSnapTests" */;
+			buildPhases = (
+				5A46956A1C67C2FA008D6413 /* Sources */,
+				5A46956B1C67C2FA008D6413 /* Frameworks */,
+				5A46956C1C67C2FA008D6413 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5A4695701C67C2FA008D6413 /* PBXTargetDependency */,
+			);
+			name = GeoSnapTests;
+			productName = GeoSnapTests;
+			productReference = 5A46956E1C67C2FA008D6413 /* GeoSnapTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5A4695781C67C2FA008D6413 /* GeoSnapUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5A4695881C67C2FA008D6413 /* Build configuration list for PBXNativeTarget "GeoSnapUITests" */;
+			buildPhases = (
+				5A4695751C67C2FA008D6413 /* Sources */,
+				5A4695761C67C2FA008D6413 /* Frameworks */,
+				5A4695771C67C2FA008D6413 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5A46957B1C67C2FA008D6413 /* PBXTargetDependency */,
+			);
+			name = GeoSnapUITests;
+			productName = GeoSnapUITests;
+			productReference = 5A4695791C67C2FA008D6413 /* GeoSnapUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5A4695501C67C2FA008D6413 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Christopher Paterson";
+				TargetAttributes = {
+					5A4695571C67C2FA008D6413 = {
+						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = R8W4J98NNX;
+					};
+					5A46956D1C67C2FA008D6413 = {
+						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = R8W4J98NNX;
+						TestTargetID = 5A4695571C67C2FA008D6413;
+					};
+					5A4695781C67C2FA008D6413 = {
+						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = R8W4J98NNX;
+						TestTargetID = 5A4695571C67C2FA008D6413;
+					};
+				};
+			};
+			buildConfigurationList = 5A4695531C67C2FA008D6413 /* Build configuration list for PBXProject "GeoSnap" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5A46954F1C67C2FA008D6413;
+			productRefGroup = 5A4695591C67C2FA008D6413 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5A4695571C67C2FA008D6413 /* GeoSnap */,
+				5A46956D1C67C2FA008D6413 /* GeoSnapTests */,
+				5A4695781C67C2FA008D6413 /* GeoSnapUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5A4695561C67C2FA008D6413 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A4695651C67C2FA008D6413 /* Assets.xcassets in Resources */,
+				5A4695911C67C38D008D6413 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5A46956C1C67C2FA008D6413 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5A4695771C67C2FA008D6413 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5A4695541C67C2FA008D6413 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A4695971C67C3A6008D6413 /* LoginViewController.swift in Sources */,
+				5A4695961C67C3A6008D6413 /* HomeViewController.swift in Sources */,
+				5A4695991C67C3A6008D6413 /* SignUpViewController.swift in Sources */,
+				5A46959B1C67C3AE008D6413 /* AppDelegate.swift in Sources */,
+				5A4695981C67C3A6008D6413 /* SettingsViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5A46956A1C67C2FA008D6413 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A4695731C67C2FA008D6413 /* GeoSnapTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5A4695751C67C2FA008D6413 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A46957E1C67C2FA008D6413 /* GeoSnapUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5A4695701C67C2FA008D6413 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5A4695571C67C2FA008D6413 /* GeoSnap */;
+			targetProxy = 5A46956F1C67C2FA008D6413 /* PBXContainerItemProxy */;
+		};
+		5A46957B1C67C2FA008D6413 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5A4695571C67C2FA008D6413 /* GeoSnap */;
+			targetProxy = 5A46957A1C67C2FA008D6413 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		5A4695801C67C2FA008D6413 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5A4695811C67C2FA008D6413 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5A4695831C67C2FA008D6413 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = GeoSnap/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.bitbucket.christopher-paterson.GeoSnap";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5A4695841C67C2FA008D6413 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = GeoSnap/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.bitbucket.christopher-paterson.GeoSnap";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		5A4695861C67C2FA008D6413 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = GeoSnapTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.bitbucket.christopher-paterson.GeoSnapTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GeoSnap.app/GeoSnap";
+			};
+			name = Debug;
+		};
+		5A4695871C67C2FA008D6413 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = GeoSnapTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.bitbucket.christopher-paterson.GeoSnapTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GeoSnap.app/GeoSnap";
+			};
+			name = Release;
+		};
+		5A4695891C67C2FA008D6413 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = GeoSnapUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.bitbucket.christopher-paterson.GeoSnapUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = GeoSnap;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		5A46958A1C67C2FA008D6413 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = GeoSnapUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.bitbucket.christopher-paterson.GeoSnapUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = GeoSnap;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5A4695531C67C2FA008D6413 /* Build configuration list for PBXProject "GeoSnap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A4695801C67C2FA008D6413 /* Debug */,
+				5A4695811C67C2FA008D6413 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5A4695821C67C2FA008D6413 /* Build configuration list for PBXNativeTarget "GeoSnap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A4695831C67C2FA008D6413 /* Debug */,
+				5A4695841C67C2FA008D6413 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		5A4695851C67C2FA008D6413 /* Build configuration list for PBXNativeTarget "GeoSnapTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A4695861C67C2FA008D6413 /* Debug */,
+				5A4695871C67C2FA008D6413 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		5A4695881C67C2FA008D6413 /* Build configuration list for PBXNativeTarget "GeoSnapUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A4695891C67C2FA008D6413 /* Debug */,
+				5A46958A1C67C2FA008D6413 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5A4695501C67C2FA008D6413 /* Project object */;
+}

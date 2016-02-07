@@ -33,10 +33,8 @@ class LoginViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         let currentUser = PFUser.currentUser()
         if currentUser != nil {
-            print("zxc")
             self.performSegueWithIdentifier("home", sender: self)
         } else {
-            print("asd")
             self.view.hidden = false
         }
     }

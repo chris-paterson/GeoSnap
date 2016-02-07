@@ -1,15 +1,15 @@
 //
-//  Geo_SnapTests.swift
-//  Geo SnapTests
+//  GeoSnapTests.swift
+//  GeoSnapTests
 //
-//  Created by Christopher Paterson on 01/02/2016.
+//  Created by Christopher Paterson on 07/02/2016.
 //  Copyright © 2016 Christopher Paterson. All rights reserved.
 //
 
 import XCTest
-@testable import Geo_Snap
+@testable import GeoSnap
 
-class Geo_SnapTests: XCTestCase {
+class GeoSnapTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -22,7 +22,8 @@ class Geo_SnapTests: XCTestCase {
     }
     
     func testExample() {
-        XCTAssert(1 == 1)
+        // This is an example of a functional test case.
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     
     func testPerformanceExample() {
