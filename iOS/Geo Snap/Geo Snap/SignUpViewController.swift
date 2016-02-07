@@ -68,7 +68,7 @@ class SignUpViewController: UIViewController {
     
     func signInAndRedirect() {
         PFUser.logInWithUsernameInBackground(username.text!, password: password.text!)
-        self.performSegueWithIdentifier("login", sender: self)
+        self.performSegueWithIdentifier("home", sender: self)
         
     }
     

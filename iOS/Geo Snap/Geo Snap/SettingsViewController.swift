@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import Parse
 
 class SettingsViewController: UIViewController {
+    @IBOutlet weak var loggedInLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        let currentUsername: String! = PFUser.currentUser()?.username
+        loggedInLabel.text = "You are currently logged in as \(currentUsername)"
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,6 +24,12 @@ class SettingsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func logOut(sender: UIButton) {
+        PFUser.logOut()
+        
+        // Redirect back to login screen
+        performSegueWithIdentifier("login", sender: self)
+    }
 
 }
 

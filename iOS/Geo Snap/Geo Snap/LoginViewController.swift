@@ -19,11 +19,28 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.view.hidden = true
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        let currentUser = PFUser.currentUser()
+        if currentUser != nil {
+            print("zxc")
+            self.performSegueWithIdentifier("home", sender: self)
+        } else {
+            print("asd")
+            self.view.hidden = false
+        }
+    }
+    
     
     @IBAction func login(sender: UIButton) {
         // Ensure user has entered a username and password.
@@ -45,7 +62,7 @@ class LoginViewController: UIViewController {
                 if user != nil {
                     // We are logged in
                     // Redirect to home page
-                    self.performSegueWithIdentifier("login", sender: self)
+                    self.performSegueWithIdentifier("home", sender: self)
                     
                     
                 } else {
