@@ -8,17 +8,22 @@
 
 import UIKit
 import Parse
+import CoreLocation
 
-class SharePhotoViewController: ViewControllerParent, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class SharePhotoViewController: ViewControllerParent, CLLocationManagerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     @IBOutlet weak var comment: UITextField!
     @IBOutlet weak var imageView: UIImageView!
     
     var imagePicker: UIImagePickerController!
+    var locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest // We want users exact location
+        self.locationManager.requestWhenInUseAuthorization() // Only want to use location services when app is in foreground
     }
     
     override func didReceiveMemoryWarning() {
@@ -43,13 +48,31 @@ class SharePhotoViewController: ViewControllerParent, UINavigationControllerDele
     
     @IBAction func share(sender: UIButton) {
         let post = PFObject(className: "Post")
+        let photoData = UIImageJPEGRepresentation(imageView.image!, 0.7)!
+        let coords = locationManager.location?.coordinate
+        
         post["comment"] = comment.text
         post["userId"] = PFUser.currentUser()?.objectId
-        
-        let photoData = UIImageJPEGRepresentation(imageView.image!, 0.7)!
         post["photo"] = PFFile(name: "image.jpg", data:photoData)
+        post["location"] = PFGeoPoint(latitude: coords!.latitude, longitude: coords!.longitude)
         
-        post.saveEventually()
+        post.saveInBackgroundWithBlock { (success, error) -> Void in
+            // TODO: Redirect to post if successfull
+            // TODO: Make user property relational
+            
+            if success {
+                
+            } else {
+                var errorMessage = "Please try again later." // Default error message in case Parse does not return one.
+                
+                // error is optional so check exists first
+                if let savePostError = error?.userInfo["error"] as? String {
+                    errorMessage = savePostError
+                }
+                
+                self.displayAlert("Error saving post", message: errorMessage)
+            }
+        }
     }
     
     
