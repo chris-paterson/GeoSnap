@@ -8,10 +8,12 @@
 
 import UIKit
 
-class SharePhotoViewController: UIViewController {
+class SharePhotoViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     @IBOutlet weak var comment: UITextField!
     @IBOutlet weak var imageView: UIImageView!
+    
+    var imagePicker: UIImagePickerController!
     
     
     override func viewDidLoad() {
@@ -25,6 +27,19 @@ class SharePhotoViewController: UIViewController {
     }
     
     @IBAction func takePhoto(sender: UIButton) {
+        imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .Camera
+        
+        presentViewController(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        imagePicker.dismissViewControllerAnimated(true, completion: nil)
+        let image: UIImage = (info[UIImagePickerControllerOriginalImage] as? UIImage)!
+        imageView.image = image
+        
+//        saveImage(image)
     }
     
     @IBAction func share(sender: UIButton) {
