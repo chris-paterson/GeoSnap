@@ -7,10 +7,6 @@
 //
 
 // TODO: Redirect to post if successfull
-// TODO: Default picture
-// TODO: Checks to ensure picture exists before sending
-// TODO: Send empty comment instead of nil if no comment
-// TODO: Cancel button
 
 import UIKit
 import Parse
@@ -21,6 +17,7 @@ class SharePhotoViewController: ViewControllerParent, CLLocationManagerDelegate,
     @IBOutlet weak var comment: UITextField!
     @IBOutlet weak var imageView: UIImageView!
     
+    var spinner: UIActivityIndicatorView = UIActivityIndicatorView()
     var imagePicker: UIImagePickerController!
     var locationManager = CLLocationManager()
     var userHasTakenPhoto: Bool = false
@@ -56,15 +53,19 @@ class SharePhotoViewController: ViewControllerParent, CLLocationManagerDelegate,
     
     
     @IBAction func share(sender: UIButton) {
+        
+        
         if (userHasTakenPhoto) {
             save()
         } else {
             displayAlert("Error", message: "You must take a photo to share.")
         }
-        resetElements()
     }
     
     func save() {
+        displaySpinner()
+        UIApplication.sharedApplication().beginIgnoringInteractionEvents() // Prevent the user from pressing buttons while working.
+        
         let post = PFObject(className: "Post")
         let photoData = UIImageJPEGRepresentation(imageView.image!, 0.7)!
         let coords = locationManager.location?.coordinate
@@ -75,8 +76,12 @@ class SharePhotoViewController: ViewControllerParent, CLLocationManagerDelegate,
         post["location"] = PFGeoPoint(latitude: coords!.latitude, longitude: coords!.longitude)
         
         post.saveInBackgroundWithBlock { (success, error) -> Void in
+            // Re-enable interaction
+            UIApplication.sharedApplication().endIgnoringInteractionEvents()
+            self.spinner.stopAnimating()
+            
             if success {
-                
+                self.viewPost()
             } else {
                 var errorMessage = "Please try again later." // Default error message in case Parse does not return one.
                 
@@ -91,13 +96,36 @@ class SharePhotoViewController: ViewControllerParent, CLLocationManagerDelegate,
 
     }
     
+    func viewPost() {
+        performSegueWithIdentifier("viewPost", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if(segue.identifier == "viewPost") {
+            let viewPhotoViewController = (segue.destinationViewController as! ViewPhotoViewController)
+            viewPhotoViewController.photo = imageView.image!
+            viewPhotoViewController.photoComment = comment.text!
+        }
+    }
+    
     
     func resetElements() {
-        
+        userHasTakenPhoto = false
+        comment.text = ""
+        imageView.image = UIImage(named: "polaroid.pdf")
     }
     
     @IBAction func cancelShare(sender: UIButton) {
         resetElements()
     }
 
+    func displaySpinner() {
+        spinner = UIActivityIndicatorView(frame: CGRectMake(0, 0, 50, 50))
+        spinner.center = self.view.center
+        spinner.activityIndicatorViewStyle = .Gray
+        spinner.hidesWhenStopped = true
+        view.addSubview(spinner)
+        spinner.startAnimating()
+    }
 }
