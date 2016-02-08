@@ -41,13 +41,13 @@
                             <constraint firstAttribute="centerY" secondItem="KQZ-1w-vlD" secondAttribute="centerY" id="exm-UA-ej4"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="home" selectedImage="home" id="acW-dT-cKf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="734" y="-641"/>
         </scene>
-        <!--Photo-->
+        <!--Take Photo-->
         <scene sceneID="ne5-Fx-ZN6">
             <objects>
                 <viewController id="7pq-f9-vxs" customClass="SharePhotoViewController" customModule="GeoSnap" customModuleProvider="target" sceneMemberID="viewController">
@@ -59,12 +59,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="second" translatesAutoresizingMaskIntoConstraints="NO" id="YzQ-nW-Ow7">
-                                <rect key="frame" x="20" y="28" width="560" height="298"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="YzQ-nW-Ow7" secondAttribute="height" multiplier="280:149" id="1C1-NO-EaR"/>
-                                </constraints>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r6Z-nY-H2q">
                                 <rect key="frame" x="262" y="334" width="77" height="30"/>
                                 <state key="normal" title="Take Photo"/>
@@ -100,6 +94,12 @@
                                     <action selector="cancelShare:" destination="7pq-f9-vxs" eventType="touchUpInside" id="jQi-Rc-1hj"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="polaroid" translatesAutoresizingMaskIntoConstraints="NO" id="YzQ-nW-Ow7">
+                                <rect key="frame" x="20" y="28" width="560" height="298"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="YzQ-nW-Ow7" secondAttribute="height" multiplier="280:149" id="1C1-NO-EaR"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -117,7 +117,7 @@
                             <constraint firstItem="r6Z-nY-H2q" firstAttribute="centerX" secondItem="tfX-qb-JQN" secondAttribute="centerX" id="z13-ls-Pwj"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Photo" id="a3S-hw-7d1"/>
+                    <tabBarItem key="tabBarItem" title="Take Photo" image="camera" selectedImage="camera" id="a3S-hw-7d1"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="comment" destination="tin-pt-U14" id="3kp-fV-3cg"/>
@@ -162,7 +162,7 @@
                             <constraint firstItem="KCf-Rj-iY8" firstAttribute="top" secondItem="qTb-CH-OTg" secondAttribute="bottom" constant="8" id="5i6-yF-Cen"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="cog" selectedImage="cog" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="loggedInLabel" destination="qTb-CH-OTg" id="CiV-vR-Z1Q"/>
                         <segue destination="Wpg-i1-Yzn" kind="show" identifier="login" id="B2G-fW-vmd"/>
@@ -390,8 +390,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
+        <image name="camera" width="20" height="16"/>
+        <image name="cog" width="18" height="18"/>
+        <image name="home" width="20" height="17"/>
+        <image name="polaroid" width="262" height="326"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="MXV-ep-GL9"/>

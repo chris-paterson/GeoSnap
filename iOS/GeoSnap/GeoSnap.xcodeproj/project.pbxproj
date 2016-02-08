@@ -115,11 +115,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5A105D031C68CF740095666A /* Models */ = {
+		5A105D041C68F7D20095666A /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				5A4695641C67C2FA008D6413 /* Assets.xcassets */,
+				5A4695691C67C2FA008D6413 /* Info.plist */,
 			);
-			name = Models;
+			name = Support;
 			sourceTree = "<group>";
 		};
 		5A46954F1C67C2FA008D6413 = {
@@ -149,9 +151,7 @@
 				5A46959A1C67C3AE008D6413 /* AppDelegate.swift */,
 				5A4695901C67C38D008D6413 /* Main.storyboard */,
 				5A4695AE1C67C4D7008D6413 /* ViewControllers */,
-				5A105D031C68CF740095666A /* Models */,
-				5A4695641C67C2FA008D6413 /* Assets.xcassets */,
-				5A4695691C67C2FA008D6413 /* Info.plist */,
+				5A105D041C68F7D20095666A /* Support */,
 			);
 			path = GeoSnap;
 			sourceTree = "<group>";

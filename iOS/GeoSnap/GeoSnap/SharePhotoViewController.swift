@@ -6,6 +6,12 @@
 //  Copyright © 2016 Christopher Paterson. All rights reserved.
 //
 
+// TODO: Redirect to post if successfull
+// TODO: Default picture
+// TODO: Checks to ensure picture exists before sending
+// TODO: Send empty comment instead of nil if no comment
+// TODO: Cancel button
+
 import UIKit
 import Parse
 import CoreLocation
@@ -17,6 +23,7 @@ class SharePhotoViewController: ViewControllerParent, CLLocationManagerDelegate,
     
     var imagePicker: UIImagePickerController!
     var locationManager = CLLocationManager()
+    var userHasTakenPhoto: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,10 +50,21 @@ class SharePhotoViewController: ViewControllerParent, CLLocationManagerDelegate,
         imagePicker.dismissViewControllerAnimated(true, completion: nil)
         let image: UIImage = (info[UIImagePickerControllerOriginalImage] as? UIImage)!
         imageView.image = image
+        
+        userHasTakenPhoto = true
     }
     
     
     @IBAction func share(sender: UIButton) {
+        if (userHasTakenPhoto) {
+            save()
+        } else {
+            displayAlert("Error", message: "You must take a photo to share.")
+        }
+        resetElements()
+    }
+    
+    func save() {
         let post = PFObject(className: "Post")
         let photoData = UIImageJPEGRepresentation(imageView.image!, 0.7)!
         let coords = locationManager.location?.coordinate
@@ -57,9 +75,6 @@ class SharePhotoViewController: ViewControllerParent, CLLocationManagerDelegate,
         post["location"] = PFGeoPoint(latitude: coords!.latitude, longitude: coords!.longitude)
         
         post.saveInBackgroundWithBlock { (success, error) -> Void in
-            // TODO: Redirect to post if successfull
-            // TODO: Make user property relational
-            
             if success {
                 
             } else {
@@ -73,9 +88,16 @@ class SharePhotoViewController: ViewControllerParent, CLLocationManagerDelegate,
                 self.displayAlert("Error saving post", message: errorMessage)
             }
         }
+
     }
     
+    
+    func resetElements() {
+        
+    }
     
     @IBAction func cancelShare(sender: UIButton) {
+        resetElements()
     }
+
 }
