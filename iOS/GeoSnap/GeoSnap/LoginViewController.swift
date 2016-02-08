@@ -49,8 +49,6 @@ class LoginViewController: ViewControllerParent {
             // Let the user know something is happening
             displaySpinner()
             UIApplication.sharedApplication().beginIgnoringInteractionEvents() // Prevent the user from pressing buttons while working.
-
-            var errorMessage = "Please try again later." // Default error message in case Parse does not give us one.
             
             PFUser.logInWithUsernameInBackground(username.text!, password: password.text!, block: { (user, error) -> Void in
                 // Reenable button presses
@@ -64,23 +62,18 @@ class LoginViewController: ViewControllerParent {
                     
                     
                 } else {
-                    if let signUpError = error?.userInfo["error"] as? String {
-                        errorMessage = signUpError
+                    var errorMessage = "Please try again later." // Default error message in case Parse does not give us one.
+                    
+                    if let loginError = error?.userInfo["error"] as? String {
+                        errorMessage = loginError
                     }
                     
-                    self.displayAlert("Sign up error", message: errorMessage)
+                    self.displayAlert("Log in error", message: errorMessage)
                 }
             })
             
         }
     }
     
-    func displaySpinner() {
-        spinner = UIActivityIndicatorView(frame: CGRectMake(0, 0, 50, 50))
-        spinner.center = self.view.center
-        spinner.activityIndicatorViewStyle = .Gray
-        spinner.hidesWhenStopped = true
-        view.addSubview(spinner)
-        spinner.startAnimating()
-    }
+    
 }

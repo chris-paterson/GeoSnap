@@ -41,9 +41,6 @@ class SignUpViewController: ViewControllerParent {
             user.username = username.text
             user.password = password.text
             
-            // Default error message in case Parse does not return one.
-            var errorMessage = "Please try again later."
-            
             // Attempt sign up.
             user.signUpInBackgroundWithBlock({ (success, error) -> Void in
                 self.spinner.stopAnimating()
@@ -54,6 +51,8 @@ class SignUpViewController: ViewControllerParent {
                     self.signInAndRedirect()
                     
                 } else {
+                    var errorMessage = "Please try again later." // Default error message in case Parse does not return one.
+                    
                     // error is optional so check exists first
                     if let signUpError = error?.userInfo["error"] as? String {
                         errorMessage = signUpError
@@ -69,15 +68,6 @@ class SignUpViewController: ViewControllerParent {
     func signInAndRedirect() {
         PFUser.logInWithUsernameInBackground(username.text!, password: password.text!)
         self.performSegueWithIdentifier("home", sender: self)
-    }
-    
-    func displaySpinner() {
-        spinner = UIActivityIndicatorView(frame: CGRectMake(0, 0, 50, 50))
-        spinner.center = self.view.center
-        spinner.activityIndicatorViewStyle = .Gray
-        spinner.hidesWhenStopped = true
-        view.addSubview(spinner)
-        spinner.startAnimating()
     }
     
     

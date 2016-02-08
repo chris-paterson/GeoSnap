@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Parse
 
-class SharePhotoViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class SharePhotoViewController: ViewControllerParent, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     @IBOutlet weak var comment: UITextField!
     @IBOutlet weak var imageView: UIImageView!
@@ -38,11 +39,33 @@ class SharePhotoViewController: UIViewController, UINavigationControllerDelegate
         imagePicker.dismissViewControllerAnimated(true, completion: nil)
         let image: UIImage = (info[UIImagePickerControllerOriginalImage] as? UIImage)!
         imageView.image = image
-        
-//        saveImage(image)
     }
     
+    
     @IBAction func share(sender: UIButton) {
+        let post = PFObject(className: "Post")
+        post["comment"] = comment.text
+        post["userId"] = PFUser.currentUser()?.objectId
+        
+        let photoData = UIImageJPEGRepresentation(imageView.image!, 0.7)!
+        post["photo"] = PFFile(name: "image.jpg", data:photoData)
+        
+        post.saveInBackgroundWithBlock { (success, error) -> Void in
+            // TODO: Redirect to post if successfull
+            // TODO: Offline checks - Show doing something
+            // TODO: Make user property relational
+            
+            if error != nil {
+                var errorMessage = "Please try again later." // Default error message in case Parse does not return one.
+                
+                // error is optional so check exists first
+                if let savePostError = error?.userInfo["error"] as? String {
+                    errorMessage = savePostError
+                }
+                
+                self.displayAlert("Error saving post", message: errorMessage)
+            }
+        }
     }
     
     
