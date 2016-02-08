@@ -75,5 +75,12 @@ class LoginViewController: ViewControllerParent {
         }
     }
     
-    
+    func displaySpinner() {
+        spinner = UIActivityIndicatorView(frame: CGRectMake(0, 0, 50, 50))
+        spinner.center = self.view.center
+        spinner.activityIndicatorViewStyle = .Gray
+        spinner.hidesWhenStopped = true
+        view.addSubview(spinner)
+        spinner.startAnimating()
+    }
 }

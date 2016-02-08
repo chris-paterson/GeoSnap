@@ -70,6 +70,15 @@ class SignUpViewController: ViewControllerParent {
         self.performSegueWithIdentifier("home", sender: self)
     }
     
+    func displaySpinner() {
+        spinner = UIActivityIndicatorView(frame: CGRectMake(0, 0, 50, 50))
+        spinner.center = self.view.center
+        spinner.activityIndicatorViewStyle = .Gray
+        spinner.hidesWhenStopped = true
+        view.addSubview(spinner)
+        spinner.startAnimating()
+    }
+    
     
     @IBAction func returnToLogin(sender: UIButton) {
         self.dismissViewControllerAnimated(true, completion: nil)

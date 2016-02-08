@@ -16,7 +16,6 @@ class SharePhotoViewController: ViewControllerParent, UINavigationControllerDele
     
     var imagePicker: UIImagePickerController!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -50,22 +49,7 @@ class SharePhotoViewController: ViewControllerParent, UINavigationControllerDele
         let photoData = UIImageJPEGRepresentation(imageView.image!, 0.7)!
         post["photo"] = PFFile(name: "image.jpg", data:photoData)
         
-        post.saveInBackgroundWithBlock { (success, error) -> Void in
-            // TODO: Redirect to post if successfull
-            // TODO: Offline checks - Show doing something
-            // TODO: Make user property relational
-            
-            if error != nil {
-                var errorMessage = "Please try again later." // Default error message in case Parse does not return one.
-                
-                // error is optional so check exists first
-                if let savePostError = error?.userInfo["error"] as? String {
-                    errorMessage = savePostError
-                }
-                
-                self.displayAlert("Error saving post", message: errorMessage)
-            }
-        }
+        post.saveEventually()
     }
     
     
