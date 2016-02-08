@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: ViewControllerParent {
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var retypePassword: UITextField!
@@ -83,15 +83,5 @@ class SignUpViewController: UIViewController {
     
     @IBAction func returnToLogin(sender: UIButton) {
         self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    func displayAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        
-        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
-//            self.dismissViewControllerAnimated(true, completion: nil)
-        }))
-        
-        self.presentViewController(alert, animated: true, completion: nil)
     }
 }

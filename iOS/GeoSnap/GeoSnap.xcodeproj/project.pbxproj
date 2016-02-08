@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A105CFD1C68BE070095666A /* SharePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A105CFB1C68BE070095666A /* SharePhotoViewController.swift */; };
+		5A105D001C68C63E0095666A /* ViewControllerParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A105CFF1C68C63E0095666A /* ViewControllerParent.swift */; };
 		5A4695651C67C2FA008D6413 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A4695641C67C2FA008D6413 /* Assets.xcassets */; };
 		5A4695731C67C2FA008D6413 /* GeoSnapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4695721C67C2FA008D6413 /* GeoSnapTests.swift */; };
 		5A46957E1C67C2FA008D6413 /* GeoSnapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A46957D1C67C2FA008D6413 /* GeoSnapUITests.swift */; };
@@ -47,6 +49,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5A105CFB1C68BE070095666A /* SharePhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharePhotoViewController.swift; sourceTree = "<group>"; };
+		5A105CFF1C68C63E0095666A /* ViewControllerParent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerParent.swift; sourceTree = "<group>"; };
 		5A4695581C67C2FA008D6413 /* GeoSnap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoSnap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A4695641C67C2FA008D6413 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5A4695691C67C2FA008D6413 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -140,6 +144,7 @@
 				5A4695AE1C67C4D7008D6413 /* ViewControllers */,
 				5A4695641C67C2FA008D6413 /* Assets.xcassets */,
 				5A4695691C67C2FA008D6413 /* Info.plist */,
+				5A105CFF1C68C63E0095666A /* ViewControllerParent.swift */,
 			);
 			path = GeoSnap;
 			sourceTree = "<group>";
@@ -184,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				5A4695921C67C3A6008D6413 /* HomeViewController.swift */,
+				5A105CFB1C68BE070095666A /* SharePhotoViewController.swift */,
 				5A4695941C67C3A6008D6413 /* SettingsViewController.swift */,
 				5A4695931C67C3A6008D6413 /* LoginViewController.swift */,
 				5A4695951C67C3A6008D6413 /* SignUpViewController.swift */,
@@ -326,7 +332,9 @@
 			files = (
 				5A4695971C67C3A6008D6413 /* LoginViewController.swift in Sources */,
 				5A4695961C67C3A6008D6413 /* HomeViewController.swift in Sources */,
+				5A105D001C68C63E0095666A /* ViewControllerParent.swift in Sources */,
 				5A4695991C67C3A6008D6413 /* SignUpViewController.swift in Sources */,
+				5A105CFD1C68BE070095666A /* SharePhotoViewController.swift in Sources */,
 				5A46959B1C67C3AE008D6413 /* AppDelegate.swift in Sources */,
 				5A4695981C67C3A6008D6413 /* SettingsViewController.swift in Sources */,
 			);
@@ -547,6 +555,7 @@
 				5A4695841C67C2FA008D6413 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5A4695851C67C2FA008D6413 /* Build configuration list for PBXNativeTarget "GeoSnapTests" */ = {
 			isa = XCConfigurationList;
@@ -555,6 +564,7 @@
 				5A4695871C67C2FA008D6413 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5A4695881C67C2FA008D6413 /* Build configuration list for PBXNativeTarget "GeoSnapUITests" */ = {
 			isa = XCConfigurationList;
@@ -563,6 +573,7 @@
 				5A46958A1C67C2FA008D6413 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

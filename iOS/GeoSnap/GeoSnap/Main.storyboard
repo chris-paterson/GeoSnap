@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Wpg-i1-Yzn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10102" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Wpg-i1-Yzn">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10080"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -44,7 +45,88 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="734" y="-26"/>
+            <point key="canvasLocation" x="734" y="-641"/>
+        </scene>
+        <!--Photo-->
+        <scene sceneID="ne5-Fx-ZN6">
+            <objects>
+                <viewController id="7pq-f9-vxs" customClass="SharePhotoViewController" customModule="GeoSnap" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CVP-lt-3f6"/>
+                        <viewControllerLayoutGuide type="bottom" id="nz3-iE-jOV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tfX-qb-JQN">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="second" translatesAutoresizingMaskIntoConstraints="NO" id="YzQ-nW-Ow7">
+                                <rect key="frame" x="20" y="28" width="560" height="298"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="YzQ-nW-Ow7" secondAttribute="height" multiplier="280:149" id="1C1-NO-EaR"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r6Z-nY-H2q">
+                                <rect key="frame" x="262" y="334" width="77" height="30"/>
+                                <state key="normal" title="Take Photo"/>
+                                <connections>
+                                    <action selector="takePhoto:" destination="7pq-f9-vxs" eventType="touchUpInside" id="kjV-gj-Oy8"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Comment" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tin-pt-U14">
+                                <rect key="frame" x="20" y="372" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ucZ-mO-Tfl">
+                                <rect key="frame" x="518" y="513" width="62" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Cbm-iE-c70"/>
+                                    <constraint firstAttribute="width" constant="62" id="RQP-M7-OM5"/>
+                                </constraints>
+                                <state key="normal" title="Share"/>
+                                <connections>
+                                    <action selector="share:" destination="7pq-f9-vxs" eventType="touchUpInside" id="84y-GX-lB7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Npx-JG-asL">
+                                <rect key="frame" x="448" y="513" width="62" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="62" id="A3s-hZ-ziM"/>
+                                </constraints>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.030793504433242802" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelShare:" destination="7pq-f9-vxs" eventType="touchUpInside" id="jQi-Rc-1hj"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="nz3-iE-jOV" firstAttribute="top" secondItem="ucZ-mO-Tfl" secondAttribute="bottom" constant="8" id="ACi-0b-UXe"/>
+                            <constraint firstItem="nz3-iE-jOV" firstAttribute="top" secondItem="Npx-JG-asL" secondAttribute="bottom" constant="8" id="Gj2-ay-7pb"/>
+                            <constraint firstItem="tin-pt-U14" firstAttribute="top" secondItem="r6Z-nY-H2q" secondAttribute="bottom" constant="8" id="IYW-ZN-MuB"/>
+                            <constraint firstItem="tin-pt-U14" firstAttribute="trailing" secondItem="tfX-qb-JQN" secondAttribute="trailingMargin" id="J2H-G7-w6i"/>
+                            <constraint firstItem="YzQ-nW-Ow7" firstAttribute="top" secondItem="CVP-lt-3f6" secondAttribute="bottom" constant="8" id="OYs-Xa-4hE"/>
+                            <constraint firstItem="r6Z-nY-H2q" firstAttribute="top" secondItem="YzQ-nW-Ow7" secondAttribute="bottom" constant="8" id="SeU-bg-qCI"/>
+                            <constraint firstItem="tin-pt-U14" firstAttribute="leading" secondItem="tfX-qb-JQN" secondAttribute="leadingMargin" id="aLX-ZW-3KO"/>
+                            <constraint firstItem="YzQ-nW-Ow7" firstAttribute="leading" secondItem="tfX-qb-JQN" secondAttribute="leadingMargin" id="arB-5N-ntS"/>
+                            <constraint firstItem="YzQ-nW-Ow7" firstAttribute="trailing" secondItem="tfX-qb-JQN" secondAttribute="trailingMargin" id="cnu-dO-19I"/>
+                            <constraint firstItem="ucZ-mO-Tfl" firstAttribute="trailing" secondItem="tfX-qb-JQN" secondAttribute="trailingMargin" id="cx8-2e-8uA"/>
+                            <constraint firstItem="ucZ-mO-Tfl" firstAttribute="leading" secondItem="Npx-JG-asL" secondAttribute="trailing" constant="8" id="oeu-wv-0ND"/>
+                            <constraint firstItem="r6Z-nY-H2q" firstAttribute="centerX" secondItem="tfX-qb-JQN" secondAttribute="centerX" id="z13-ls-Pwj"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Photo" id="a3S-hw-7d1"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="comment" destination="tin-pt-U14" id="3kp-fV-3cg"/>
+                        <outlet property="imageView" destination="YzQ-nW-Ow7" id="Fuc-6o-0N2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5t2-bl-MxP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="734" y="106"/>
         </scene>
         <!--Settings-->
         <scene sceneID="wg7-f3-ORb">
@@ -88,7 +170,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="734" y="729"/>
+            <point key="canvasLocation" x="734" y="905"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="wny-0i-c1f">
@@ -298,12 +380,13 @@
                     </tabBar>
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
+                        <segue destination="7pq-f9-vxs" kind="relationship" relationship="viewControllers" id="Fdx-ej-evN"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="-26"/>
+            <point key="canvasLocation" x="-46" y="-26"/>
         </scene>
     </scenes>
     <resources>

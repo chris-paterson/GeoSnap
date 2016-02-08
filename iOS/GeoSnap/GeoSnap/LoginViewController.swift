@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class LoginViewController: UIViewController {
+class LoginViewController: ViewControllerParent {
     
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
@@ -50,7 +50,7 @@ class LoginViewController: UIViewController {
             displaySpinner()
             UIApplication.sharedApplication().beginIgnoringInteractionEvents() // Prevent the user from pressing buttons while working.
 
-            var errorMessage = "Please try again later."
+            var errorMessage = "Please try again later." // Default error message in case Parse does not give us one.
             
             PFUser.logInWithUsernameInBackground(username.text!, password: password.text!, block: { (user, error) -> Void in
                 // Reenable button presses
@@ -82,15 +82,5 @@ class LoginViewController: UIViewController {
         spinner.hidesWhenStopped = true
         view.addSubview(spinner)
         spinner.startAnimating()
-    }
-    
-    func displayAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        
-        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
-            self.dismissViewControllerAnimated(true, completion: nil)
-        }))
-        
-        self.presentViewController(alert, animated: true, completion: nil)
     }
 }
