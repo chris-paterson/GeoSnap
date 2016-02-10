@@ -6,6 +6,8 @@
 //  Copyright © 2016 Christopher Paterson. All rights reserved.
 //
 
+// TODO: Click image to make larger.
+
 import UIKit
 import Parse
 
