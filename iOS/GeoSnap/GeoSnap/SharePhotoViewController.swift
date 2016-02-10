@@ -28,6 +28,27 @@ class SharePhotoViewController: ViewControllerParent, CLLocationManagerDelegate,
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest // We want users exact location
         self.locationManager.requestWhenInUseAuthorization() // Only want to use location services when app is in foreground
+        
+        testStuff()
+    }
+    
+    func testStuff() {
+        let coords = locationManager.location?.coordinate
+        let userLocation = PFGeoPoint(latitude: coords!.latitude, longitude: coords!.longitude)
+        print(userLocation)
+        
+        let query = PFQuery(className: "Post")
+        query.whereKey("location", nearGeoPoint: userLocation, withinMiles: 0.1)
+        query.findObjectsInBackgroundWithBlock {
+            (posts, error) in
+            if (posts != nil) {
+                // List of places within 10 miles of a user's location
+                
+                for post in posts! {
+                    print(post.objectId)
+                }
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
