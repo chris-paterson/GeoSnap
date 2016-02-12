@@ -10,51 +10,27 @@
 
 import UIKit
 import Parse
-import CoreLocation
 
-class SharePhotoViewController: ViewControllerParent, CLLocationManagerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class SharePhotoViewController: ViewControllerParent, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     @IBOutlet weak var comment: UITextField!
     @IBOutlet weak var imageView: UIImageView!
     
     var spinner: UIActivityIndicatorView = UIActivityIndicatorView()
     var imagePicker: UIImagePickerController!
-    var locationManager = CLLocationManager()
     var userHasTakenPhoto: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest // We want users exact location
-        self.locationManager.requestWhenInUseAuthorization() // Only want to use location services when app is in foreground
-        
-        testStuff()
     }
     
-    func testStuff() {
-        let coords = locationManager.location?.coordinate
-        let userLocation = PFGeoPoint(latitude: coords!.latitude, longitude: coords!.longitude)
-        print(userLocation)
-        
-        let query = PFQuery(className: "Post")
-        query.whereKey("location", nearGeoPoint: userLocation, withinMiles: 0.1)
-        query.findObjectsInBackgroundWithBlock {
-            (posts, error) in
-            if (posts != nil) {
-                // List of places within 10 miles of a user's location
-                
-                for post in posts! {
-                    print(post.objectId)
-                }
-            }
-        }
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
     @IBAction func takePhoto(sender: UIButton) {
         imagePicker = UIImagePickerController()
@@ -63,6 +39,7 @@ class SharePhotoViewController: ViewControllerParent, CLLocationManagerDelegate,
         
         presentViewController(imagePicker, animated: true, completion: nil)
     }
+    
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         imagePicker.dismissViewControllerAnimated(true, completion: nil)
@@ -74,14 +51,13 @@ class SharePhotoViewController: ViewControllerParent, CLLocationManagerDelegate,
     
     
     @IBAction func share(sender: UIButton) {
-        
-        
         if (userHasTakenPhoto) {
             save()
         } else {
             displayAlert("Error", message: "You must take a photo to share.")
         }
     }
+    
     
     func save() {
         displaySpinner()
@@ -117,9 +93,11 @@ class SharePhotoViewController: ViewControllerParent, CLLocationManagerDelegate,
 
     }
     
+    
     func viewPost() {
         performSegueWithIdentifier("viewPost", sender: self)
     }
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
@@ -137,10 +115,12 @@ class SharePhotoViewController: ViewControllerParent, CLLocationManagerDelegate,
         imageView.image = UIImage(named: "polaroid.pdf")
     }
     
+    
     @IBAction func cancelShare(sender: UIButton) {
         resetElements()
     }
 
+    
     func displaySpinner() {
         spinner = UIActivityIndicatorView(frame: CGRectMake(0, 0, 50, 50))
         spinner.center = self.view.center
