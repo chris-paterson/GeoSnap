@@ -6,6 +6,11 @@
 //  Copyright © 2016 Christopher Paterson. All rights reserved.
 //
 
+//TODO: Reload collection view at index, not all of it
+//TODO: Pull to refresh
+//TODO: Change layout
+//TODO: Add map display
+
 import UIKit
 import Parse
 
