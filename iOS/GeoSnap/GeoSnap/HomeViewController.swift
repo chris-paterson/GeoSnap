@@ -9,21 +9,23 @@
 // TODO: Reload collection view at index, not all of it
 // TODO: GetInBackground does not guarantee return order. Need to order images manually.
 // TODO: Placeholder image while loading
-// TODO: Pull to refresh
-// TODO: Change layout
 // TODO: Add map display
 
 import UIKit
 import Parse
 
+struct Post {
+    var postInformation = PFObject()
+    var photo = UIImage()
+}
+
 class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UICollectionViewDataSource {
 
-    @IBOutlet weak var imageCollectionView: UICollectionView!
+    @IBOutlet var imageCollectionView: UICollectionView!
     
     var refreshControl: UIRefreshControl!
-    
-    var postsAtLocation = [PFObject]()
-    var imagesAtLocation = [UIImage]()
+    var postsAtLocation = [Post]()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +39,9 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
     }
     
     func refresh(sender:AnyObject) {
+        // Empty arrays so we do not get duplicates
+        postsAtLocation = [Post]()
+        
         retrievePostsForLocation()
         
         refreshControl?.endRefreshing()
@@ -57,10 +62,16 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
         query.orderByDescending("createdAt")
         query.findObjectsInBackgroundWithBlock { (posts, error) in
             if (posts != nil) {
-                self.postsAtLocation = posts!
-                self.getImages()
+                var index = 0
+                for returnedPost in posts! {
+                    let newPost = Post(postInformation: returnedPost, photo: UIImage(named: "polaroid.pdf")!)
+                    
+                    self.postsAtLocation.append(newPost)
+                    self.getImageForPost(index)
+                    index+=1
+                }
             } else {
-                // TODO: Alert users no images at current location
+                self.displayAlert("No photos for location.", message: "There are currently no photos for the current location. Why not be the first to share one?")
             }
             
             
@@ -68,47 +79,37 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imagesAtLocation.count
+        return postsAtLocation.count
     }
-    
-    
-    
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! ImageCollectionViewCell
-        cell.imageView.image = self.imagesAtLocation[indexPath.row]
+        
+        cell.imageView.image = self.postsAtLocation[indexPath.row].photo
         
         return cell
     }
-    
 
 
     
-    func getImages() {
-        var index = -1
-        for post in postsAtLocation {
-            let userImageFile = post["photo"] as! PFFile
-            
-            userImageFile.getDataInBackgroundWithBlock {
-                (imageData: NSData?, error: NSError?) -> Void in
-                if error == nil {
-                    // getDataInBackgroundWithBlock does not ensure return order so we have an index counter to place the
-                    // returned images in the correct index.
-                    index += 1
-                    
-                    if let imageData = imageData {
-                        self.imagesAtLocation.insert(UIImage(data:imageData)!, atIndex: index)
-                    } else {
-                        self.imagesAtLocation.insert(UIImage(named: "polaroid.pdf")!, atIndex: index)
-                    }
+    func getImageForPost(index: Int) {
+        var post = postsAtLocation[index]
+        let userImageFile = post.postInformation["photo"] as! PFFile
+        
+        userImageFile.getDataInBackgroundWithBlock {
+            (imageData: NSData?, error: NSError?) -> Void in
+            if error == nil {
+                if let imageData = imageData {
+                    post.photo = UIImage(data:imageData)!
+                } else {
+                    post.photo = UIImage(named: "polaroid.pdf")!
                 }
                 
+                self.postsAtLocation[index] = post
                 self.imageCollectionView.reloadData()
             }
         }
         
     }
-
-
 }
 
