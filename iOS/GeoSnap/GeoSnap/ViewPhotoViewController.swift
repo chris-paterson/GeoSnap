@@ -17,20 +17,22 @@ class ViewPhotoViewController: UIViewController {
     @IBOutlet weak var postComment: UILabel!
     @IBOutlet weak var postPhoto: UIImageView!
     
-    var photo: UIImage = UIImage(named: "polaroid.pdf")!
-    var photoComment: String = ""
+    var post = Post(postInformation: PFObject(), photo: UIImage())
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        creatorUsername.text = PFUser.currentUser()!.username
-        postComment.text = photoComment
-        postPhoto.image = photo
+        populateFromPost()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func populateFromPost() {
+        creatorUsername.text = post.postInformation["userId"] as? String
+        postComment.text = post.postInformation["comment"] as? String
+        postPhoto.image = post.photo
     }
 }

@@ -17,8 +17,8 @@ class ViewControllerParent: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         
         locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest // We want users exact location
-        self.locationManager.requestWhenInUseAuthorization() // Only want to use location services when app is in foreground
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
         
         
@@ -33,7 +33,7 @@ class ViewControllerParent: UIViewController, CLLocationManagerDelegate {
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print(locations.last)
+//        print(locations.last)
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {

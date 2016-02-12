@@ -17,6 +17,7 @@ class SharePhotoViewController: ViewControllerParent, UINavigationControllerDele
     var spinner: UIActivityIndicatorView = UIActivityIndicatorView()
     var imagePicker: UIImagePickerController!
     var userHasTakenPhoto: Bool = false
+    var post: PFObject = PFObject(className: "Post")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +62,6 @@ class SharePhotoViewController: ViewControllerParent, UINavigationControllerDele
         displaySpinner()
         UIApplication.sharedApplication().beginIgnoringInteractionEvents() // Prevent the user from pressing buttons while working.
         
-        let post = PFObject(className: "Post")
         let photoData = UIImageJPEGRepresentation(imageView.image!, 0.7)!
         let coords = locationManager.location?.coordinate
         
@@ -98,11 +98,11 @@ class SharePhotoViewController: ViewControllerParent, UINavigationControllerDele
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
         if(segue.identifier == "viewPost") {
             let viewPhotoViewController = (segue.destinationViewController as! ViewPhotoViewController)
-            viewPhotoViewController.photo = imageView.image!
-            viewPhotoViewController.photoComment = comment.text!
+            
+            let postToSend = Post(postInformation: post, photo: imageView.image!)
+            viewPhotoViewController.post = postToSend
         }
     }
     

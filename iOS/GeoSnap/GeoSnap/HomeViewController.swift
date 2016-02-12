@@ -11,11 +11,6 @@
 import UIKit
 import Parse
 
-struct Post {
-    var postInformation = PFObject()
-    var photo = UIImage()
-}
-
 class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet var imageCollectionView: UICollectionView!
@@ -37,7 +32,7 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
     
     func refresh(sender:AnyObject) {
         // Empty arrays so we do not get duplicates
-        postsAtLocation = [Post]()
+        postsAtLocation.removeAll()
         
         retrievePostsForLocation()
         
@@ -64,6 +59,7 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
                     let newPost = Post(postInformation: returnedPost, photo: UIImage(named: "polaroid.pdf")!)
                     
                     self.postsAtLocation.append(newPost)
+                    self.imageCollectionView.reloadData()
                     self.getImageForPost(index)
                     index+=1
                 }
@@ -87,7 +83,24 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
         return cell
     }
 
-
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        print(indexPath)
+        performSegueWithIdentifier("viewPost", sender: self)
+    }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "viewPost" {
+            let indexPaths = self.imageCollectionView.indexPathsForSelectedItems()!
+            let indexPath = indexPaths.first! as NSIndexPath
+            
+            let post = self.postsAtLocation[indexPath.row]
+            
+            let viewPhotoViewController = (segue.destinationViewController as! ViewPhotoViewController)
+            viewPhotoViewController.post = post
+        }
+    }
     
     func getImageForPost(index: Int) {
         var post = postsAtLocation[index]

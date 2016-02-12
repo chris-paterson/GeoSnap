@@ -36,18 +36,12 @@
                                             <rect key="frame" x="0.0" y="0.0" width="256" height="256"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="polaroid" translatesAutoresizingMaskIntoConstraints="NO" id="qIW-D1-Axf">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="polaroid" translatesAutoresizingMaskIntoConstraints="NO" id="qIW-D1-Axf">
                                                     <rect key="frame" x="0.0" y="0.0" width="256" height="256"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="qIW-D1-Axf" secondAttribute="trailing" id="MoY-mm-gSA"/>
-                                            <constraint firstAttribute="bottom" secondItem="qIW-D1-Axf" secondAttribute="bottom" id="Ny0-cb-26F"/>
-                                            <constraint firstItem="qIW-D1-Axf" firstAttribute="leading" secondItem="0st-Cl-VuB" secondAttribute="leading" id="Ufi-a3-yWw"/>
-                                            <constraint firstItem="qIW-D1-Axf" firstAttribute="top" secondItem="0st-Cl-VuB" secondAttribute="top" id="nFv-Oi-pGq"/>
-                                        </constraints>
                                         <size key="customSize" width="256" height="256"/>
                                         <connections>
                                             <outlet property="imageView" destination="qIW-D1-Axf" id="LkW-cZ-Q0m"/>
@@ -61,20 +55,21 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="xAf-yk-1pu" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="2g1-AD-mHU"/>
-                            <constraint firstItem="xAf-yk-1pu" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="J7w-pH-RB7"/>
-                            <constraint firstAttribute="trailing" secondItem="xAf-yk-1pu" secondAttribute="trailing" id="N4E-6U-Xoc"/>
-                            <constraint firstItem="xAf-yk-1pu" firstAttribute="bottom" secondItem="4ug-Mw-9AY" secondAttribute="top" id="lbL-NW-GYk"/>
+                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="xAf-yk-1pu" secondAttribute="bottom" id="b55-gB-S7W"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xAf-yk-1pu" secondAttribute="trailing" constant="-20" id="k0D-Xg-zvW"/>
+                            <constraint firstItem="xAf-yk-1pu" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="moQ-a8-tEQ"/>
+                            <constraint firstItem="xAf-yk-1pu" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-20" id="zP6-kY-4t7"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="home" selectedImage="home" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="imageCollectionView" destination="xAf-yk-1pu" id="ivQ-Fo-cAI"/>
+                        <segue destination="KBf-0W-YuX" kind="show" identifier="viewPost" id="hpj-y9-dXR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="734" y="-641"/>
+            <point key="canvasLocation" x="740" y="-669"/>
         </scene>
         <!--Take Photo-->
         <scene sceneID="ne5-Fx-ZN6">
@@ -499,6 +494,7 @@
         <image name="polaroid" width="262" height="326"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="hpj-y9-dXR"/>
         <segue reference="O69-4L-GYg"/>
     </inferredMetricsTieBreakers>
 </document>
