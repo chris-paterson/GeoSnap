@@ -6,8 +6,6 @@
 //  Copyright © 2016 Christopher Paterson. All rights reserved.
 //
 
-// TODO: Redirect to post if successfull
-
 import UIKit
 import Parse
 

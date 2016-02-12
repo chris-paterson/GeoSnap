@@ -6,9 +6,6 @@
 //  Copyright © 2016 Christopher Paterson. All rights reserved.
 //
 
-// TODO: Reload collection view at index, not all of it
-// TODO: GetInBackground does not guarantee return order. Need to order images manually.
-// TODO: Placeholder image while loading
 // TODO: Add map display
 
 import UIKit
