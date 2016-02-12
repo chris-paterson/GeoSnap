@@ -46,29 +46,31 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
     
     
     func retrievePostsForLocation() {
-        let coords = locationManager.location?.coordinate
-        let userLocation = PFGeoPoint(latitude: coords!.latitude, longitude: coords!.longitude)
-        
-        let query = PFQuery(className: "Post")
-        query.whereKey("location", nearGeoPoint: userLocation, withinMiles: 0.1)
-        query.orderByDescending("createdAt")
-        query.findObjectsInBackgroundWithBlock { (posts, error) in
-            if (posts != nil) {
-                var index = 0
-                for returnedPost in posts! {
-                    let newPost = Post(postInformation: returnedPost, photo: UIImage(named: "polaroid.pdf")!)
-                    
-                    self.postsAtLocation.append(newPost)
-                    self.imageCollectionView.reloadData()
-                    self.getImageForPost(index)
-                    index+=1
+        if let coords = locationManager.location?.coordinate {
+            let userLocation = PFGeoPoint(latitude: coords.latitude, longitude: coords.longitude)
+            
+            let query = PFQuery(className: "Post")
+            query.whereKey("location", nearGeoPoint: userLocation, withinMiles: 0.1)
+            query.orderByDescending("createdAt")
+            query.findObjectsInBackgroundWithBlock { (posts, error) in
+                if (posts != nil) {
+                    var index = 0
+                    for returnedPost in posts! {
+                        let newPost = Post(postInformation: returnedPost, photo: UIImage(named: "polaroid.pdf")!)
+                        
+                        self.postsAtLocation.append(newPost)
+                        self.imageCollectionView.reloadData()
+                        self.getImageForPost(index)
+                        index+=1
+                    }
+                } else {
+                    self.displayAlert("No photos for location.", message: "There are currently no photos for the current location. Why not be the first to share one?")
                 }
-            } else {
-                self.displayAlert("No photos for location.", message: "There are currently no photos for the current location. Why not be the first to share one?")
             }
-            
-            
+        } else {
+            displayAlert("Could not find location", message: "Refresh by pulling down to try again.")
         }
+        
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
