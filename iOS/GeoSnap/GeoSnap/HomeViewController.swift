@@ -6,10 +6,12 @@
 //  Copyright © 2016 Christopher Paterson. All rights reserved.
 //
 
-//TODO: Reload collection view at index, not all of it
-//TODO: Pull to refresh
-//TODO: Change layout
-//TODO: Add map display
+// TODO: Reload collection view at index, not all of it
+// TODO: GetInBackground does not guarantee return order. Need to order images manually.
+// TODO: Placeholder image while loading
+// TODO: Pull to refresh
+// TODO: Change layout
+// TODO: Add map display
 
 import UIKit
 import Parse
@@ -18,13 +20,26 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
 
     @IBOutlet weak var imageCollectionView: UICollectionView!
     
+    var refreshControl: UIRefreshControl!
+    
     var postsAtLocation = [PFObject]()
     var imagesAtLocation = [UIImage]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refreshControl.addTarget(self, action: "refresh:",   forControlEvents: UIControlEvents.ValueChanged)
+        imageCollectionView!.addSubview(refreshControl)
+        
         retrievePostsForLocation()
+    }
+    
+    func refresh(sender:AnyObject) {
+        retrievePostsForLocation()
+        
+        refreshControl?.endRefreshing()
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,25 +71,35 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
         return imagesAtLocation.count
     }
     
+    
+    
+    
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! ImageCollectionViewCell
         cell.imageView.image = self.imagesAtLocation[indexPath.row]
         
         return cell
     }
+    
+
 
     
     func getImages() {
+        var index = -1
         for post in postsAtLocation {
             let userImageFile = post["photo"] as! PFFile
             
             userImageFile.getDataInBackgroundWithBlock {
                 (imageData: NSData?, error: NSError?) -> Void in
                 if error == nil {
+                    // getDataInBackgroundWithBlock does not ensure return order so we have an index counter to place the
+                    // returned images in the correct index.
+                    index += 1
+                    
                     if let imageData = imageData {
-                        self.imagesAtLocation.append(UIImage(data:imageData)!)
+                        self.imagesAtLocation.insert(UIImage(data:imageData)!, atIndex: index)
                     } else {
-                        self.imagesAtLocation.append(UIImage(named: "polaroid.pdf")!)
+                        self.imagesAtLocation.insert(UIImage(named: "polaroid.pdf")!, atIndex: index)
                     }
                 }
                 

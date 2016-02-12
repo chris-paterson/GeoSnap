@@ -19,6 +19,25 @@ class ViewControllerParent: UIViewController, CLLocationManagerDelegate {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest // We want users exact location
         self.locationManager.requestWhenInUseAuthorization() // Only want to use location services when app is in foreground
+        locationManager.startUpdatingLocation()
+        
+        
+        
+        
+        
+        //    if(CLLocationManager.authorizationStatus() == .Denied ||
+        //    CLLocationManager.authorizationStatus() == .NotDetermined) {
+        //
+        //    displayAlert("Location required", message: "To see results, you must enable location.")
+        //    }
+    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print(locations.last)
+    }
+    
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print("Errors: " + error.localizedDescription)
     }
     
     func displayAlert(title: String, message: String) {
@@ -26,6 +45,4 @@ class ViewControllerParent: UIViewController, CLLocationManagerDelegate {
         alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
     }
-    
-    
 }
