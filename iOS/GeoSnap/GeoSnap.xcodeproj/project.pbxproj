@@ -156,6 +156,7 @@
 				5A4695901C67C38D008D6413 /* Main.storyboard */,
 				5A4695AE1C67C4D7008D6413 /* ViewControllers */,
 				5AA9DE5D1C6E00710038D5E4 /* Layouts */,
+				5AA9DE6A1C709A820038D5E4 /* Models */,
 				5A105D041C68F7D20095666A /* Support */,
 			);
 			path = GeoSnap;
@@ -217,6 +218,13 @@
 				5AA9DE641C6E07150038D5E4 /* ImageCollectionViewCell.swift */,
 			);
 			name = Layouts;
+			sourceTree = "<group>";
+		};
+		5AA9DE6A1C709A820038D5E4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -70,7 +70,7 @@ class SharePhotoViewController: ViewControllerParent, UINavigationControllerDele
         let coords = locationManager.location?.coordinate
         
         post["comment"] = comment.text
-        post["userId"] = PFUser.currentUser()?.objectId
+        post["creator"] = PFUser.currentUser()
         post["photo"] = PFFile(name: "image.jpg", data:photoData)
         post["location"] = PFGeoPoint(latitude: coords!.latitude, longitude: coords!.longitude)
         
@@ -80,8 +80,8 @@ class SharePhotoViewController: ViewControllerParent, UINavigationControllerDele
             self.spinner.stopAnimating()
             
             if success {
-                print(self.post.objectId)
                 self.viewPost()
+                
             } else {
                 var errorMessage = "Please try again later." // Default error message in case Parse does not return one.
                 
@@ -105,7 +105,7 @@ class SharePhotoViewController: ViewControllerParent, UINavigationControllerDele
         
         if(segue.identifier == "viewPost") {
             let viewPhotoViewController = (segue.destinationViewController as! ViewPhotoViewController)
-            viewPhotoViewController.objectId = post.objectId!
+            viewPhotoViewController.postId = post.objectId!
         }
     }
     

@@ -11,19 +11,20 @@
 import UIKit
 import Parse
 
-class ViewPhotoViewController: UIViewController {
+class ViewPhotoViewController: ViewControllerParent {
     
     @IBOutlet weak var creatorUsername: UILabel!
     @IBOutlet weak var postComment: UILabel!
     @IBOutlet weak var postPhoto: UIImageView!
 
-    var objectId: String = String()
+    var postId: String = String()
+    
+    private var post: PFObject = PFObject(className: "Post")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(objectId)
-//        populateFromPost()
+        retrievePost()
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,9 +32,46 @@ class ViewPhotoViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-//    func populateFromPost() {
-//        creatorUsername.text = post.postInformation["userId"] as? String
-//        postComment.text = post.postInformation["comment"] as? String
-//        postPhoto.image = post.photo
-//    }
+    func retrievePost() {
+        let query = PFQuery(className:"Post")
+        query.includeKey("creator")
+        query.getObjectInBackgroundWithId(postId) {
+            (post: PFObject?, error: NSError?) -> Void in
+            if error == nil && post != nil {
+                self.post = post!
+                self.populateView()
+            } else {
+                var errorMessage = "Could not retrieve post at this time. Please try again." // Defaul error message
+                
+                if let errorString = error?.userInfo["error"] as? String {
+                    errorMessage = errorString
+                }
+                
+                self.displayAlert("Error retrieving post", message: errorMessage)
+            }
+        }
+    }
+    
+    func populateView() {
+        postComment.text = post["comment"] as? String
+        creatorUsername.text = post["creator"].username
+    
+        retrievePhoto()
+    }
+    
+    func retrievePhoto() {
+        let photo = post["photo"] as! PFFile
+        
+        photo.getDataInBackgroundWithBlock {
+            (imageData: NSData?, error: NSError?) -> Void in
+            if error == nil {
+                if let imageData = imageData {
+                    self.postPhoto.image = UIImage(data:imageData)!
+                } else {
+                    self.postPhoto.image = UIImage(named: "polaroid.pdf")!
+                    self.displayAlert("Error retrieving photo", message: "Unable to retrieve photo at this time. Please try again.")
+                }
+            }
+        }
+    }
 }

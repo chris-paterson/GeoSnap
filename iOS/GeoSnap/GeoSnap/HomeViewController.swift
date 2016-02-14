@@ -12,12 +12,16 @@ import UIKit
 import Parse
 
 class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    struct Post {
+        var postInformation: PFObject
+        var photo: UIImage
+    }
 
     @IBOutlet var imageCollectionView: UICollectionView!
     
     var refreshControl: UIRefreshControl!
     var postsAtLocation = [Post]()
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,7 +104,7 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
             let post = self.postsAtLocation[indexPath.row]
             
             let viewPhotoViewController = (segue.destinationViewController as! ViewPhotoViewController)
-            viewPhotoViewController.objectId = post.postInformation.objectId!
+            viewPhotoViewController.postId = post.postInformation.objectId!
         }
     }
     

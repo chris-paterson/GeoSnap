@@ -20,21 +20,10 @@ class ViewControllerParent: UIViewController, CLLocationManagerDelegate {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-        
-        
-        
-        
-        
-        //    if(CLLocationManager.authorizationStatus() == .Denied ||
-        //    CLLocationManager.authorizationStatus() == .NotDetermined) {
-        //
-        //    displayAlert("Location required", message: "To see results, you must enable location.")
-        //    }
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        print(locations.last)
-        locationManager.stopUpdatingLocation()
+//        locationManager.stopUpdatingLocation()
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
