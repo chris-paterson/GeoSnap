@@ -16,17 +16,13 @@ class ViewPhotoViewController: UIViewController {
     @IBOutlet weak var creatorUsername: UILabel!
     @IBOutlet weak var postComment: UILabel!
     @IBOutlet weak var postPhoto: UIImageView!
-    
-    
-    // TODO: IT MAKES IT IN HERE BUT MAKES IT NO FURTHER
-    var post: Post = Post(postInformation: PFObject(), photo: UIImage())
-    
-    var photo: UIImage = UIImage(named: "polaroid.pdf")!
-    var photoComment: String = ""
+
+    var objectId: String = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        print(objectId)
 //        populateFromPost()
     }
 

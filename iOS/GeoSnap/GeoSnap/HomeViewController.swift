@@ -100,7 +100,7 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
             let post = self.postsAtLocation[indexPath.row]
             
             let viewPhotoViewController = (segue.destinationViewController as! ViewPhotoViewController)
-            viewPhotoViewController.post = post
+            viewPhotoViewController.objectId = post.postInformation.objectId!
         }
     }
     

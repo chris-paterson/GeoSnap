@@ -23,6 +23,7 @@ class SharePhotoViewController: ViewControllerParent, UINavigationControllerDele
     var userHasTakenPhoto: Bool = false
     var post: PFObject = PFObject(className: "Post")
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -104,21 +105,9 @@ class SharePhotoViewController: ViewControllerParent, UINavigationControllerDele
         
         if(segue.identifier == "viewPost") {
             let viewPhotoViewController = (segue.destinationViewController as! ViewPhotoViewController)
-            viewPhotoViewController.photo = imageView.image!
-            viewPhotoViewController.photoComment = comment.text!
-            viewPhotoViewController.post = Post(postInformation: PFObject(), photo: UIImage())
+            viewPhotoViewController.objectId = post.objectId!
         }
     }
-    
-    
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if(segue.identifier == "viewPost") {
-//            let viewPhotoViewController = (segue.destinationViewController as! ViewPhotoViewController)
-//            
-//            let postToSend = Post(postInformation: post, photo: imageView.image!)
-//            viewPhotoViewController.post = postToSend
-//        }
-//    }
     
     
     func resetElements() {
