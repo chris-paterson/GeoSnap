@@ -36,7 +36,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="256" height="256"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="polaroid" translatesAutoresizingMaskIntoConstraints="NO" id="qIW-D1-Axf">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="polaroid" translatesAutoresizingMaskIntoConstraints="NO" id="qIW-D1-Axf">
                                                     <rect key="frame" x="0.0" y="0.0" width="256" height="256"/>
                                                 </imageView>
                                             </subviews>
@@ -50,6 +50,7 @@
                                 </cells>
                                 <connections>
                                     <outlet property="dataSource" destination="9pv-A4-QxB" id="M5r-dJ-t8u"/>
+                                    <outlet property="delegate" destination="9pv-A4-QxB" id="0he-ME-lc3"/>
                                 </connections>
                             </collectionView>
                         </subviews>
@@ -64,6 +65,7 @@
                     <tabBarItem key="tabBarItem" title="Home" image="home" selectedImage="home" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="imageCollectionView" destination="xAf-yk-1pu" id="ivQ-Fo-cAI"/>
+                        <segue destination="KBf-0W-YuX" kind="show" identifier="viewPost" id="SLb-sg-soZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -493,6 +495,7 @@
         <image name="polaroid" width="262" height="326"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="y82-GC-DJr"/>
+        <segue reference="O69-4L-GYg"/>
+        <segue reference="SLb-sg-soZ"/>
     </inferredMetricsTieBreakers>
 </document>
