@@ -145,7 +145,7 @@
                     <connections>
                         <outlet property="comment" destination="tin-pt-U14" id="3kp-fV-3cg"/>
                         <outlet property="imageView" destination="YzQ-nW-Ow7" id="Fuc-6o-0N2"/>
-                        <segue destination="KBf-0W-YuX" kind="show" identifier="viewPost" id="Hga-rE-y8X"/>
+                        <segue destination="KBf-0W-YuX" kind="show" identifier="viewPost" id="HIO-6u-qer"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5t2-bl-MxP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -493,6 +493,6 @@
         <image name="polaroid" width="262" height="326"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="O69-4L-GYg"/>
+        <segue reference="y82-GC-DJr"/>
     </inferredMetricsTieBreakers>
 </document>

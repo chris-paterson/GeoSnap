@@ -6,6 +6,10 @@
 //  Copyright © 2016 Christopher Paterson. All rights reserved.
 //
 
+// TODO: fix Snapshotting a view that has not been rendered results in an empty snapshot. Ensure your view has been rendered at least once before snapshotting or snapshot after screen 
+
+
+
 import UIKit
 import Parse
 
@@ -21,7 +25,6 @@ class SharePhotoViewController: ViewControllerParent, UINavigationControllerDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     
@@ -76,6 +79,7 @@ class SharePhotoViewController: ViewControllerParent, UINavigationControllerDele
             self.spinner.stopAnimating()
             
             if success {
+                print(self.post.objectId)
                 self.viewPost()
             } else {
                 var errorMessage = "Please try again later." // Default error message in case Parse does not return one.
@@ -96,15 +100,25 @@ class SharePhotoViewController: ViewControllerParent, UINavigationControllerDele
         performSegueWithIdentifier("viewPost", sender: self)
     }
     
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
         if(segue.identifier == "viewPost") {
             let viewPhotoViewController = (segue.destinationViewController as! ViewPhotoViewController)
-            
-            let postToSend = Post(postInformation: post, photo: imageView.image!)
-            viewPhotoViewController.post = postToSend
+            viewPhotoViewController.photo = imageView.image!
+            viewPhotoViewController.photoComment = comment.text!
+            viewPhotoViewController.post = Post(postInformation: PFObject(), photo: UIImage())
         }
     }
+    
+    
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        if(segue.identifier == "viewPost") {
+//            let viewPhotoViewController = (segue.destinationViewController as! ViewPhotoViewController)
+//            
+//            let postToSend = Post(postInformation: post, photo: imageView.image!)
+//            viewPhotoViewController.post = postToSend
+//        }
+//    }
     
     
     func resetElements() {

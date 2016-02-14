@@ -17,12 +17,17 @@ class ViewPhotoViewController: UIViewController {
     @IBOutlet weak var postComment: UILabel!
     @IBOutlet weak var postPhoto: UIImageView!
     
-    var post = Post(postInformation: PFObject(), photo: UIImage())
+    
+    // TODO: IT MAKES IT IN HERE BUT MAKES IT NO FURTHER
+    var post: Post = Post(postInformation: PFObject(), photo: UIImage())
+    
+    var photo: UIImage = UIImage(named: "polaroid.pdf")!
+    var photoComment: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        populateFromPost()
+//        populateFromPost()
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,9 +35,9 @@ class ViewPhotoViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func populateFromPost() {
-        creatorUsername.text = post.postInformation["userId"] as? String
-        postComment.text = post.postInformation["comment"] as? String
-        postPhoto.image = post.photo
-    }
+//    func populateFromPost() {
+//        creatorUsername.text = post.postInformation["userId"] as? String
+//        postComment.text = post.postInformation["comment"] as? String
+//        postPhoto.image = post.photo
+//    }
 }
