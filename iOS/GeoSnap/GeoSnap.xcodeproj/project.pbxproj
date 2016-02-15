@@ -31,6 +31,7 @@
 		5A4695AC1C67C402008D6413 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A4695A31C67C402008D6413 /* Security.framework */; };
 		5A4695AD1C67C402008D6413 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A4695A41C67C402008D6413 /* SystemConfiguration.framework */; };
 		5AA9DE651C6E07150038D5E4 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA9DE641C6E07150038D5E4 /* ImageCollectionViewCell.swift */; };
+		5AA9DE6E1C722C090038D5E4 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA9DE6D1C722C090038D5E4 /* CommentTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		5A4695A31C67C402008D6413 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		5A4695A41C67C402008D6413 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5AA9DE641C6E07150038D5E4 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		5AA9DE6D1C722C090038D5E4 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				5AA9DE641C6E07150038D5E4 /* ImageCollectionViewCell.swift */,
+				5AA9DE6D1C722C090038D5E4 /* CommentTableViewCell.swift */,
 			);
 			name = Layouts;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 				5A105D081C68FC720095666A /* ViewPhotoViewController.swift in Sources */,
 				5A105CFD1C68BE070095666A /* SharePhotoViewController.swift in Sources */,
 				5AA9DE651C6E07150038D5E4 /* ImageCollectionViewCell.swift in Sources */,
+				5AA9DE6E1C722C090038D5E4 /* CommentTableViewCell.swift in Sources */,
 				5A46959B1C67C3AE008D6413 /* AppDelegate.swift in Sources */,
 				5A4695981C67C3A6008D6413 /* SettingsViewController.swift in Sources */,
 			);
