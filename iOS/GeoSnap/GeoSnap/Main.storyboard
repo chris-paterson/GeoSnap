@@ -166,11 +166,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZDq-B7-k76">
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZDq-B7-k76">
                                 <rect key="frame" x="20" y="57" width="560" height="298"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ZDq-B7-k76" secondAttribute="height" multiplier="280:149" id="eRb-Od-a6b"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="j4Y-Mf-ii0" appends="YES" id="Ihv-Ip-TYh"/>
+                                </connections>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8DU-PR-Hvh">
                                 <rect key="frame" x="20" y="28" width="488" height="21"/>
@@ -178,11 +182,11 @@
                                     <constraint firstAttribute="height" constant="21" id="dhs-GI-Hiw"/>
                                     <constraint firstAttribute="width" constant="488" id="esh-jf-4Zd"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ig6-tT-N3f">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comment" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ig6-tT-N3f">
                                 <rect key="frame" x="20" y="363" width="560" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="1CB-WQ-RGu"/>
@@ -224,6 +228,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ni0-kH-RH5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="j4Y-Mf-ii0">
+                    <connections>
+                        <action selector="makePhotoFullscreen:" destination="KBf-0W-YuX" id="kZG-Nu-SD4"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1444" y="106"/>
         </scene>
@@ -495,7 +504,7 @@
         <image name="polaroid" width="262" height="326"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="O69-4L-GYg"/>
+        <segue reference="y82-GC-DJr"/>
         <segue reference="SLb-sg-soZ"/>
     </inferredMetricsTieBreakers>
 </document>

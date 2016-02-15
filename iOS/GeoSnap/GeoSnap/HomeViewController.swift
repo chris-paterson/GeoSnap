@@ -90,7 +90,6 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
     }
 
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        print(indexPath)
         performSegueWithIdentifier("viewPost", sender: self)
     }
     
