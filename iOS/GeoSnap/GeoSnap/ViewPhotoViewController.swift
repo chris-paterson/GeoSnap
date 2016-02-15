@@ -6,7 +6,11 @@
 //  Copyright © 2016 Christopher Paterson. All rights reserved.
 //
 
-// TODO: Click image to make larger.
+// TODO: Clear when user clicks submit. 
+// TODO: Prevent user from clicking submit a bunch of times
+// TODO: Add comment straight to tableview once the user submits
+// TODO: Remove excess cells in tableview
+// TODO: Change tableview cell layout a little. Bold the name too.
 
 import UIKit
 import Parse
