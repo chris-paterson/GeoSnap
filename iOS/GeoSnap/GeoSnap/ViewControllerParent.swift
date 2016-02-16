@@ -6,6 +6,10 @@
 //  Copyright © 2016 Christopher Paterson. All rights reserved.
 //
 
+// TODO: Permission checks (Location and camera)
+// TODO: Offline checks - Ensure good messages when offline and that everything works.
+
+
 import UIKit
 import CoreLocation
 

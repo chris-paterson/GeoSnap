@@ -111,24 +111,28 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
     }
     
     @IBAction func submitComment(sender: UIButton) {
-        let userComment = PFObject(className: "Comment")
-        userComment["comment"] =  commentOnPost.text
-        userComment["creator"] = PFUser.currentUser()
-        userComment["forPost"] = postId
-        
-        userComment.saveInBackgroundWithBlock { (success, error) -> Void in
-            if success {
-                
-                
-            } else {
-                var errorMessage = "Unable to save comment at this time. Please try again later." // Default error message in case Parse does not return one.
-                
-                // error is optional so check exists first
-                if let savePostError = error?.userInfo["error"] as? String {
-                    errorMessage = savePostError
+        if commentOnPost.text == "" {
+            displayAlert("Error submitting comment", message: "Comment box is empty.")
+        } else {
+            let userComment = PFObject(className: "Comment")
+            userComment["comment"] =  commentOnPost.text
+            userComment["creator"] = PFUser.currentUser()
+            userComment["forPost"] = postId
+            
+            userComment.saveInBackgroundWithBlock { (success, error) -> Void in
+                if success {
+                    
+                    
+                } else {
+                    var errorMessage = "Unable to save comment at this time. Please try again later." // Default error message in case Parse does not return one.
+                    
+                    // error is optional so check exists first
+                    if let savePostError = error?.userInfo["error"] as? String {
+                        errorMessage = savePostError
+                    }
+                    
+                    self.displayAlert("Error saving post", message: errorMessage)
                 }
-                
-                self.displayAlert("Error saving post", message: errorMessage)
             }
         }
     }

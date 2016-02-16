@@ -6,6 +6,8 @@
 //  Copyright © 2016 Christopher Paterson. All rights reserved.
 //
 
+// TODO: Since Parse does not log out next
+
 import UIKit
 import Parse
 
@@ -25,7 +27,7 @@ class SettingsViewController: UIViewController {
     }
 
     @IBAction func logOut(sender: UIButton) {
-        PFUser.logOut()
+        PFUser.logOutInBackground()
         
         // Redirect back to login screen
         performSegueWithIdentifier("login", sender: self)
