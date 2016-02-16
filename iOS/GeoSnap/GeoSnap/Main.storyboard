@@ -227,19 +227,28 @@
                                     <action selector="submitComment:" destination="KBf-0W-YuX" eventType="touchUpInside" id="01H-ea-Ulf"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="htH-no-Mkk">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="htH-no-Mkk">
                                 <rect key="frame" x="20" y="464" width="560" height="116"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="postComment" id="EVo-Pw-CR0" customClass="CommentTableViewCell" customModule="GeoSnap" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="560" height="85"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="postComment" rowHeight="70" id="EVo-Pw-CR0" customClass="CommentTableViewCell" customModule="GeoSnap" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="560" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EVo-Pw-CR0" id="Juh-5k-ADb">
-                                            <rect key="frame" x="0.0" y="0.0" width="560" height="84.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="69.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Creator" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hnD-NA-Ym9">
+                                                    <rect key="frame" x="16" y="8" width="536" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="fgH-b0-IbE"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comment" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qg7-uo-cf8">
-                                                    <rect key="frame" x="8" y="37" width="544" height="21"/>
+                                                    <rect key="frame" x="16" y="32" width="536" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="ZbR-nC-ojo"/>
                                                     </constraints>
@@ -247,22 +256,13 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Creator" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hnD-NA-Ym9">
-                                                    <rect key="frame" x="8" y="8" width="544" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="fgH-b0-IbE"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="qg7-uo-cf8" firstAttribute="top" secondItem="hnD-NA-Ym9" secondAttribute="bottom" constant="8" id="10p-Ad-0rs"/>
+                                                <constraint firstItem="qg7-uo-cf8" firstAttribute="top" secondItem="hnD-NA-Ym9" secondAttribute="bottom" constant="3" id="10p-Ad-0rs"/>
                                                 <constraint firstItem="hnD-NA-Ym9" firstAttribute="top" secondItem="Juh-5k-ADb" secondAttribute="topMargin" id="1vm-1F-xKg"/>
-                                                <constraint firstItem="qg7-uo-cf8" firstAttribute="leading" secondItem="Juh-5k-ADb" secondAttribute="leadingMargin" id="4BE-yU-NBQ"/>
+                                                <constraint firstItem="qg7-uo-cf8" firstAttribute="leading" secondItem="Juh-5k-ADb" secondAttribute="leadingMargin" constant="8" id="4BE-yU-NBQ"/>
                                                 <constraint firstItem="qg7-uo-cf8" firstAttribute="trailing" secondItem="Juh-5k-ADb" secondAttribute="trailingMargin" id="GfM-Cc-d5P"/>
-                                                <constraint firstItem="hnD-NA-Ym9" firstAttribute="leading" secondItem="Juh-5k-ADb" secondAttribute="leadingMargin" id="oBZ-4z-iIR"/>
+                                                <constraint firstItem="hnD-NA-Ym9" firstAttribute="leading" secondItem="Juh-5k-ADb" secondAttribute="leadingMargin" constant="8" id="oBZ-4z-iIR"/>
                                                 <constraint firstItem="hnD-NA-Ym9" firstAttribute="trailing" secondItem="Juh-5k-ADb" secondAttribute="trailingMargin" id="pg3-Fz-XaO"/>
                                             </constraints>
                                         </tableViewCellContentView>

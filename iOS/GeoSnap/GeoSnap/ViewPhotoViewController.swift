@@ -6,9 +6,6 @@
 //  Copyright © 2016 Christopher Paterson. All rights reserved.
 //
 
-// TODO: Add comment straight to tableview once the user submits
-// TODO: Change tableview cell layout a little. Bold the name too.
-
 import UIKit
 import Parse
 
@@ -35,6 +32,7 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
         commentsTableView.delegate = self
         
         commentsTableView.tableFooterView = UIView() // Hide empty cells in comments table
+        commentsTableView.allowsSelection = false;
         
         retrievePost()
         retrieveCommentsForPost()
@@ -124,8 +122,12 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
             
             userComment.saveInBackgroundWithBlock { (success, error) -> Void in
                 if success {
-                    self.commentOnPost.text = "" // Clear comment box
-                    self.commentOnPost.resignFirstResponder() // Hide the keyboard
+                    self.commentOnPost.text = "" // Clear comment box.
+                    self.commentOnPost.resignFirstResponder() // Hide the keyboard.
+                    
+                    // Add comment to table and reload.
+                    self.commentsForPost.insert(userComment, atIndex: 0)
+                    self.commentsTableView.reloadData()
                     
                 } else {
                     var errorMessage = "Unable to save comment at this time. Please try again later." // Default error message in case Parse does not return one.
