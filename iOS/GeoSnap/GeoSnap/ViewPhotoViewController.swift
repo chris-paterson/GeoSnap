@@ -6,10 +6,7 @@
 //  Copyright © 2016 Christopher Paterson. All rights reserved.
 //
 
-// TODO: Clear when user clicks submit. 
-// TODO: Prevent user from clicking submit a bunch of times
 // TODO: Add comment straight to tableview once the user submits
-// TODO: Remove excess cells in tableview
 // TODO: Change tableview cell layout a little. Bold the name too.
 
 import UIKit
@@ -23,6 +20,7 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
     
     @IBOutlet weak var commentOnPost: UITextField!
     @IBOutlet weak var commentsTableView: UITableView!
+    @IBOutlet weak var submitCommentButton: UIButton!
     
     var postId: String = String()
     var commentsForPost = [PFObject]()
@@ -35,6 +33,8 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
         
         commentsTableView.dataSource = self
         commentsTableView.delegate = self
+        
+        commentsTableView.tableFooterView = UIView() // Hide empty cells in comments table
         
         retrievePost()
         retrieveCommentsForPost()
@@ -114,6 +114,9 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
         if commentOnPost.text == "" {
             displayAlert("Error submitting comment", message: "Comment box is empty.")
         } else {
+            // Disable button to prevent posting multiple times
+            submitCommentButton.enabled = false
+            
             let userComment = PFObject(className: "Comment")
             userComment["comment"] =  commentOnPost.text
             userComment["creator"] = PFUser.currentUser()
@@ -121,7 +124,8 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
             
             userComment.saveInBackgroundWithBlock { (success, error) -> Void in
                 if success {
-                    
+                    self.commentOnPost.text = "" // Clear comment box
+                    self.commentOnPost.resignFirstResponder() // Hide the keyboard
                     
                 } else {
                     var errorMessage = "Unable to save comment at this time. Please try again later." // Default error message in case Parse does not return one.
@@ -133,6 +137,9 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
                     
                     self.displayAlert("Error saving post", message: errorMessage)
                 }
+                
+                
+                self.submitCommentButton.enabled = true
             }
         }
     }

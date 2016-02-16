@@ -317,6 +317,7 @@
                         <outlet property="creatorUsername" destination="8DU-PR-Hvh" id="r7U-Wp-Odq"/>
                         <outlet property="postComment" destination="Ig6-tT-N3f" id="fIt-bi-t43"/>
                         <outlet property="postPhoto" destination="ZDq-B7-k76" id="s0i-VO-n1I"/>
+                        <outlet property="submitCommentButton" destination="jF3-ZF-8nl" id="4ui-FP-VSe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ni0-kH-RH5" userLabel="First Responder" sceneMemberID="firstResponder"/>
