@@ -6,7 +6,8 @@
 //  Copyright © 2016 Christopher Paterson. All rights reserved.
 //
 
-// TODO: Add map display
+// TODO: Add map display - Does it add a lot to the user experience or is it just aesthetic?
+// TODO: Find out why it sometimes shows an extra default image
 
 import UIKit
 import Parse
