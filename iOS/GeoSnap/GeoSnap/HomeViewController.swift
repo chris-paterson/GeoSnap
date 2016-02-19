@@ -31,9 +31,9 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         self.refreshControl.addTarget(self, action: "refresh:",   forControlEvents: UIControlEvents.ValueChanged)
         imageCollectionView!.addSubview(refreshControl)
-        
-        locationManager.startUpdatingLocation()
-        
+    }
+    
+    override func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         retrievePostsForLocation()
     }
     
@@ -53,7 +53,6 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
     
     
     func retrievePostsForLocation() {
-        print("Trying to use location.")
         if let coords = locationManager.location?.coordinate {
             let userLocation = PFGeoPoint(latitude: coords.latitude, longitude: coords.longitude)
             
