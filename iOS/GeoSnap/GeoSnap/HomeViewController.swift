@@ -53,7 +53,7 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
     
     
     func retrievePostsForLocation() {
-        print("about to USE location")
+        print("Trying to use location.")
         if let coords = locationManager.location?.coordinate {
             let userLocation = PFGeoPoint(latitude: coords.latitude, longitude: coords.longitude)
             
@@ -81,9 +81,11 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
         
     }
     
+    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return postsAtLocation.count
     }
+    
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! ImageCollectionViewCell
@@ -92,6 +94,7 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
         
         return cell
     }
+    
 
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         performSegueWithIdentifier("viewPost", sender: self)
@@ -110,6 +113,7 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
             viewPhotoViewController.postId = post.postInformation.objectId!
         }
     }
+    
     
     func getImageForPost(index: Int) {
         var post = postsAtLocation[index]

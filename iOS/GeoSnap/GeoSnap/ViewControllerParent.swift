@@ -28,6 +28,7 @@ class ViewControllerParent: UIViewController, CLLocationManagerDelegate {
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 //        locationManager.stopUpdatingLocation()
+        print("updating location")
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
