@@ -18,6 +18,8 @@ class LoginViewController: ViewControllerParent {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        spinner = UIActivityIndicatorView(frame: CGRectMake(0, 0, 50, 50))
     }
 
     
@@ -47,12 +49,12 @@ class LoginViewController: ViewControllerParent {
         
         } else {
             // Let the user know something is happening
-            displaySpinner()
+            displaySpinner(spinner)
             UIApplication.sharedApplication().beginIgnoringInteractionEvents() // Prevent the user from pressing buttons while working.
             
             PFUser.logInWithUsernameInBackground(username.text!, password: password.text!, block: { (user, error) -> Void in
                 // Reenable button presses
-                self.spinner.stopAnimating()
+                super.stopSpinner(self.spinner)
                 UIApplication.sharedApplication().endIgnoringInteractionEvents()
                 
                 if user != nil {
@@ -73,14 +75,5 @@ class LoginViewController: ViewControllerParent {
             })
             
         }
-    }
-    
-    func displaySpinner() {
-        spinner = UIActivityIndicatorView(frame: CGRectMake(0, 0, 50, 50))
-        spinner.center = self.view.center
-        spinner.activityIndicatorViewStyle = .Gray
-        spinner.hidesWhenStopped = true
-        view.addSubview(spinner)
-        spinner.startAnimating()
     }
 }

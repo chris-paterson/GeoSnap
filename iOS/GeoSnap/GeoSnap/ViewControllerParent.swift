@@ -28,7 +28,7 @@ class ViewControllerParent: UIViewController, CLLocationManagerDelegate {
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 //        locationManager.stopUpdatingLocation()
-        print("updating location")
+//        print("updating location")
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
@@ -39,5 +39,18 @@ class ViewControllerParent: UIViewController, CLLocationManagerDelegate {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func displaySpinner(spinner: UIActivityIndicatorView) {
+//        spinner = UIActivityIndicatorView(frame: CGRectMake(0, 0, 50, 50))
+        spinner.center = self.view.center
+        spinner.activityIndicatorViewStyle = .Gray
+        spinner.hidesWhenStopped = true
+        view.addSubview(spinner)
+        spinner.startAnimating()
+    }
+    
+    func stopSpinner(spinner: UIActivityIndicatorView) {
+        spinner.stopAnimating()
     }
 }

@@ -21,8 +21,12 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
 
     @IBOutlet var imageCollectionView: UICollectionView!
     
+    var spinner = UIActivityIndicatorView()
+    
     var refreshControl: UIRefreshControl!
     var postsAtLocation = [Post]()
+    
+    var shouldGetNewPosts = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,20 +35,28 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         self.refreshControl.addTarget(self, action: "refresh:",   forControlEvents: UIControlEvents.ValueChanged)
         imageCollectionView!.addSubview(refreshControl)
+        
+        spinner = UIActivityIndicatorView(frame: CGRectMake(0, 0, 50, 50))
+        super.displaySpinner(spinner)
     }
     
+    
     override func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        retrievePostsForLocation()
+        if shouldGetNewPosts {
+            print("Getting posts for location")
+            retrievePostsForLocation()
+        }
+        shouldGetNewPosts = false
     }
+    
     
     func refresh(sender:AnyObject) {
         // Empty arrays so we do not get duplicates
         postsAtLocation.removeAll()
-        
         retrievePostsForLocation()
-        
         refreshControl?.endRefreshing()
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -78,6 +90,7 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
             displayAlert("Could not find location", message: "Refresh by pulling down to try again.")
         }
         
+        super.stopSpinner(spinner)
     }
     
     
@@ -131,7 +144,6 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
                 self.imageCollectionView.reloadData()
             }
         }
-        
     }
 }
 

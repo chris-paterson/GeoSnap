@@ -18,6 +18,8 @@ class SignUpViewController: ViewControllerParent {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        spinner = UIActivityIndicatorView(frame: CGRectMake(0, 0, 50, 50))
     }
     
     override func didReceiveMemoryWarning() {
@@ -34,7 +36,7 @@ class SignUpViewController: ViewControllerParent {
             displayAlert("Error", message: "Passwords do not match.")
         } else {
             // Let the user know something is happening
-            displaySpinner()
+            displaySpinner(spinner)
             UIApplication.sharedApplication().beginIgnoringInteractionEvents() // Prevent the user from pressing buttons while working.
             
             let user = PFUser()
@@ -43,7 +45,7 @@ class SignUpViewController: ViewControllerParent {
             
             // Attempt sign up.
             user.signUpInBackgroundWithBlock({ (success, error) -> Void in
-                self.spinner.stopAnimating()
+                super.stopSpinner(self.spinner)
                 UIApplication.sharedApplication().endIgnoringInteractionEvents()
                 
                 if success {
@@ -68,15 +70,6 @@ class SignUpViewController: ViewControllerParent {
     func signInAndRedirect() {
         PFUser.logInWithUsernameInBackground(username.text!, password: password.text!)
         self.performSegueWithIdentifier("home", sender: self)
-    }
-    
-    func displaySpinner() {
-        spinner = UIActivityIndicatorView(frame: CGRectMake(0, 0, 50, 50))
-        spinner.center = self.view.center
-        spinner.activityIndicatorViewStyle = .Gray
-        spinner.hidesWhenStopped = true
-        view.addSubview(spinner)
-        spinner.startAnimating()
     }
     
     

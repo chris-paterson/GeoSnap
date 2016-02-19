@@ -29,6 +29,8 @@ class SharePhotoViewController: ViewControllerParent, UINavigationControllerDele
         
         // Dismiss keyboard when user clicks outside of it.
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "dismissKeyboard"))
+        
+        spinner = UIActivityIndicatorView(frame: CGRectMake(0, 0, 50, 50))
     }
     
     func dismissKeyboard() {
@@ -70,7 +72,7 @@ class SharePhotoViewController: ViewControllerParent, UINavigationControllerDele
     
     
     func save() {
-        displaySpinner()
+        displaySpinner(spinner)
         UIApplication.sharedApplication().beginIgnoringInteractionEvents() // Prevent the user from pressing buttons while working.
         
         let photoData = UIImageJPEGRepresentation(imageView.image!, 0.7)!
@@ -84,7 +86,7 @@ class SharePhotoViewController: ViewControllerParent, UINavigationControllerDele
         post.saveInBackgroundWithBlock { (success, error) -> Void in
             // Re-enable interaction
             UIApplication.sharedApplication().endIgnoringInteractionEvents()
-            self.spinner.stopAnimating()
+            super.stopSpinner(self.spinner)
             
             if success {
                 self.viewPost()
@@ -129,12 +131,5 @@ class SharePhotoViewController: ViewControllerParent, UINavigationControllerDele
     }
 
     
-    func displaySpinner() {
-        spinner = UIActivityIndicatorView(frame: CGRectMake(0, 0, 50, 50))
-        spinner.center = self.view.center
-        spinner.activityIndicatorViewStyle = .Gray
-        spinner.hidesWhenStopped = true
-        view.addSubview(spinner)
-        spinner.startAnimating()
-    }
+    
 }
