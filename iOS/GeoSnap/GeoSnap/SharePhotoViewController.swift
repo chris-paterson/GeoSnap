@@ -26,6 +26,13 @@ class SharePhotoViewController: ViewControllerParent, UINavigationControllerDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Dismiss keyboard when user clicks outside of it.
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "dismissKeyboard"))
+    }
+    
+    func dismissKeyboard() {
+        comment.resignFirstResponder()
     }
     
     
