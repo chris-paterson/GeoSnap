@@ -69,6 +69,7 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
         creatorUsername.text = post["creator"].username
     
         retrievePhoto()
+        retrieveUserLike()
     }
     
     func retrievePhoto() {
@@ -83,6 +84,28 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
                     self.postPhoto.image = UIImage(named: "polaroid.pdf")!
                     self.displayAlert("Error retrieving photo", message: "Unable to retrieve photo at this time. Please try again.")
                 }
+            }
+        }
+    }
+    
+    func retrieveUserLike() {
+        let query = PFQuery(className: "Like")
+        let userId = PFUser.currentUser()!.objectId
+        
+        query.whereKey("userId", equalTo: userId!)
+        query.whereKey("postId", equalTo: post.objectId!)
+        query.getFirstObjectInBackgroundWithBlock { (like, error) in
+            if like != nil {
+                self.likeButton.image = UIImage(named: "heart.png")!
+                
+            } else if (error != nil && error!.code != 101) { // 101 = object not found so we don't need to display a message.
+                var errorMessage = "Unable to retrieive like at the moment. Please try again."
+                
+                if let errorString = error?.userInfo["error"] as? String {
+                    errorMessage = errorString
+                }
+                
+                self.displayAlert("Error retrieving like", message: errorMessage)
             }
         }
     }
@@ -201,8 +224,6 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
         query.whereKey("postId", equalTo: post.objectId!)
         query.getFirstObjectInBackgroundWithBlock { (like, error) in
             if error == nil {
-                
-                like!["status"] = 1
                 like!.deleteInBackground();
                 
             } else {
