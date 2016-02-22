@@ -186,9 +186,43 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
     @IBAction func likeButtonTapped(sender: AnyObject) {
         if likeButton.image == UIImage(named: "heart.png")! {
             likeButton.image = UIImage(named: "heartOutline.png")!
+            unlike()
         } else {
             likeButton.image = UIImage(named: "heart.png")!
+            like()
         }
+    }
+    
+    func unlike() {
+        let query = PFQuery(className: "Like")
+        let userId = PFUser.currentUser()!.objectId
         
+        query.whereKey("userId", equalTo: userId!)
+        query.whereKey("postId", equalTo: post.objectId!)
+        query.getFirstObjectInBackgroundWithBlock { (like, error) in
+            if error == nil {
+                
+                like!["status"] = 1
+                like!.deleteInBackground();
+                
+            } else {
+                var errorMessage = "Unable to unlike at the moment. Please try again."
+                
+                if let errorString = error?.userInfo["error"] as? String {
+                    errorMessage = errorString
+                }
+                
+                self.displayAlert("Error removing like", message: errorMessage)
+            }
+        }
+    }
+    
+    func like() {
+        let like: PFObject = PFObject(className: "Like")
+        
+        like["userId"] = PFUser.currentUser()!.objectId
+        like["postId"] = post.objectId
+        
+        like.saveInBackground()
     }
 }
