@@ -19,9 +19,10 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
     @IBOutlet weak var commentsTableView: UITableView!
     @IBOutlet weak var submitCommentButton: UIButton!
     
+    @IBOutlet weak var likeButton: UIImageView!
+    
     var postId: String = String()
     var commentsForPost = [PFObject]()
-    
     
     private var post: PFObject = PFObject(className: "Post")
     
@@ -180,5 +181,14 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
     
     func dismissFullscreenImage(sender: UITapGestureRecognizer) {
         sender.view?.removeFromSuperview()
+    }
+    
+    @IBAction func likeButtonTapped(sender: AnyObject) {
+        if likeButton.image == UIImage(named: "heart.png")! {
+            likeButton.image = UIImage(named: "heartOutline.png")!
+        } else {
+            likeButton.image = UIImage(named: "heart.png")!
+        }
+        
     }
 }

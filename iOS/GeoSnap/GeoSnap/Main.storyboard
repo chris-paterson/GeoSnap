@@ -285,10 +285,22 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heartOutline" translatesAutoresizingMaskIntoConstraints="NO" id="lUJ-zP-ur7">
+                                <rect key="frame" x="516" y="291" width="48" height="48"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="8Wo-tO-qCe"/>
+                                    <constraint firstAttribute="width" constant="48" id="u0e-Po-Khz"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="M7O-T7-Hb3" appends="YES" id="vYI-z0-pFC"/>
+                                </connections>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="jF3-ZF-8nl" firstAttribute="top" secondItem="jQ1-Xo-CU3" secondAttribute="bottom" constant="8" id="0FO-Tr-fRA"/>
+                            <constraint firstItem="lUJ-zP-ur7" firstAttribute="trailing" secondItem="flm-vg-xIe" secondAttribute="trailingMargin" constant="-16" id="0jC-yO-rNp"/>
                             <constraint firstItem="8DU-PR-Hvh" firstAttribute="top" secondItem="hTZ-We-kWs" secondAttribute="bottom" constant="8" id="4ol-8Q-Nt6"/>
                             <constraint firstItem="T8N-FH-gcZ" firstAttribute="top" secondItem="flm-vg-xIe" secondAttribute="topMargin" constant="19" id="7oY-iz-wnl"/>
                             <constraint firstItem="htH-no-Mkk" firstAttribute="trailing" secondItem="flm-vg-xIe" secondAttribute="trailingMargin" id="8dt-SF-kEc"/>
@@ -298,6 +310,7 @@
                             <constraint firstItem="Rkf-gV-Ut6" firstAttribute="top" secondItem="Ig6-tT-N3f" secondAttribute="bottom" constant="8" id="KfK-0D-hYz"/>
                             <constraint firstItem="T8N-FH-gcZ" firstAttribute="trailing" secondItem="flm-vg-xIe" secondAttribute="trailingMargin" id="Vel-vJ-ZSt"/>
                             <constraint firstItem="jQ1-Xo-CU3" firstAttribute="leading" secondItem="Rkf-gV-Ut6" secondAttribute="trailing" constant="8" id="aT2-ZG-jsA"/>
+                            <constraint firstItem="Ig6-tT-N3f" firstAttribute="top" secondItem="lUJ-zP-ur7" secondAttribute="bottom" constant="24" id="bZW-YD-rff"/>
                             <constraint firstItem="Rkf-gV-Ut6" firstAttribute="leading" secondItem="flm-vg-xIe" secondAttribute="leadingMargin" id="cR6-OF-3Uy"/>
                             <constraint firstItem="ZDq-B7-k76" firstAttribute="trailing" secondItem="flm-vg-xIe" secondAttribute="trailingMargin" id="cwp-hP-Kgf"/>
                             <constraint firstItem="ZDq-B7-k76" firstAttribute="leading" secondItem="flm-vg-xIe" secondAttribute="leadingMargin" id="gAo-ME-Tb8"/>
@@ -315,6 +328,7 @@
                         <outlet property="commentOnPost" destination="jQ1-Xo-CU3" id="3fR-pD-LX7"/>
                         <outlet property="commentsTableView" destination="htH-no-Mkk" id="ogP-2E-k8f"/>
                         <outlet property="creatorUsername" destination="8DU-PR-Hvh" id="r7U-Wp-Odq"/>
+                        <outlet property="likeButton" destination="lUJ-zP-ur7" id="Aj6-zE-CHm"/>
                         <outlet property="postComment" destination="Ig6-tT-N3f" id="fIt-bi-t43"/>
                         <outlet property="postPhoto" destination="ZDq-B7-k76" id="s0i-VO-n1I"/>
                         <outlet property="submitCommentButton" destination="jF3-ZF-8nl" id="4ui-FP-VSe"/>
@@ -324,6 +338,11 @@
                 <tapGestureRecognizer id="j4Y-Mf-ii0">
                     <connections>
                         <action selector="makePhotoFullscreen:" destination="KBf-0W-YuX" id="kZG-Nu-SD4"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="M7O-T7-Hb3">
+                    <connections>
+                        <action selector="likeButtonTapped:" destination="KBf-0W-YuX" id="UrP-So-bPW"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -593,6 +612,7 @@
     <resources>
         <image name="camera" width="20" height="16"/>
         <image name="cog" width="18" height="18"/>
+        <image name="heartOutline" width="124" height="100"/>
         <image name="home" width="20" height="17"/>
         <image name="polaroid" width="262" height="326"/>
     </resources>

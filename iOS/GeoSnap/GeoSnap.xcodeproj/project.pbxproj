@@ -10,7 +10,7 @@
 		5A105CFD1C68BE070095666A /* SharePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A105CFB1C68BE070095666A /* SharePhotoViewController.swift */; };
 		5A105D001C68C63E0095666A /* ViewControllerParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A105CFF1C68C63E0095666A /* ViewControllerParent.swift */; };
 		5A105D081C68FC720095666A /* ViewPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A105D071C68FC720095666A /* ViewPhotoViewController.swift */; };
-		5A4695651C67C2FA008D6413 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A4695641C67C2FA008D6413 /* Assets.xcassets */; };
+		5A3807C11C7B086300AAADE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A3807C01C7B086300AAADE9 /* Assets.xcassets */; };
 		5A4695731C67C2FA008D6413 /* GeoSnapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4695721C67C2FA008D6413 /* GeoSnapTests.swift */; };
 		5A46957E1C67C2FA008D6413 /* GeoSnapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A46957D1C67C2FA008D6413 /* GeoSnapUITests.swift */; };
 		5A46958D1C67C321008D6413 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A46958B1C67C321008D6413 /* Bolts.framework */; };
@@ -55,8 +55,8 @@
 		5A105CFB1C68BE070095666A /* SharePhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharePhotoViewController.swift; sourceTree = "<group>"; };
 		5A105CFF1C68C63E0095666A /* ViewControllerParent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerParent.swift; sourceTree = "<group>"; };
 		5A105D071C68FC720095666A /* ViewPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewPhotoViewController.swift; sourceTree = "<group>"; };
+		5A3807C01C7B086300AAADE9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5A4695581C67C2FA008D6413 /* GeoSnap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoSnap.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		5A4695641C67C2FA008D6413 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5A4695691C67C2FA008D6413 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A46956E1C67C2FA008D6413 /* GeoSnapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeoSnapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A4695721C67C2FA008D6413 /* GeoSnapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoSnapTests.swift; sourceTree = "<group>"; };
@@ -124,7 +124,7 @@
 		5A105D041C68F7D20095666A /* Support */ = {
 			isa = PBXGroup;
 			children = (
-				5A4695641C67C2FA008D6413 /* Assets.xcassets */,
+				5A3807C01C7B086300AAADE9 /* Assets.xcassets */,
 				5A4695691C67C2FA008D6413 /* Info.plist */,
 			);
 			name = Support;
@@ -337,7 +337,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A4695651C67C2FA008D6413 /* Assets.xcassets in Resources */,
+				5A3807C11C7B086300AAADE9 /* Assets.xcassets in Resources */,
 				5A4695911C67C38D008D6413 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
