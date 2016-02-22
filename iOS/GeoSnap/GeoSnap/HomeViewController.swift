@@ -11,6 +11,7 @@
 
 import UIKit
 import Parse
+import Foundation
 
 class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -43,7 +44,7 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
     
     override func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if shouldGetNewPosts {
-            print("Getting posts for location")
+//            print("Getting posts for location")
             retrievePostsForLocation()
             GetFlickrData()
         }
@@ -162,51 +163,28 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
         
         let requestURL = NSURL(string: baseURL + apiString + format + radius + lat + lon + sort + extras)!
         let session = NSURLSession.sharedSession()
-        print(requestURL)
         
         let task = session.dataTaskWithURL(requestURL) { (data, response, error) in
             if let urlContent = data {
-                self.parseJSON(urlContent)
+                do {
+                    let jsonResult = try NSJSONSerialization.JSONObjectWithData(urlContent, options: NSJSONReadingOptions.MutableContainers)
+//                    let urlAsString = jsonResult.valueForKey("photos")!.valueForKey("photo")?.valueForKey("url_l")! as! String
+//                    
+//                    let urls = urlAsString.componentsSeparatedByString(",")
+                    
+                    let photos = jsonResult.valueForKey("photos")
+                    let photo = photos?.valueForKey("photo")
+                    let urls = photo?.valueForKey("url_l")
+                    
+                    let urlsAsArray = urls as AnyObject! as! NSArray
+
+                } catch {
+                    print("Unable to serialize JSON.")
+                }
             }
         }
         
         task.resume()
-    }
-    
-    func parseJSON(json: NSData) {
-        /*
-         id: "18091064190",
-         owner: "93509856@N05",
-         secret: "0bc2732254",
-         server: "8839",
-         farm: 9,
-         title: "DSC08942",
-         ispublic: 1,
-         isfriend: 0,
-         isfamily: 0,
-         datetaken: "2015-05-30 07:14:18",
-         datetakengranularity: "0",
-         datetakenunknown: "0",
-         url_l: "https://farm9.staticflickr.com/8839/18091064190_0bc2732254_b.jpg",
-         height_l: "683",
-         width_l: "1024"
-         */
-        
-        do {
-            let jsonResult = try NSJSONSerialization.JSONObjectWithData(json, options: NSJSONReadingOptions.MutableContainers)
-//            print(jsonResult["id"])
-            
-            guard let photo = jsonResult["id"] as String where
-                print(photo["id"])
-            else {
-                print("error")
-            }
-            
-        } catch {
-            print("Unable to serialize JSON.")
-        }
-        
-        
     }
 }
 
