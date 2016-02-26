@@ -7,7 +7,10 @@
 //
 
 // TODO: Add map display - Does it add a lot to the user experience or is it just aesthetic?
-// TODO: Find out why it sometimes shows an extra default image
+// TODO: Get images from URLs
+// TODO: merge into one array
+// TODO: update view
+// TODO: In the same way we create a post entry for the parse images, we need to do the same for the flickr images, sorting by date.
 
 import UIKit
 import Parse
@@ -16,7 +19,7 @@ import Foundation
 class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UICollectionViewDataSource {
     
     struct Post {
-        var postInformation: PFObject
+        var postInformation: PFObject?
         var photo: UIImage
     }
 
@@ -44,9 +47,8 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
     
     override func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if shouldGetNewPosts {
-//            print("Getting posts for location")
             retrievePostsForLocation()
-            GetFlickrData()
+//            GetFlickrData()
         }
         shouldGetNewPosts = false
     }
@@ -124,14 +126,14 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
             let post = self.postsAtLocation[indexPath.row]
             
             let viewPhotoViewController = (segue.destinationViewController as! ViewPhotoViewController)
-            viewPhotoViewController.postId = post.postInformation.objectId!
+            viewPhotoViewController.postId = post.postInformation!.objectId!
         }
     }
     
     
     func getImageForPost(index: Int) {
         var post = postsAtLocation[index]
-        let userImageFile = post.postInformation["photo"] as! PFFile
+        let userImageFile = post.postInformation!["photo"] as! PFFile
         
         userImageFile.getDataInBackgroundWithBlock {
             (imageData: NSData?, error: NSError?) -> Void in
@@ -147,6 +149,7 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
             }
         }
     }
+    
     
     func GetFlickrData() {
         let coords = locationManager.location?.coordinate
@@ -166,25 +169,45 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
         
         let task = session.dataTaskWithURL(requestURL) { (data, response, error) in
             if let urlContent = data {
-                do {
-                    let jsonResult = try NSJSONSerialization.JSONObjectWithData(urlContent, options: NSJSONReadingOptions.MutableContainers)
-//                    let urlAsString = jsonResult.valueForKey("photos")!.valueForKey("photo")?.valueForKey("url_l")! as! String
-//                    
-//                    let urls = urlAsString.componentsSeparatedByString(",")
-                    
-                    let photos = jsonResult.valueForKey("photos")
-                    let photo = photos?.valueForKey("photo")
-                    let urls = photo?.valueForKey("url_l")
-                    
-                    let urlsAsArray = urls as AnyObject! as! NSArray
-
-                } catch {
-                    print("Unable to serialize JSON.")
-                }
+                self.processFlickrData(urlContent)
             }
         }
         
         task.resume()
+    }
+    
+    
+    func processFlickrData(data: NSData) {
+        do {
+            let jsonResult = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers)
+            
+            let photos = jsonResult.valueForKey("photos")
+            let photo = photos?.valueForKey("photo")
+            
+            var flickrPhotosForLocation = photo as AnyObject! as! NSArray
+            
+            // Filter out nil urls as they are useless to us.
+            flickrPhotosForLocation = flickrPhotosForLocation.filter() { $0.valueForKey!("url_l") !== nil }
+            
+            getFlickrImages(flickrPhotosForLocation)
+        } catch {
+            print("Unable to serialize JSON.")
+        }
+    }
+    
+    func getFlickrImages(flickrPhotosForLocation: NSArray) {
+        for p in flickrPhotosForLocation {
+            let url = NSURL(string: p.valueForKey("url_l")! as! String)
+            let data = NSData(contentsOfURL: url!)
+
+            let zxc = Post(postInformation: nil,photo: UIImage(data: data!)!)
+            postsAtLocation.append(zxc)
+            
+            // This way loads in the images as soon as they come in instead of all at once.
+            dispatch_async(dispatch_get_main_queue(), {
+                self.imageCollectionView.reloadData()
+            })
+        }
     }
 }
 
