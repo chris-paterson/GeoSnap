@@ -19,7 +19,7 @@ import Foundation
 class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UICollectionViewDataSource {
     
     struct Post {
-        var postInformation: PFObject?
+        var postInformation: PFObject
         var photo: UIImage
     }
 
@@ -48,7 +48,7 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
     override func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if shouldGetNewPosts {
             retrievePostsForLocation()
-//            GetFlickrData()
+            GetFlickrData()
         }
         shouldGetNewPosts = false
     }
@@ -57,6 +57,8 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
     func refresh(sender:AnyObject) {
         // Empty arrays so we do not get duplicates
         postsAtLocation.removeAll()
+        sleep(4)
+        
         retrievePostsForLocation()
         refreshControl?.endRefreshing()
     }
@@ -126,14 +128,14 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
             let post = self.postsAtLocation[indexPath.row]
             
             let viewPhotoViewController = (segue.destinationViewController as! ViewPhotoViewController)
-            viewPhotoViewController.postId = post.postInformation!.objectId!
+            viewPhotoViewController.postId = post.postInformation.objectId!
         }
     }
     
     
     func getImageForPost(index: Int) {
         var post = postsAtLocation[index]
-        let userImageFile = post.postInformation!["photo"] as! PFFile
+        let userImageFile = post.postInformation["photo"] as! PFFile
         
         userImageFile.getDataInBackgroundWithBlock {
             (imageData: NSData?, error: NSError?) -> Void in
@@ -178,9 +180,27 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
     
     
     func processFlickrData(data: NSData) {
+        /*
+             {
+                 datetaken = "2015-05-30 07:14:18";
+                 datetakengranularity = 0;
+                 datetakenunknown = 0;
+                 farm = 9;
+                 "height_l" = 683;
+                 id = 18091064190;
+                 isfamily = 0;
+                 isfriend = 0;
+                 ispublic = 1;
+                 owner = "93509856@N05";
+                 secret = 0bc2732254;
+                 server = 8839;
+                 title = DSC08942;
+                 "url_l" = "https://farm9.staticflickr.com/8839/18091064190_0bc2732254_b.jpg";
+                 "width_l" = 1024;
+             },
+         */
         do {
             let jsonResult = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers)
-            
             let photos = jsonResult.valueForKey("photos")
             let photo = photos?.valueForKey("photo")
             
@@ -189,25 +209,40 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
             // Filter out nil urls as they are useless to us.
             flickrPhotosForLocation = flickrPhotosForLocation.filter() { $0.valueForKey!("url_l") !== nil }
             
-            getFlickrImages(flickrPhotosForLocation)
+            // Add entries to array to preserve desc date order
+            for photoEntry in flickrPhotosForLocation {
+                let postInformation = PFObject(className: "postInformation")
+                postInformation["date"] = photoEntry.valueForKey("datetaken")
+                postInformation["id"] = photoEntry.valueForKey("id")
+                postInformation["url"] = photoEntry.valueForKey("url_l")
+                
+                let placeholderPhoto = UIImage(named: "polaroid.pdf")!
+                
+                let index = postsAtLocation.count
+                let post = Post(postInformation: postInformation, photo: placeholderPhoto)
+                postsAtLocation.append(post)
+                
+                getFlickrImageForPost(index)
+            }
         } catch {
             print("Unable to serialize JSON.")
         }
     }
     
-    func getFlickrImages(flickrPhotosForLocation: NSArray) {
-        for p in flickrPhotosForLocation {
-            let url = NSURL(string: p.valueForKey("url_l")! as! String)
-            let data = NSData(contentsOfURL: url!)
-
-            let zxc = Post(postInformation: nil,photo: UIImage(data: data!)!)
-            postsAtLocation.append(zxc)
-            
-            // This way loads in the images as soon as they come in instead of all at once.
-            dispatch_async(dispatch_get_main_queue(), {
-                self.imageCollectionView.reloadData()
-            })
-        }
+    func getFlickrImageForPost(index: Int) {
+        let urlString = postsAtLocation[index].postInformation["url"] as! String
+        let url = NSURL(string: urlString)
+        let data = NSData(contentsOfURL: url!)
+        
+        let photo = UIImage(data: data!)!
+        postsAtLocation[index].photo = photo
+    
+        // This way loads in the images as soon as they come in instead of all at once.
+        dispatch_async(dispatch_get_main_queue(), {
+            self.imageCollectionView.reloadData()
+        })
+        
+//        imageCollectionView.reloadData()
     }
 }
 
