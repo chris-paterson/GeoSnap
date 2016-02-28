@@ -31,6 +31,7 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
     var postsAtLocation = [Post]()
     
     var shouldGetNewPosts = true
+    var isRefreshing = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,11 +57,13 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
     
     func refresh(sender:AnyObject) {
         // Empty arrays so we do not get duplicates
+        isRefreshing = true
         postsAtLocation.removeAll()
-        sleep(4)
         
         retrievePostsForLocation()
+        GetFlickrData()
         refreshControl?.endRefreshing()
+        isRefreshing = false
     }
     
 
@@ -135,19 +138,19 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
     
     func getImageForPost(index: Int) {
         var post = postsAtLocation[index]
-        let userImageFile = post.postInformation["photo"] as! PFFile
-        
-        userImageFile.getDataInBackgroundWithBlock {
-            (imageData: NSData?, error: NSError?) -> Void in
-            if error == nil {
-                if let imageData = imageData {
-                    post.photo = UIImage(data:imageData)!
-                } else {
-                    post.photo = UIImage(named: "polaroid.pdf")!
+        if let userImageFile = post.postInformation["photo"] as? PFFile {
+            userImageFile.getDataInBackgroundWithBlock {
+                (imageData: NSData?, error: NSError?) -> Void in
+                if error == nil {
+                    if let imageData = imageData {
+                        post.photo = UIImage(data:imageData)!
+                    } else {
+                        post.photo = UIImage(named: "polaroid.pdf")!
+                    }
+                    
+                    self.postsAtLocation[index] = post
+                    self.imageCollectionView.reloadData()
                 }
-                
-                self.postsAtLocation[index] = post
-                self.imageCollectionView.reloadData()
             }
         }
     }
@@ -211,18 +214,22 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
             
             // Add entries to array to preserve desc date order
             for photoEntry in flickrPhotosForLocation {
-                let postInformation = PFObject(className: "postInformation")
-                postInformation["date"] = photoEntry.valueForKey("datetaken")
-                postInformation["id"] = photoEntry.valueForKey("id")
-                postInformation["url"] = photoEntry.valueForKey("url_l")
-                
-                let placeholderPhoto = UIImage(named: "polaroid.pdf")!
-                
-                let index = postsAtLocation.count
-                let post = Post(postInformation: postInformation, photo: placeholderPhoto)
-                postsAtLocation.append(post)
-                
-                getFlickrImageForPost(index)
+                if(!isRefreshing) {
+                    let postInformation = PFObject(className: "postInformation")
+                    postInformation["date"] = photoEntry.valueForKey("datetaken")
+                    postInformation["id"] = photoEntry.valueForKey("id")
+                    postInformation["url"] = photoEntry.valueForKey("url_l")
+                    
+                    let placeholderPhoto = UIImage(named: "polaroid.pdf")!
+                    
+                    let index = postsAtLocation.count
+                    let post = Post(postInformation: postInformation, photo: placeholderPhoto)
+                    postsAtLocation.append(post)
+                    
+                    getFlickrImageForPost(index)
+                } else {
+                    break
+                }
             }
         } catch {
             print("Unable to serialize JSON.")
@@ -230,19 +237,21 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
     }
     
     func getFlickrImageForPost(index: Int) {
-        let urlString = postsAtLocation[index].postInformation["url"] as! String
-        let url = NSURL(string: urlString)
-        let data = NSData(contentsOfURL: url!)
-        
-        let photo = UIImage(data: data!)!
-        postsAtLocation[index].photo = photo
-    
-        // This way loads in the images as soon as they come in instead of all at once.
-        dispatch_async(dispatch_get_main_queue(), {
-            self.imageCollectionView.reloadData()
-        })
-        
-//        imageCollectionView.reloadData()
+        if(!isRefreshing) {
+            let urlString = postsAtLocation[index].postInformation["url"] as! String
+            let url = NSURL(string: urlString)
+            let data = NSData(contentsOfURL: url!)
+            
+            let photo = UIImage(data: data!)!
+            if(index < postsAtLocation.count) {
+                postsAtLocation[index].photo = photo
+            }
+            
+            // This way loads in the images as soon as they come in instead of all at once.
+            dispatch_async(dispatch_get_main_queue(), {
+                self.imageCollectionView.reloadData()
+            })
+        }
     }
 }
 
