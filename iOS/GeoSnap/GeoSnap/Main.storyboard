@@ -397,34 +397,36 @@
                                     <action selector="close:" destination="K6l-8P-A35" eventType="touchUpInside" id="6jf-26-gjK"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CMX-KT-gDw">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A5G-te-QDq">
                                 <rect key="frame" x="0.0" y="58" width="600" height="542"/>
-                            </imageView>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CMX-KT-gDw">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="542"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="CMX-KT-gDw" secondAttribute="bottom" id="3Rt-4V-S8H"/>
+                                    <constraint firstItem="CMX-KT-gDw" firstAttribute="top" secondItem="A5G-te-QDq" secondAttribute="top" id="4Qo-NR-F7M"/>
+                                    <constraint firstItem="CMX-KT-gDw" firstAttribute="centerY" secondItem="A5G-te-QDq" secondAttribute="centerY" id="A1r-Mk-M1R"/>
+                                    <constraint firstAttribute="trailing" secondItem="CMX-KT-gDw" secondAttribute="trailing" id="X6y-BT-fgA"/>
+                                    <constraint firstItem="CMX-KT-gDw" firstAttribute="leading" secondItem="A5G-te-QDq" secondAttribute="leading" id="eXz-da-nOC"/>
+                                    <constraint firstItem="CMX-KT-gDw" firstAttribute="centerX" secondItem="A5G-te-QDq" secondAttribute="centerX" id="tqk-Dc-dmp"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="CMX-KT-gDw" secondAttribute="trailing" constant="-20" id="9kb-Fi-OrJ"/>
-                            <constraint firstItem="aLx-5r-Eam" firstAttribute="top" secondItem="CMX-KT-gDw" secondAttribute="bottom" id="FRS-BN-vVb"/>
-                            <constraint firstItem="CMX-KT-gDw" firstAttribute="leading" secondItem="cbx-iS-wEk" secondAttribute="leadingMargin" constant="-20" id="GOJ-sJ-7st"/>
                             <constraint firstItem="gnh-Bc-ir0" firstAttribute="top" secondItem="0TW-VH-egy" secondAttribute="bottom" id="HTL-Ph-fbY"/>
+                            <constraint firstItem="A5G-te-QDq" firstAttribute="leading" secondItem="cbx-iS-wEk" secondAttribute="leadingMargin" constant="-20" id="Sgs-2V-oi3"/>
                             <constraint firstItem="gnh-Bc-ir0" firstAttribute="trailing" secondItem="cbx-iS-wEk" secondAttribute="trailingMargin" id="UCc-9s-wqE"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="CMX-KT-gDw" secondAttribute="trailing" constant="-20" id="dtE-p8-xXa"/>
-                            <constraint firstItem="CMX-KT-gDw" firstAttribute="leading" secondItem="cbx-iS-wEk" secondAttribute="leadingMargin" constant="-20" id="guK-UW-WSS"/>
-                            <constraint firstItem="CMX-KT-gDw" firstAttribute="top" secondItem="gnh-Bc-ir0" secondAttribute="bottom" constant="8" id="smw-0G-asP"/>
-                            <constraint firstItem="CMX-KT-gDw" firstAttribute="top" secondItem="0TW-VH-egy" secondAttribute="bottom" constant="38" id="vrR-lR-Ivc"/>
-                            <constraint firstItem="aLx-5r-Eam" firstAttribute="top" secondItem="CMX-KT-gDw" secondAttribute="bottom" id="xDS-n7-V8C"/>
+                            <constraint firstItem="aLx-5r-Eam" firstAttribute="top" secondItem="A5G-te-QDq" secondAttribute="bottom" id="ZFN-bM-OGY"/>
+                            <constraint firstItem="A5G-te-QDq" firstAttribute="top" secondItem="gnh-Bc-ir0" secondAttribute="bottom" constant="8" id="eFe-Ev-ccJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="A5G-te-QDq" secondAttribute="trailing" constant="-20" id="rmx-4B-Gn4"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="GOJ-sJ-7st"/>
-                                <exclude reference="dtE-p8-xXa"/>
-                                <exclude reference="vrR-lR-Ivc"/>
-                                <exclude reference="FRS-BN-vVb"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="fullscreenImage" destination="CMX-KT-gDw" id="XMT-bx-B3y"/>
+                        <outlet property="scrollView" destination="A5G-te-QDq" id="OqZ-EQ-dp0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tG4-Ml-5xF" userLabel="First Responder" sceneMemberID="firstResponder"/>

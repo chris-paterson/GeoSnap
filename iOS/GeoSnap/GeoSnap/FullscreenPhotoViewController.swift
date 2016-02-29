@@ -8,8 +8,9 @@
 
 import UIKit
 
-class FullscreenPhotoViewController: UIViewController {
+class FullscreenPhotoViewController: UIViewController, UIScrollViewDelegate {
 
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var fullscreenImage: UIImageView!
     
     var photo: UIImage = UIImage(named: "polaroid.pdf")!
@@ -17,8 +18,17 @@ class FullscreenPhotoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        scrollView.delegate = self
+        
+        scrollView.minimumZoomScale = 1.0
+        scrollView.maximumZoomScale = 5.0
+        
         fullscreenImage.image = photo
+        
+    }
+    
+    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+        return fullscreenImage
     }
 
     override func didReceiveMemoryWarning() {
