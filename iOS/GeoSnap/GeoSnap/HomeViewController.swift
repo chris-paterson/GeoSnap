@@ -28,7 +28,8 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
     var spinner = UIActivityIndicatorView()
     
     var refreshControl: UIRefreshControl!
-    var postsAtLocation = [Post]()
+    var geoSnapPostsAtLocation = [Post]()
+    var flickrPostsAtLocation = [Post]()
     
     var shouldGetNewPosts = true
     var isRefreshing = false
@@ -59,7 +60,8 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
         // Empty arrays so we do not get duplicates
         isRefreshing = true
         
-        postsAtLocation.removeAll()
+        geoSnapPostsAtLocation.removeAll()
+        flickrPostsAtLocation.removeAll()
         
         retrievePostsForLocation()
         refreshControl?.endRefreshing()
@@ -86,7 +88,7 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
                     for returnedPost in posts! {
                         let newPost = Post(postInformation: returnedPost, photo: UIImage(named: "polaroid.pdf")!)
                         newPost.postInformation["group"] = "Geo Snap"
-                        self.postsAtLocation.append(newPost)
+                        self.geoSnapPostsAtLocation.append(newPost)
                         self.imageCollectionView.reloadData()
                         self.getImageForPost(index)
                         index+=1
@@ -105,7 +107,7 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
     
     
     func getImageForPost(index: Int) {
-        var post = postsAtLocation[index]
+        var post = geoSnapPostsAtLocation[index]
         if let userImageFile = post.postInformation["photo"] as? PFFile {
             userImageFile.getDataInBackgroundWithBlock {
                 (imageData: NSData?, error: NSError?) -> Void in
@@ -116,7 +118,7 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
                         post.photo = UIImage(named: "polaroid.pdf")!
                     }
                     
-                    self.postsAtLocation[index] = post
+                    self.geoSnapPostsAtLocation[index] = post
                     self.imageCollectionView.reloadData()
                 }
             }
@@ -125,7 +127,14 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
     
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return postsAtLocation.count
+        switch section {
+        case 0:
+            return geoSnapPostsAtLocation.count
+        case 1:
+            return flickrPostsAtLocation.count
+        default:
+            return 0
+        }
     }
     
     
@@ -137,7 +146,9 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! ImageCollectionViewCell
         
-        cell.imageView.image = self.postsAtLocation[indexPath.row].photo
+        if let post = getCorrectPost(indexPath) {
+            cell.imageView.image = post.photo
+        }
         
         return cell
     }
@@ -151,13 +162,27 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         let headerView: PostsCollectionHeaderView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "header", forIndexPath: indexPath) as! PostsCollectionHeaderView
         
-        if postsAtLocation.count > 0 {
-            let post = postsAtLocation[indexPath.row]
+        if let post = getCorrectPost(indexPath) {
             let group = post.postInformation["group"]
             headerView.header.text = group as? String
         }
         
         return headerView
+    }
+    
+    func getCorrectPost(indexPath: NSIndexPath) -> Post? {
+        var post: Post?
+        if indexPath.section == 0 {
+            if geoSnapPostsAtLocation.count > 0 {
+                post = geoSnapPostsAtLocation[indexPath.row]
+            }
+        } else {
+            if flickrPostsAtLocation.count > 0 {
+                post = flickrPostsAtLocation[indexPath.row]
+            }
+        }
+        
+        return post
     }
     
     
@@ -167,7 +192,7 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
             let indexPaths = self.imageCollectionView.indexPathsForSelectedItems()!
             let indexPath = indexPaths.first! as NSIndexPath
             
-            let post = self.postsAtLocation[indexPath.row]
+            let post = self.geoSnapPostsAtLocation[indexPath.row]
             
             let viewPhotoViewController = (segue.destinationViewController as! ViewPhotoViewController)
             viewPhotoViewController.postId = post.postInformation.objectId!
@@ -231,6 +256,7 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
             // Filter out nil urls as they are useless to us.
             flickrPhotosForLocation = flickrPhotosForLocation.filter() { $0.valueForKey!("url_l") !== nil }
             
+            flickrPostsAtLocation.removeAll()
             // Add entries to array to preserve desc date order
             for photoEntry in flickrPhotosForLocation {
                 if !isRefreshing {
@@ -242,9 +268,9 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
                     
                     let placeholderPhoto = UIImage(named: "polaroid.pdf")!
                     
-                    let index = postsAtLocation.count
+                    let index = flickrPostsAtLocation.count
                     let post = Post(postInformation: postInformation, photo: placeholderPhoto)
-                    postsAtLocation.append(post)
+                    flickrPostsAtLocation.append(post)
                     
                     getFlickrImageForPost(index)
                 } else {
@@ -259,13 +285,13 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
     
     func getFlickrImageForPost(index: Int) {
         if !isRefreshing {
-            let urlString = postsAtLocation[index].postInformation["url"] as! String
+            let urlString = flickrPostsAtLocation[index].postInformation["url"] as! String
             let url = NSURL(string: urlString)
             let data = NSData(contentsOfURL: url!)
             
             let photo = UIImage(data: data!)!
-            if index < postsAtLocation.count {
-                postsAtLocation[index].photo = photo
+            if index < flickrPostsAtLocation.count {
+                flickrPostsAtLocation[index].photo = photo
             }
             
             // This way loads in the images as soon as they come in instead of all at once.
