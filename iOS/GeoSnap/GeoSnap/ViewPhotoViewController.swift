@@ -43,12 +43,13 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
             switch source {
             case .GeoSnap:
                 retrievePost()
-                retrieveCommentsForPost()
+                
                 
             case.Flickr:
                 flickrPopulateView()
             }
         }
+        retrieveCommentsForPost()
         
     }
 
