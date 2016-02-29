@@ -7,10 +7,9 @@
 //
 
 // TODO: Add map display - Does it add a lot to the user experience or is it just aesthetic?
-// TODO: Get images from URLs
-// TODO: merge into one array
-// TODO: update view
-// TODO: In the same way we create a post entry for the parse images, we need to do the same for the flickr images, sorting by date.
+// TODO: Currently updating collection view on main thread for flickr (else all things show up at once) which blocks clicking.
+// TODO: Refreshing still kind of messed up.
+// TODO: THUMBNAILS
 
 import UIKit
 import Parse

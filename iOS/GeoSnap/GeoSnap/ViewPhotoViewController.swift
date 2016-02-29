@@ -198,21 +198,17 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
     }
     
     
-    @IBAction func makePhotoFullscreen(sender: UITapGestureRecognizer) {
-        let imageView = sender.view as! UIImageView
-        let newImageView = UIImageView(image: imageView.image)
-        newImageView.frame = self.view.frame
-        newImageView.backgroundColor = .blackColor()
-        newImageView.contentMode = UIViewContentMode.ScaleToFill
-        newImageView.userInteractionEnabled = true
-        let tap = UITapGestureRecognizer(target: self, action: "dismissFullscreenImage:")
-        newImageView.addGestureRecognizer(tap)
-        self.view.addSubview(newImageView)
+    @IBAction func fullscreenTapped(sender: UITapGestureRecognizer) {
+        performSegueWithIdentifier("showFullscreen", sender: sender)
     }
     
-    func dismissFullscreenImage(sender: UITapGestureRecognizer) {
-        sender.view?.removeFromSuperview()
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showFullscreen" {
+            let fullscreenPhoto = (segue.destinationViewController as! FullscreenPhotoViewController)
+            fullscreenPhoto.photo = photo
+        }
     }
+    
     
     @IBAction func likeButtonTapped(sender: AnyObject) {
         if likeButton.image == UIImage(named: "heart.png")! {

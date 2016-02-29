@@ -33,6 +33,7 @@
 		5AA9DE651C6E07150038D5E4 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA9DE641C6E07150038D5E4 /* ImageCollectionViewCell.swift */; };
 		5AA9DE6E1C722C090038D5E4 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA9DE6D1C722C090038D5E4 /* CommentTableViewCell.swift */; };
 		5AE8A91A1C8440F50072E277 /* PostsCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE8A9191C8440F50072E277 /* PostsCollectionHeaderView.swift */; };
+		5AE8A91C1C845E010072E277 /* FullscreenPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE8A91B1C845E010072E277 /* FullscreenPhotoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		5AA9DE641C6E07150038D5E4 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		5AA9DE6D1C722C090038D5E4 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		5AE8A9191C8440F50072E277 /* PostsCollectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsCollectionHeaderView.swift; sourceTree = "<group>"; };
+		5AE8A91B1C845E010072E277 /* FullscreenPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullscreenPhotoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +210,7 @@
 				5A105CFF1C68C63E0095666A /* ViewControllerParent.swift */,
 				5A4695921C67C3A6008D6413 /* HomeViewController.swift */,
 				5A105D071C68FC720095666A /* ViewPhotoViewController.swift */,
+				5AE8A91B1C845E010072E277 /* FullscreenPhotoViewController.swift */,
 				5A105CFB1C68BE070095666A /* SharePhotoViewController.swift */,
 				5A4695941C67C3A6008D6413 /* SettingsViewController.swift */,
 				5A4695931C67C3A6008D6413 /* LoginViewController.swift */,
@@ -367,6 +370,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A4695971C67C3A6008D6413 /* LoginViewController.swift in Sources */,
+				5AE8A91C1C845E010072E277 /* FullscreenPhotoViewController.swift in Sources */,
 				5AE8A91A1C8440F50072E277 /* PostsCollectionHeaderView.swift in Sources */,
 				5A4695961C67C3A6008D6413 /* HomeViewController.swift in Sources */,
 				5A105D001C68C63E0095666A /* ViewControllerParent.swift in Sources */,

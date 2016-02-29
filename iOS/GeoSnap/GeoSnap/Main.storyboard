@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xAf-yk-1pu">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <rect key="frame" x="0.0" y="20" width="600" height="531"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="SfD-V4-0wZ">
                                     <size key="itemSize" width="256" height="256"/>
@@ -351,12 +351,13 @@
                         <outlet property="postComment" destination="Ig6-tT-N3f" id="fIt-bi-t43"/>
                         <outlet property="postPhoto" destination="ZDq-B7-k76" id="s0i-VO-n1I"/>
                         <outlet property="submitCommentButton" destination="jF3-ZF-8nl" id="4ui-FP-VSe"/>
+                        <segue destination="K6l-8P-A35" kind="presentation" identifier="showFullscreen" id="kLG-Gw-1r3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ni0-kH-RH5" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="j4Y-Mf-ii0">
                     <connections>
-                        <action selector="makePhotoFullscreen:" destination="KBf-0W-YuX" id="kZG-Nu-SD4"/>
+                        <action selector="fullscreenTapped:" destination="KBf-0W-YuX" id="vjy-GR-Ku7"/>
                     </connections>
                 </tapGestureRecognizer>
                 <tapGestureRecognizer id="M7O-T7-Hb3">
@@ -366,6 +367,69 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1444" y="106"/>
+        </scene>
+        <!--Fullscreen Photo View Controller-->
+        <scene sceneID="efT-5T-ead">
+            <objects>
+                <viewController id="K6l-8P-A35" customClass="FullscreenPhotoViewController" customModule="GeoSnap" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0TW-VH-egy"/>
+                        <viewControllerLayoutGuide type="bottom" id="aLx-5r-Eam"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cbx-iS-wEk">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gnh-Bc-ir0">
+                                <rect key="frame" x="516" y="20" width="64" height="30"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="26a-Vs-rcd"/>
+                                    <constraint firstAttribute="width" constant="64" id="O1T-xe-IxP"/>
+                                </constraints>
+                                <state key="normal" title="Close"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="45"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="close:" destination="K6l-8P-A35" eventType="touchUpInside" id="6jf-26-gjK"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CMX-KT-gDw">
+                                <rect key="frame" x="0.0" y="58" width="600" height="542"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="CMX-KT-gDw" secondAttribute="trailing" constant="-20" id="9kb-Fi-OrJ"/>
+                            <constraint firstItem="aLx-5r-Eam" firstAttribute="top" secondItem="CMX-KT-gDw" secondAttribute="bottom" id="FRS-BN-vVb"/>
+                            <constraint firstItem="CMX-KT-gDw" firstAttribute="leading" secondItem="cbx-iS-wEk" secondAttribute="leadingMargin" constant="-20" id="GOJ-sJ-7st"/>
+                            <constraint firstItem="gnh-Bc-ir0" firstAttribute="top" secondItem="0TW-VH-egy" secondAttribute="bottom" id="HTL-Ph-fbY"/>
+                            <constraint firstItem="gnh-Bc-ir0" firstAttribute="trailing" secondItem="cbx-iS-wEk" secondAttribute="trailingMargin" id="UCc-9s-wqE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="CMX-KT-gDw" secondAttribute="trailing" constant="-20" id="dtE-p8-xXa"/>
+                            <constraint firstItem="CMX-KT-gDw" firstAttribute="leading" secondItem="cbx-iS-wEk" secondAttribute="leadingMargin" constant="-20" id="guK-UW-WSS"/>
+                            <constraint firstItem="CMX-KT-gDw" firstAttribute="top" secondItem="gnh-Bc-ir0" secondAttribute="bottom" constant="8" id="smw-0G-asP"/>
+                            <constraint firstItem="CMX-KT-gDw" firstAttribute="top" secondItem="0TW-VH-egy" secondAttribute="bottom" constant="38" id="vrR-lR-Ivc"/>
+                            <constraint firstItem="aLx-5r-Eam" firstAttribute="top" secondItem="CMX-KT-gDw" secondAttribute="bottom" id="xDS-n7-V8C"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="GOJ-sJ-7st"/>
+                                <exclude reference="dtE-p8-xXa"/>
+                                <exclude reference="vrR-lR-Ivc"/>
+                                <exclude reference="FRS-BN-vVb"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="fullscreenImage" destination="CMX-KT-gDw" id="XMT-bx-B3y"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tG4-Ml-5xF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2139" y="106"/>
         </scene>
         <!--Settings-->
         <scene sceneID="wg7-f3-ORb">
