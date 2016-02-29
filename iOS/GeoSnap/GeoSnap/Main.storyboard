@@ -222,7 +222,7 @@
                                 </constraints>
                                 <state key="normal" title="Close"/>
                                 <connections>
-                                    <segue destination="49e-Tb-3d3" kind="show" id="y82-GC-DJr"/>
+                                    <action selector="close:" destination="KBf-0W-YuX" eventType="touchUpInside" id="2Gs-hL-56U"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add comment:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rkf-gV-Ut6">
@@ -700,7 +700,7 @@
         <image name="polaroid" width="262" height="326"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="y82-GC-DJr"/>
+        <segue reference="O69-4L-GYg"/>
         <segue reference="SLb-sg-soZ"/>
     </inferredMetricsTieBreakers>
 </document>

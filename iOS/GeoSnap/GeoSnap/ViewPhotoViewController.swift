@@ -209,6 +209,9 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
         }
     }
     
+    @IBAction func close(sender: UIButton) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     
     @IBAction func likeButtonTapped(sender: AnyObject) {
         if likeButton.image == UIImage(named: "heart.png")! {
