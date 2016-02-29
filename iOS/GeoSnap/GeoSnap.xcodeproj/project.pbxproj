@@ -207,8 +207,8 @@
 			children = (
 				5A105CFF1C68C63E0095666A /* ViewControllerParent.swift */,
 				5A4695921C67C3A6008D6413 /* HomeViewController.swift */,
-				5A105CFB1C68BE070095666A /* SharePhotoViewController.swift */,
 				5A105D071C68FC720095666A /* ViewPhotoViewController.swift */,
+				5A105CFB1C68BE070095666A /* SharePhotoViewController.swift */,
 				5A4695941C67C3A6008D6413 /* SettingsViewController.swift */,
 				5A4695931C67C3A6008D6413 /* LoginViewController.swift */,
 				5A4695951C67C3A6008D6413 /* SignUpViewController.swift */,
