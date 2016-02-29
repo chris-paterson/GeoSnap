@@ -210,7 +210,7 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
     }
     
     @IBAction func close(sender: UIButton) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismissViewControllerAnimated(false, completion: nil)
     }
     
     @IBAction func likeButtonTapped(sender: AnyObject) {

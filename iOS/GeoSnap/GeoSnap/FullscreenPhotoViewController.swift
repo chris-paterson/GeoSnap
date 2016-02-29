@@ -27,6 +27,6 @@ class FullscreenPhotoViewController: UIViewController {
     }
 
     @IBAction func close(sender: UIButton) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismissViewControllerAnimated(false, completion: nil)
     }
 }
