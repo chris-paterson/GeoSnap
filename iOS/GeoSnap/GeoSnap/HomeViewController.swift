@@ -38,7 +38,7 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        self.refreshControl.addTarget(self, action: "refresh:",   forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
         imageCollectionView!.addSubview(refreshControl)
         
         spinner = UIActivityIndicatorView(frame: CGRectMake(0, 0, 50, 50))
@@ -49,8 +49,8 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
     override func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if shouldGetNewPosts {
             retrievePostsForLocation()
-            GetFlickrData()
         }
+        
         shouldGetNewPosts = false
     }
     
@@ -58,10 +58,10 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
     func refresh(sender:AnyObject) {
         // Empty arrays so we do not get duplicates
         isRefreshing = true
+        
         postsAtLocation.removeAll()
         
         retrievePostsForLocation()
-        GetFlickrData()
         refreshControl?.endRefreshing()
         isRefreshing = false
     }
@@ -99,40 +99,8 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
             displayAlert("Could not find location", message: "Refresh by pulling down to try again.")
         }
         
+        getFlickrData()
         super.stopSpinner(spinner)
-    }
-    
-    
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return postsAtLocation.count
-    }
-    
-    
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! ImageCollectionViewCell
-        
-        cell.imageView.image = self.postsAtLocation[indexPath.row].photo
-        
-        return cell
-    }
-    
-
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier("viewPost", sender: self)
-    }
-    
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        if segue.identifier == "viewPost" {
-            let indexPaths = self.imageCollectionView.indexPathsForSelectedItems()!
-            let indexPath = indexPaths.first! as NSIndexPath
-            
-            let post = self.postsAtLocation[indexPath.row]
-            
-            let viewPhotoViewController = (segue.destinationViewController as! ViewPhotoViewController)
-            viewPhotoViewController.postId = post.postInformation.objectId!
-        }
     }
     
     
@@ -156,7 +124,41 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
     }
     
     
-    func GetFlickrData() {
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return postsAtLocation.count
+    }
+    
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! ImageCollectionViewCell
+        
+        cell.imageView.image = self.postsAtLocation[indexPath.row].photo
+        
+        return cell
+    }
+    
+
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        performSegueWithIdentifier("viewPost", sender: self)
+    }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "viewPost" {
+            let indexPaths = self.imageCollectionView.indexPathsForSelectedItems()!
+            let indexPath = indexPaths.first! as NSIndexPath
+            
+            let post = self.postsAtLocation[indexPath.row]
+            
+            let viewPhotoViewController = (segue.destinationViewController as! ViewPhotoViewController)
+            viewPhotoViewController.postId = post.postInformation.objectId!
+        }
+    }
+    
+    
+    func getFlickrData() {
         let coords = locationManager.location?.coordinate
         
         // https://www.flickr.com/services/api/flickr.photos.search.html
@@ -214,7 +216,7 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
             
             // Add entries to array to preserve desc date order
             for photoEntry in flickrPhotosForLocation {
-                if(!isRefreshing) {
+                if !isRefreshing {
                     let postInformation = PFObject(className: "postInformation")
                     postInformation["date"] = photoEntry.valueForKey("datetaken")
                     postInformation["id"] = photoEntry.valueForKey("id")
@@ -236,14 +238,15 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
         }
     }
     
+    
     func getFlickrImageForPost(index: Int) {
-        if(!isRefreshing) {
+        if !isRefreshing {
             let urlString = postsAtLocation[index].postInformation["url"] as! String
             let url = NSURL(string: urlString)
             let data = NSData(contentsOfURL: url!)
             
             let photo = UIImage(data: data!)!
-            if(index < postsAtLocation.count) {
+            if index < postsAtLocation.count {
                 postsAtLocation[index].photo = photo
             }
             
