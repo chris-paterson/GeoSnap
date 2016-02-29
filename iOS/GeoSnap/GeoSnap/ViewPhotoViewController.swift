@@ -22,7 +22,9 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
     @IBOutlet weak var likeButton: UIImageView!
     
     var postId: String = String()
+    var postSource: PostSource?
     var commentsForPost = [PFObject]()
+    var photo: UIImage = UIImage(named: "polaroid.pdf")!
     
     private var post: PFObject = PFObject(className: "Post")
     
@@ -35,8 +37,19 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
         commentsTableView.tableFooterView = UIView() // Hide empty cells in comments table
         commentsTableView.allowsSelection = false;
         
-        retrievePost()
-        retrieveCommentsForPost()
+        
+        postPhoto.image = photo
+        if let source = postSource {
+            switch source {
+            case .GeoSnap:
+                retrievePost()
+                retrieveCommentsForPost()
+                
+            case.Flickr:
+                flickrPopulateView()
+            }
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,25 +81,15 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
         postComment.text = post["comment"] as? String
         creatorUsername.text = post["creator"].username
     
-        retrievePhoto()
         retrieveUserLike()
     }
     
-    func retrievePhoto() {
-        let photo = post["photo"] as! PFFile
-        
-        photo.getDataInBackgroundWithBlock {
-            (imageData: NSData?, error: NSError?) -> Void in
-            if error == nil {
-                if let imageData = imageData {
-                    self.postPhoto.image = UIImage(data:imageData)!
-                } else {
-                    self.postPhoto.image = UIImage(named: "polaroid.pdf")!
-                    self.displayAlert("Error retrieving photo", message: "Unable to retrieve photo at this time. Please try again.")
-                }
-            }
-        }
+    func flickrPopulateView() {
+        retrieveFlickrComments()
+        likeButton.hidden = true
+        creatorUsername.text = "Flickr"
     }
+    
     
     func retrieveUserLike() {
         let query = PFQuery(className: "Like")
@@ -130,6 +133,10 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
                 self.displayAlert("Error retrieving comments", message: errorMessage)
             }
         }
+    }
+    
+    func retrieveFlickrComments() {
+        
     }
     
     @IBAction func submitComment(sender: UIButton) {

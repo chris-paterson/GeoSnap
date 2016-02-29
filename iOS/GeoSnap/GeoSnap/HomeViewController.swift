@@ -16,6 +16,11 @@ import UIKit
 import Parse
 import Foundation
 
+enum PostSource: String {
+    case GeoSnap = "Geo Snap"
+    case Flickr = "Flickr"
+}
+
 class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UICollectionViewDataSource {
     
     struct Post {
@@ -87,7 +92,6 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
                     var index = 0
                     for returnedPost in posts! {
                         let newPost = Post(postInformation: returnedPost, photo: UIImage(named: "polaroid.pdf")!)
-                        newPost.postInformation["group"] = "Geo Snap"
                         self.geoSnapPostsAtLocation.append(newPost)
                         self.imageCollectionView.reloadData()
                         self.getImageForPost(index)
@@ -162,10 +166,12 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         let headerView: PostsCollectionHeaderView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "header", forIndexPath: indexPath) as! PostsCollectionHeaderView
         
-        if let post = getCorrectPost(indexPath) {
-            let group = post.postInformation["group"]
-            headerView.header.text = group as? String
-        } else {
+        switch indexPath.section {
+        case 0:
+            headerView.header.text = PostSource.GeoSnap.rawValue
+        case 1:
+            headerView.header.text = PostSource.Flickr.rawValue
+        default:
             headerView.header.text = ""
         }
         
@@ -191,13 +197,26 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "viewPost" {
+            let viewPhotoViewController = (segue.destinationViewController as! ViewPhotoViewController)
             let indexPaths = self.imageCollectionView.indexPathsForSelectedItems()!
             let indexPath = indexPaths.first! as NSIndexPath
             
-            let post = self.geoSnapPostsAtLocation[indexPath.row]
+            var post: Post?
             
-            let viewPhotoViewController = (segue.destinationViewController as! ViewPhotoViewController)
-            viewPhotoViewController.postId = post.postInformation.objectId!
+            switch indexPath.section {
+            case 0:
+                post = self.geoSnapPostsAtLocation[indexPath.row]
+                viewPhotoViewController.postSource = PostSource.GeoSnap
+                viewPhotoViewController.postId = post!.postInformation.objectId!
+                viewPhotoViewController.photo = post!.photo
+            case 1:
+                post = self.flickrPostsAtLocation[indexPath.row]
+                viewPhotoViewController.postId = post!.postInformation["objectId"] as! String
+                viewPhotoViewController.postSource = PostSource.Flickr
+                viewPhotoViewController.photo = post!.photo
+            default: // Should never happen
+                print("Error: No post found")
+            }
         }
     }
     
@@ -264,9 +283,8 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
                 if !isRefreshing {
                     let postInformation = PFObject(className: "postInformation")
                     postInformation["date"] = photoEntry.valueForKey("datetaken")
-                    postInformation["id"] = photoEntry.valueForKey("id")
+                    postInformation["objectId"] = photoEntry.valueForKey("id")
                     postInformation["url"] = photoEntry.valueForKey("url_l")
-                    postInformation["group"] = "Flickr"
                     
                     let placeholderPhoto = UIImage(named: "polaroid.pdf")!
                     
