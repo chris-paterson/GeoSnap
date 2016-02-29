@@ -85,7 +85,7 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
                     var index = 0
                     for returnedPost in posts! {
                         let newPost = Post(postInformation: returnedPost, photo: UIImage(named: "polaroid.pdf")!)
-                        
+                        newPost.postInformation["group"] = "Geo Snap"
                         self.postsAtLocation.append(newPost)
                         self.imageCollectionView.reloadData()
                         self.getImageForPost(index)
@@ -129,6 +129,11 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
     }
     
     
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 2
+    }
+    
+    
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! ImageCollectionViewCell
         
@@ -136,11 +141,23 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
         
         return cell
     }
-    
 
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         performSegueWithIdentifier("viewPost", sender: self)
+    }
+    
+    
+    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        let headerView: PostsCollectionHeaderView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "header", forIndexPath: indexPath) as! PostsCollectionHeaderView
+        
+        if postsAtLocation.count > 0 {
+            let post = postsAtLocation[indexPath.row]
+            let group = post.postInformation["group"]
+            headerView.header.text = group as? String
+        }
+        
+        return headerView
     }
     
     
@@ -221,6 +238,7 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
                     postInformation["date"] = photoEntry.valueForKey("datetaken")
                     postInformation["id"] = photoEntry.valueForKey("id")
                     postInformation["url"] = photoEntry.valueForKey("url_l")
+                    postInformation["group"] = "Flickr"
                     
                     let placeholderPhoto = UIImage(named: "polaroid.pdf")!
                     
@@ -254,7 +272,13 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
             dispatch_async(dispatch_get_main_queue(), {
                 self.imageCollectionView.reloadData()
             })
+//            updateCollectionView()
+            
         }
     }
+    
+//    func updateCollectionView() {
+//        imageCollectionView.reloadData()
+//    }
 }
 
