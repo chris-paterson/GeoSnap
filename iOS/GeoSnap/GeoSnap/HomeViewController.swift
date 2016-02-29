@@ -165,6 +165,8 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
         if let post = getCorrectPost(indexPath) {
             let group = post.postInformation["group"]
             headerView.header.text = group as? String
+        } else {
+            headerView.header.text = ""
         }
         
         return headerView
@@ -298,13 +300,7 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
             dispatch_async(dispatch_get_main_queue(), {
                 self.imageCollectionView.reloadData()
             })
-//            updateCollectionView()
-            
         }
     }
-    
-//    func updateCollectionView() {
-//        imageCollectionView.reloadData()
-//    }
 }
 
