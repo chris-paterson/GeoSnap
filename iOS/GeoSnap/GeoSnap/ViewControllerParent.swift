@@ -42,7 +42,6 @@ class ViewControllerParent: UIViewController, CLLocationManagerDelegate {
     }
     
     func displaySpinner(spinner: UIActivityIndicatorView) {
-//        spinner = UIActivityIndicatorView(frame: CGRectMake(0, 0, 50, 50))
         spinner.center = self.view.center
         spinner.activityIndicatorViewStyle = .Gray
         spinner.hidesWhenStopped = true

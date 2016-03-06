@@ -6,6 +6,9 @@
 //  Copyright © 2016 Christopher Paterson. All rights reserved.
 //
 
+// TODO: Explore ability to like flickr photos.
+// TODO: If closed after sharing a photo what happens?
+
 import UIKit
 import Parse
 
