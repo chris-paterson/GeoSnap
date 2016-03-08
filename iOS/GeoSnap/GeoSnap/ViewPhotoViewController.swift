@@ -46,12 +46,11 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
             switch source {
             case .GeoSnap:
                 retrievePost()
-                
-                
             case.Flickr:
                 flickrPopulateView()
             }
         }
+        retrieveUserLike()
         retrieveCommentsForPost()
         
     }
@@ -93,13 +92,9 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
         let time = dateFormatter.stringFromDate((post.createdAt as NSDate?)!)
         
         creatorUsername.text = "\(creator) on \(date) at \(time)"
-    
-        retrieveUserLike()
     }
     
     func flickrPopulateView() {
-        retrieveFlickrComments()
-        likeButton.hidden = true
         creatorUsername.text = "Flickr"
     }
     
@@ -109,7 +104,7 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
         let userId = PFUser.currentUser()!.objectId
         
         query.whereKey("userId", equalTo: userId!)
-        query.whereKey("postId", equalTo: post.objectId!)
+        query.whereKey("postId", equalTo: postId)
         query.getFirstObjectInBackgroundWithBlock { (like, error) in
             if like != nil {
                 self.likeButton.image = UIImage(named: "heart.png")!
@@ -148,9 +143,6 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
         }
     }
     
-    func retrieveFlickrComments() {
-        
-    }
     
     @IBAction func submitComment(sender: UIButton) {
         if commentOnPost.text == "" {
@@ -240,7 +232,7 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
         let userId = PFUser.currentUser()!.objectId
         
         query.whereKey("userId", equalTo: userId!)
-        query.whereKey("postId", equalTo: post.objectId!)
+        query.whereKey("postId", equalTo: postId)
         query.getFirstObjectInBackgroundWithBlock { (like, error) in
             if error == nil {
                 like!.deleteInBackground();
@@ -261,7 +253,7 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
         let like: PFObject = PFObject(className: "Like")
         
         like["userId"] = PFUser.currentUser()!.objectId
-        like["postId"] = post.objectId
+        like["postId"] = postId
         
         like.saveInBackground()
     }
