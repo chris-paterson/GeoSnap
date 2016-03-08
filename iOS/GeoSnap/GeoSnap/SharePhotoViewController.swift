@@ -115,6 +115,10 @@ class SharePhotoViewController: ViewControllerParent, UINavigationControllerDele
         if(segue.identifier == "viewPost") {
             let viewPhotoViewController = (segue.destinationViewController as! ViewPhotoViewController)
             viewPhotoViewController.postId = post.objectId!
+            viewPhotoViewController.postSource = PostSource.GeoSnap
+            viewPhotoViewController.photo = imageView.image!
+            
+            resetElements()
         }
     }
     
