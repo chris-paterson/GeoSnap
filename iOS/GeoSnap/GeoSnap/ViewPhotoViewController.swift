@@ -83,7 +83,16 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
     
     func populateView() {
         postComment.text = post["comment"] as? String
-        creatorUsername.text = post["creator"].username
+        
+        let creator: String! = post["creator"].username
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd'/'MM'/'yyyy'"
+        let date = dateFormatter.stringFromDate((post.createdAt as NSDate?)!)
+        
+        dateFormatter.dateFormat = "HH:mm"
+        let time = dateFormatter.stringFromDate((post.createdAt as NSDate?)!)
+        
+        creatorUsername.text = "\(creator) on \(date) at \(time)"
     
         retrieveUserLike()
     }
