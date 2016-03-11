@@ -17,6 +17,7 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
     @IBOutlet weak var creatorUsername: UILabel!
     @IBOutlet weak var postComment: UILabel!
     @IBOutlet weak var postPhoto: UIImageView!
+    @IBOutlet weak var tags: UILabel!
     
     @IBOutlet weak var commentOnPost: UITextField!
     @IBOutlet weak var commentsTableView: UITableView!
@@ -92,6 +93,37 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
         let time = dateFormatter.stringFromDate((post.createdAt as NSDate?)!)
         
         creatorUsername.text = "\(creator) on \(date) at \(time)"
+        
+        retrieveAndPopulateTags()
+    }
+    
+    func retrieveAndPopulateTags() {
+        let query = PFQuery(className: "Tag")
+        query.whereKey("forPost", equalTo: postId)
+        query.orderByDescending("createdAt")
+        
+        query.findObjectsInBackgroundWithBlock { (tags, error) in
+            if error == nil && tags != nil {
+                var tagString = ""
+                for i in 0...tags!.count {
+                    if i == 0 {
+                        tagString = "\(tags![i]["tag"])"
+                    } else {
+                        tagString = tagString + " | \(tags![i]["tag"])"
+                    }
+                }
+                
+                self.tags.text = tagString
+            } else {
+                var errorMessage = "Could not retrieve tags at this time. Please try again." // Default error message
+                
+                if let errorString = error?.userInfo["error"] as? String {
+                    errorMessage = errorString
+                }
+                
+                self.displayAlert("Error retrieving tags", message: errorMessage)
+            }
+        }
     }
     
     func flickrPopulateView() {
@@ -132,7 +164,7 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
                 self.commentsForPost = comments!
                 self.commentsTableView.reloadData()
             } else {
-                var errorMessage = "Could not retrieve comments at this time. Please try again." // Defaul error message
+                var errorMessage = "Could not retrieve comments at this time. Please try again." // Default error message
                 
                 if let errorString = error?.userInfo["error"] as? String {
                     errorMessage = errorString
