@@ -18,10 +18,13 @@ class SharePhotoViewController: ViewControllerParent, UINavigationControllerDele
     @IBOutlet weak var comment: UITextField!
     @IBOutlet weak var imageView: UIImageView!
     
+    @IBOutlet weak var tagField: UITextField!
+    
     var spinner: UIActivityIndicatorView = UIActivityIndicatorView()
     var imagePicker: UIImagePickerController!
     var userHasTakenPhoto: Bool = false
     var post: PFObject = PFObject(className: "Post")
+    var tags = [String]()
     
     
     override func viewDidLoad() {
@@ -89,6 +92,7 @@ class SharePhotoViewController: ViewControllerParent, UINavigationControllerDele
             super.stopSpinner(self.spinner)
             
             if success {
+                self.saveTags(self.post.objectId!)
                 self.viewPost()
                 
             } else {
@@ -103,6 +107,20 @@ class SharePhotoViewController: ViewControllerParent, UINavigationControllerDele
             }
         }
 
+    }
+    
+    func saveTags(id: String) {
+        var tagsToSave = [PFObject]()
+        
+        for tagName in tags {
+            let tag: PFObject = PFObject(className: "Tag")
+            tag["tag"] = tagName
+            tag["forPost"] = id
+            
+            tagsToSave.append(tag)
+        }
+        
+        PFObject.saveAllInBackground(tagsToSave)
     }
     
     
@@ -121,7 +139,17 @@ class SharePhotoViewController: ViewControllerParent, UINavigationControllerDele
             resetElements()
         }
     }
+
     
+    @IBAction func addTag(sender: AnyObject) {
+        if tagField.text != "" {
+            tags.append(tagField.text!)
+            tagField.text = ""
+    
+        } else {
+            displayAlert("Unable to add tag", message: "Can not add an empty tag.")
+        }
+    }
     
     func resetElements() {
         userHasTakenPhoto = false

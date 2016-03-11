@@ -144,10 +144,31 @@
                                     <constraint firstAttribute="width" secondItem="YzQ-nW-Ow7" secondAttribute="height" multiplier="280:149" id="1C1-NO-EaR"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zh5-Qk-ngy">
+                                <rect key="frame" x="516" y="410" width="64" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="jkK-db-vKe"/>
+                                    <constraint firstAttribute="height" constant="30" id="sN9-JN-2kG"/>
+                                </constraints>
+                                <state key="normal" title="Add Tag"/>
+                                <connections>
+                                    <action selector="addTag:" destination="7pq-f9-vxs" eventType="touchUpInside" id="V3P-5R-uLh"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tags, e.g. CONCERT" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DAS-kG-Ihr">
+                                <rect key="frame" x="20" y="410" width="490" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="DAS-kG-Ihr" firstAttribute="top" secondItem="tin-pt-U14" secondAttribute="bottom" constant="8" id="3Nr-c4-D0j"/>
+                            <constraint firstItem="Zh5-Qk-ngy" firstAttribute="trailing" secondItem="tfX-qb-JQN" secondAttribute="trailingMargin" id="6IM-Ji-gPC"/>
+                            <constraint firstItem="DAS-kG-Ihr" firstAttribute="leading" secondItem="tfX-qb-JQN" secondAttribute="leadingMargin" id="7iA-z5-vXN"/>
                             <constraint firstItem="nz3-iE-jOV" firstAttribute="top" secondItem="ucZ-mO-Tfl" secondAttribute="bottom" constant="8" id="ACi-0b-UXe"/>
+                            <constraint firstItem="Zh5-Qk-ngy" firstAttribute="top" secondItem="tin-pt-U14" secondAttribute="bottom" constant="8" id="CUT-Tj-FeN"/>
+                            <constraint firstItem="Zh5-Qk-ngy" firstAttribute="leading" secondItem="DAS-kG-Ihr" secondAttribute="trailing" constant="6" id="Fde-0O-LAr"/>
                             <constraint firstItem="nz3-iE-jOV" firstAttribute="top" secondItem="Npx-JG-asL" secondAttribute="bottom" constant="8" id="Gj2-ay-7pb"/>
                             <constraint firstItem="tin-pt-U14" firstAttribute="top" secondItem="r6Z-nY-H2q" secondAttribute="bottom" constant="8" id="IYW-ZN-MuB"/>
                             <constraint firstItem="tin-pt-U14" firstAttribute="trailing" secondItem="tfX-qb-JQN" secondAttribute="trailingMargin" id="J2H-G7-w6i"/>
@@ -158,6 +179,7 @@
                             <constraint firstItem="YzQ-nW-Ow7" firstAttribute="trailing" secondItem="tfX-qb-JQN" secondAttribute="trailingMargin" id="cnu-dO-19I"/>
                             <constraint firstItem="ucZ-mO-Tfl" firstAttribute="trailing" secondItem="tfX-qb-JQN" secondAttribute="trailingMargin" id="cx8-2e-8uA"/>
                             <constraint firstItem="ucZ-mO-Tfl" firstAttribute="leading" secondItem="Npx-JG-asL" secondAttribute="trailing" constant="8" id="oeu-wv-0ND"/>
+                            <constraint firstItem="Zh5-Qk-ngy" firstAttribute="leading" secondItem="DAS-kG-Ihr" secondAttribute="trailing" constant="6" id="vb0-J7-Kzs"/>
                             <constraint firstItem="r6Z-nY-H2q" firstAttribute="centerX" secondItem="tfX-qb-JQN" secondAttribute="centerX" id="z13-ls-Pwj"/>
                         </constraints>
                     </view>
@@ -166,6 +188,7 @@
                     <connections>
                         <outlet property="comment" destination="tin-pt-U14" id="3kp-fV-3cg"/>
                         <outlet property="imageView" destination="YzQ-nW-Ow7" id="Fuc-6o-0N2"/>
+                        <outlet property="tagField" destination="DAS-kG-Ihr" id="seU-Ff-e68"/>
                         <segue destination="KBf-0W-YuX" kind="show" identifier="viewPost" id="HIO-6u-qer"/>
                     </connections>
                 </viewController>
@@ -254,7 +277,7 @@
                                         <rect key="frame" x="0.0" y="28" width="560" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EVo-Pw-CR0" id="Juh-5k-ADb">
-                                            <rect key="frame" x="0.0" y="0.0" width="560" height="70"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="69.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Creator" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hnD-NA-Ym9">
@@ -522,7 +545,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Idw-aq-LcF">
-                                <rect key="frame" x="273" y="550" width="55" height="30"/>
+                                <rect key="frame" x="273" y="501" width="55" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="55" id="6Hq-o8-6Wf"/>
                                 </constraints>
@@ -532,7 +555,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XrO-dh-M9c">
-                                <rect key="frame" x="211" y="521" width="179" height="21"/>
+                                <rect key="frame" x="211" y="472" width="179" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="179" id="Oq3-9t-eP8"/>
                                 </constraints>
@@ -703,6 +726,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="O69-4L-GYg"/>
-        <segue reference="SLb-sg-soZ"/>
+        <segue reference="HIO-6u-qer"/>
     </inferredMetricsTieBreakers>
 </document>
