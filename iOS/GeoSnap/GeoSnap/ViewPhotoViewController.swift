@@ -97,23 +97,24 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
         retrieveAndPopulateTags()
     }
     
+    
     func retrieveAndPopulateTags() {
         let query = PFQuery(className: "Tag")
         query.whereKey("forPost", equalTo: postId)
         query.orderByDescending("createdAt")
         
-        query.findObjectsInBackgroundWithBlock { (tags, error) in
-            if error == nil && tags != nil {
+        query.findObjectsInBackgroundWithBlock { (tagList, error) in
+            if error == nil && tagList != nil {
                 var tagString = ""
-                for i in 0...tags!.count {
+                for i in 0...tagList!.count {
                     if i == 0 {
-                        tagString = "\(tags![i]["tag"])"
+                        tagString = "Tags: \(tagList![i]["tag"])"
                     } else {
-                        tagString = tagString + " | \(tags![i]["tag"])"
+                        tagString = tagString + " | \(tagList![i]["tag"])"
                     }
+                    
+                    self.tags.text = tagString
                 }
-                
-                self.tags.text = tagString
             } else {
                 var errorMessage = "Could not retrieve tags at this time. Please try again." // Default error message
                 

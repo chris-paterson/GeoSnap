@@ -250,9 +250,6 @@
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add comment:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rkf-gV-Ut6">
                                 <rect key="frame" x="20" y="392" width="112" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="foH-4G-I8Z"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -353,9 +350,7 @@
                             <constraint firstItem="htH-no-Mkk" firstAttribute="leading" secondItem="flm-vg-xIe" secondAttribute="leadingMargin" id="G1P-Jg-EPu"/>
                             <constraint firstItem="6He-kC-uKt" firstAttribute="top" secondItem="Ig6-tT-N3f" secondAttribute="bottom" constant="8" id="I22-3K-sap"/>
                             <constraint firstItem="T8N-FH-gcZ" firstAttribute="trailing" secondItem="flm-vg-xIe" secondAttribute="trailingMargin" id="Vel-vJ-ZSt"/>
-                            <constraint firstItem="jQ1-Xo-CU3" firstAttribute="leading" secondItem="Rkf-gV-Ut6" secondAttribute="trailing" constant="8" id="aT2-ZG-jsA"/>
                             <constraint firstItem="Ig6-tT-N3f" firstAttribute="top" secondItem="lUJ-zP-ur7" secondAttribute="bottom" constant="24" id="bZW-YD-rff"/>
-                            <constraint firstItem="Rkf-gV-Ut6" firstAttribute="leading" secondItem="flm-vg-xIe" secondAttribute="leadingMargin" id="cR6-OF-3Uy"/>
                             <constraint firstItem="ZDq-B7-k76" firstAttribute="trailing" secondItem="flm-vg-xIe" secondAttribute="trailingMargin" id="cwp-hP-Kgf"/>
                             <constraint firstItem="6He-kC-uKt" firstAttribute="leading" secondItem="flm-vg-xIe" secondAttribute="leadingMargin" id="eL2-gJ-It1"/>
                             <constraint firstItem="ZDq-B7-k76" firstAttribute="leading" secondItem="flm-vg-xIe" secondAttribute="leadingMargin" id="gAo-ME-Tb8"/>
