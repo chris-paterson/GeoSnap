@@ -6,10 +6,6 @@
 //  Copyright © 2016 Christopher Paterson. All rights reserved.
 //
 
-// TODO: fix Snapshotting a view that has not been rendered results in an empty snapshot. Ensure your view has been rendered at least once before snapshotting or snapshot after screen - This may be just an iOS bug.
-
-
-
 import UIKit
 import Parse
 
