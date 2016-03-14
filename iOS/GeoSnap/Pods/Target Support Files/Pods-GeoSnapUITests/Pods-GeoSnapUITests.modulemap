@@ -1,0 +1,6 @@
+framework module Pods_GeoSnapUITests {
+  umbrella header "Pods-GeoSnapUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

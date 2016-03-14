@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3EBC5B50E4F2BE111B8D82FB /* Pods_GeoSnap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59EC72573F8DB33EDDBFC90E /* Pods_GeoSnap.framework */; };
+		49CEF74695428E9D5AD9BBD9 /* Pods_GeoSnapTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0BC275A49A6E07FB1F496E1 /* Pods_GeoSnapTests.framework */; };
 		5A105CFD1C68BE070095666A /* SharePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A105CFB1C68BE070095666A /* SharePhotoViewController.swift */; };
 		5A105D001C68C63E0095666A /* ViewControllerParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A105CFF1C68C63E0095666A /* ViewControllerParent.swift */; };
 		5A105D081C68FC720095666A /* ViewPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A105D071C68FC720095666A /* ViewPhotoViewController.swift */; };
@@ -34,6 +36,7 @@
 		5AA9DE6E1C722C090038D5E4 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA9DE6D1C722C090038D5E4 /* CommentTableViewCell.swift */; };
 		5AE8A91A1C8440F50072E277 /* PostsCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE8A9191C8440F50072E277 /* PostsCollectionHeaderView.swift */; };
 		5AE8A91C1C845E010072E277 /* FullscreenPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE8A91B1C845E010072E277 /* FullscreenPhotoViewController.swift */; };
+		5E8A9125E41A306874868C33 /* Pods_GeoSnapUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1411C80734DCCFA7D2A5AD8C /* Pods_GeoSnapUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +57,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1411C80734DCCFA7D2A5AD8C /* Pods_GeoSnapUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GeoSnapUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		59EC72573F8DB33EDDBFC90E /* Pods_GeoSnap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GeoSnap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A105CFB1C68BE070095666A /* SharePhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharePhotoViewController.swift; sourceTree = "<group>"; };
 		5A105CFF1C68C63E0095666A /* ViewControllerParent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerParent.swift; sourceTree = "<group>"; };
 		5A105D071C68FC720095666A /* ViewPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewPhotoViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +92,13 @@
 		5AA9DE6D1C722C090038D5E4 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		5AE8A9191C8440F50072E277 /* PostsCollectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsCollectionHeaderView.swift; sourceTree = "<group>"; };
 		5AE8A91B1C845E010072E277 /* FullscreenPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullscreenPhotoViewController.swift; sourceTree = "<group>"; };
+		688F3C079DA54CC48C4E9D3F /* Pods-GeoSnap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoSnap.release.xcconfig"; path = "Pods/Target Support Files/Pods-GeoSnap/Pods-GeoSnap.release.xcconfig"; sourceTree = "<group>"; };
+		6C9A4945EDD75917EB69FB95 /* Pods-GeoSnapUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoSnapUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GeoSnapUITests/Pods-GeoSnapUITests.release.xcconfig"; sourceTree = "<group>"; };
+		6D75331FE603D9A780E171F1 /* Pods-GeoSnap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoSnap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GeoSnap/Pods-GeoSnap.debug.xcconfig"; sourceTree = "<group>"; };
+		A0BC275A49A6E07FB1F496E1 /* Pods_GeoSnapTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GeoSnapTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2E625C1B1827E0B04C16DF1 /* Pods-GeoSnapUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoSnapUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GeoSnapUITests/Pods-GeoSnapUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		A4D596C2D88F43E7DBD4CC55 /* Pods-GeoSnapTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoSnapTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GeoSnapTests/Pods-GeoSnapTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A9823173BAC8E30846E417C5 /* Pods-GeoSnapTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoSnapTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GeoSnapTests/Pods-GeoSnapTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +117,7 @@
 				5A4695AD1C67C402008D6413 /* SystemConfiguration.framework in Frameworks */,
 				5A46958E1C67C321008D6413 /* Parse.framework in Frameworks */,
 				5A46958D1C67C321008D6413 /* Bolts.framework in Frameworks */,
+				3EBC5B50E4F2BE111B8D82FB /* Pods_GeoSnap.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +125,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49CEF74695428E9D5AD9BBD9 /* Pods_GeoSnapTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +133,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E8A9125E41A306874868C33 /* Pods_GeoSnapUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,6 +157,7 @@
 				5A46957C1C67C2FA008D6413 /* GeoSnapUITests */,
 				5A4695591C67C2FA008D6413 /* Products */,
 				5A46958F1C67C335008D6413 /* Frameworks */,
+				A2AA14240C48980106AAE6DE /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -200,6 +216,9 @@
 				5A4695A41C67C402008D6413 /* SystemConfiguration.framework */,
 				5A46958B1C67C321008D6413 /* Bolts.framework */,
 				5A46958C1C67C321008D6413 /* Parse.framework */,
+				59EC72573F8DB33EDDBFC90E /* Pods_GeoSnap.framework */,
+				A0BC275A49A6E07FB1F496E1 /* Pods_GeoSnapTests.framework */,
+				1411C80734DCCFA7D2A5AD8C /* Pods_GeoSnapUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -236,6 +255,19 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		A2AA14240C48980106AAE6DE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6D75331FE603D9A780E171F1 /* Pods-GeoSnap.debug.xcconfig */,
+				688F3C079DA54CC48C4E9D3F /* Pods-GeoSnap.release.xcconfig */,
+				A4D596C2D88F43E7DBD4CC55 /* Pods-GeoSnapTests.debug.xcconfig */,
+				A9823173BAC8E30846E417C5 /* Pods-GeoSnapTests.release.xcconfig */,
+				A2E625C1B1827E0B04C16DF1 /* Pods-GeoSnapUITests.debug.xcconfig */,
+				6C9A4945EDD75917EB69FB95 /* Pods-GeoSnapUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -243,9 +275,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5A4695821C67C2FA008D6413 /* Build configuration list for PBXNativeTarget "GeoSnap" */;
 			buildPhases = (
+				9A402FE3C61A190BC15388E1 /* 📦 Check Pods Manifest.lock */,
 				5A4695541C67C2FA008D6413 /* Sources */,
 				5A4695551C67C2FA008D6413 /* Frameworks */,
 				5A4695561C67C2FA008D6413 /* Resources */,
+				BB4CBE88E9BC0FB6D99BE57B /* 📦 Embed Pods Frameworks */,
+				1AB4256DF3E98673160B3A74 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -260,9 +295,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5A4695851C67C2FA008D6413 /* Build configuration list for PBXNativeTarget "GeoSnapTests" */;
 			buildPhases = (
+				9088624F2C50646E31A5E87A /* 📦 Check Pods Manifest.lock */,
 				5A46956A1C67C2FA008D6413 /* Sources */,
 				5A46956B1C67C2FA008D6413 /* Frameworks */,
 				5A46956C1C67C2FA008D6413 /* Resources */,
+				9C6291A2F60D28A730C67073 /* 📦 Embed Pods Frameworks */,
+				03EFF086942188D9E9E72A21 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -278,9 +316,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5A4695881C67C2FA008D6413 /* Build configuration list for PBXNativeTarget "GeoSnapUITests" */;
 			buildPhases = (
+				E2D7CECEA34AA50AAD3BE5F3 /* 📦 Check Pods Manifest.lock */,
 				5A4695751C67C2FA008D6413 /* Sources */,
 				5A4695761C67C2FA008D6413 /* Frameworks */,
 				5A4695771C67C2FA008D6413 /* Resources */,
+				2317E7EB42FD5976D043A45B /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -363,6 +403,129 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		03EFF086942188D9E9E72A21 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GeoSnapTests/Pods-GeoSnapTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1AB4256DF3E98673160B3A74 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GeoSnap/Pods-GeoSnap-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2317E7EB42FD5976D043A45B /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GeoSnapUITests/Pods-GeoSnapUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9088624F2C50646E31A5E87A /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9A402FE3C61A190BC15388E1 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9C6291A2F60D28A730C67073 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GeoSnapTests/Pods-GeoSnapTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BB4CBE88E9BC0FB6D99BE57B /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GeoSnap/Pods-GeoSnap-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E2D7CECEA34AA50AAD3BE5F3 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5A4695541C67C2FA008D6413 /* Sources */ = {
@@ -501,6 +664,7 @@
 		};
 		5A4695831C67C2FA008D6413 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6D75331FE603D9A780E171F1 /* Pods-GeoSnap.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -518,6 +682,7 @@
 		};
 		5A4695841C67C2FA008D6413 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 688F3C079DA54CC48C4E9D3F /* Pods-GeoSnap.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -534,6 +699,7 @@
 		};
 		5A4695861C67C2FA008D6413 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A4D596C2D88F43E7DBD4CC55 /* Pods-GeoSnapTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = GeoSnapTests/Info.plist;
@@ -546,6 +712,7 @@
 		};
 		5A4695871C67C2FA008D6413 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A9823173BAC8E30846E417C5 /* Pods-GeoSnapTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = GeoSnapTests/Info.plist;
@@ -558,6 +725,7 @@
 		};
 		5A4695891C67C2FA008D6413 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A2E625C1B1827E0B04C16DF1 /* Pods-GeoSnapUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = GeoSnapUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -570,6 +738,7 @@
 		};
 		5A46958A1C67C2FA008D6413 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6C9A4945EDD75917EB69FB95 /* Pods-GeoSnapUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = GeoSnapUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

@@ -84,7 +84,7 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
             let userLocation = PFGeoPoint(latitude: coords.latitude, longitude: coords.longitude)
             
             let query = PFQuery(className: "Post")
-            query.whereKey("location", nearGeoPoint: userLocation, withinMiles: 0.1)
+            query.whereKey("location", nearGeoPoint: userLocation, withinMiles: 0.05)
             query.orderByDescending("createdAt")
             query.findObjectsInBackgroundWithBlock { (posts, error) in
                 if (posts != nil) {
@@ -229,7 +229,7 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
         let format = "&format=json&nojsoncallback=1"
         let lat = "&lat=\(coords!.latitude)"
         let lon = "&lon=\(coords!.longitude)"
-        let radius = "&radius=\(0.1)"
+        let radius = "&radius=\(0.05)"
         let sort = "&sort=date-posted-desc"
         let extras = "&extras=date_taken,url_l"
         

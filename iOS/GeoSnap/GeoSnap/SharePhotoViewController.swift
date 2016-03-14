@@ -8,12 +8,14 @@
 
 import UIKit
 import Parse
+import TagListView
 
-class SharePhotoViewController: ViewControllerParent, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class SharePhotoViewController: ViewControllerParent, UINavigationControllerDelegate, UIImagePickerControllerDelegate, TagListViewDelegate {
 
     @IBOutlet weak var comment: UITextField!
     @IBOutlet weak var imageView: UIImageView!
     
+    @IBOutlet weak var tagListView: TagListView!
     @IBOutlet weak var tagField: UITextField!
     
     var spinner: UIActivityIndicatorView = UIActivityIndicatorView()
@@ -30,6 +32,9 @@ class SharePhotoViewController: ViewControllerParent, UINavigationControllerDele
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "dismissKeyboard"))
         
         spinner = UIActivityIndicatorView(frame: CGRectMake(0, 0, 50, 50))
+        
+        tagListView.delegate = self
+        
     }
     
     func dismissKeyboard() {
@@ -139,12 +144,18 @@ class SharePhotoViewController: ViewControllerParent, UINavigationControllerDele
     
     @IBAction func addTag(sender: AnyObject) {
         if tagField.text != "" {
-            tags.append(tagField.text!)
+            let tag = tagField.text!
+            tags.append(tag)
+            tagListView.addTag(tag)
             tagField.text = ""
-    
         } else {
             displayAlert("Unable to add tag", message: "Can not add an empty tag.")
         }
+    }
+    
+    func tagPressed(title: String, tagView: TagView, sender: TagListView) {
+        tags = tags.filter{$0 != title}
+        sender.removeTagView(tagView)
     }
     
     func resetElements() {

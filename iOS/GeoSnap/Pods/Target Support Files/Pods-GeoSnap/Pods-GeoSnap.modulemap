@@ -1,0 +1,6 @@
+framework module Pods_GeoSnap {
+  umbrella header "Pods-GeoSnap-umbrella.h"
+
+  export *
+  module * { export * }
+}

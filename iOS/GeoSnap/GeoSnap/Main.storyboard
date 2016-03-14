@@ -55,7 +55,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Q9-1o-UC0">
                                             <rect key="frame" x="300" y="25" width="0.0" height="0.0"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -160,6 +160,18 @@
                                     <action selector="addTag:" destination="7pq-f9-vxs" eventType="touchUpInside" id="V3P-5R-uLh"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="NCR-p0-5BK" customClass="TagListView" customModule="TagListView">
+                                <rect key="frame" x="20" y="448" width="560" height="57"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="paddingY">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="paddingX">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -168,16 +180,20 @@
                             <constraint firstItem="DAS-kG-Ihr" firstAttribute="leading" secondItem="tfX-qb-JQN" secondAttribute="leadingMargin" id="7iA-z5-vXN"/>
                             <constraint firstItem="nz3-iE-jOV" firstAttribute="top" secondItem="ucZ-mO-Tfl" secondAttribute="bottom" constant="8" id="ACi-0b-UXe"/>
                             <constraint firstItem="Zh5-Qk-ngy" firstAttribute="top" secondItem="tin-pt-U14" secondAttribute="bottom" constant="8" id="CUT-Tj-FeN"/>
+                            <constraint firstItem="NCR-p0-5BK" firstAttribute="trailing" secondItem="tfX-qb-JQN" secondAttribute="trailingMargin" id="FTS-VE-2KP"/>
                             <constraint firstItem="Zh5-Qk-ngy" firstAttribute="leading" secondItem="DAS-kG-Ihr" secondAttribute="trailing" constant="6" id="Fde-0O-LAr"/>
                             <constraint firstItem="nz3-iE-jOV" firstAttribute="top" secondItem="Npx-JG-asL" secondAttribute="bottom" constant="8" id="Gj2-ay-7pb"/>
                             <constraint firstItem="tin-pt-U14" firstAttribute="top" secondItem="r6Z-nY-H2q" secondAttribute="bottom" constant="8" id="IYW-ZN-MuB"/>
                             <constraint firstItem="tin-pt-U14" firstAttribute="trailing" secondItem="tfX-qb-JQN" secondAttribute="trailingMargin" id="J2H-G7-w6i"/>
                             <constraint firstItem="YzQ-nW-Ow7" firstAttribute="top" secondItem="CVP-lt-3f6" secondAttribute="bottom" constant="8" id="OYs-Xa-4hE"/>
                             <constraint firstItem="r6Z-nY-H2q" firstAttribute="top" secondItem="YzQ-nW-Ow7" secondAttribute="bottom" constant="8" id="SeU-bg-qCI"/>
+                            <constraint firstItem="Npx-JG-asL" firstAttribute="top" secondItem="NCR-p0-5BK" secondAttribute="bottom" constant="8" id="UWv-ae-wLs"/>
+                            <constraint firstItem="NCR-p0-5BK" firstAttribute="leading" secondItem="tfX-qb-JQN" secondAttribute="leadingMargin" id="ZdL-ia-LWd"/>
                             <constraint firstItem="tin-pt-U14" firstAttribute="leading" secondItem="tfX-qb-JQN" secondAttribute="leadingMargin" id="aLX-ZW-3KO"/>
                             <constraint firstItem="YzQ-nW-Ow7" firstAttribute="leading" secondItem="tfX-qb-JQN" secondAttribute="leadingMargin" id="arB-5N-ntS"/>
                             <constraint firstItem="YzQ-nW-Ow7" firstAttribute="trailing" secondItem="tfX-qb-JQN" secondAttribute="trailingMargin" id="cnu-dO-19I"/>
                             <constraint firstItem="ucZ-mO-Tfl" firstAttribute="trailing" secondItem="tfX-qb-JQN" secondAttribute="trailingMargin" id="cx8-2e-8uA"/>
+                            <constraint firstItem="NCR-p0-5BK" firstAttribute="top" secondItem="Zh5-Qk-ngy" secondAttribute="bottom" constant="8" id="kdp-tc-VkC"/>
                             <constraint firstItem="ucZ-mO-Tfl" firstAttribute="leading" secondItem="Npx-JG-asL" secondAttribute="trailing" constant="8" id="oeu-wv-0ND"/>
                             <constraint firstItem="Zh5-Qk-ngy" firstAttribute="leading" secondItem="DAS-kG-Ihr" secondAttribute="trailing" constant="6" id="vb0-J7-Kzs"/>
                             <constraint firstItem="r6Z-nY-H2q" firstAttribute="centerX" secondItem="tfX-qb-JQN" secondAttribute="centerX" id="z13-ls-Pwj"/>
@@ -189,6 +205,7 @@
                         <outlet property="comment" destination="tin-pt-U14" id="3kp-fV-3cg"/>
                         <outlet property="imageView" destination="YzQ-nW-Ow7" id="Fuc-6o-0N2"/>
                         <outlet property="tagField" destination="DAS-kG-Ihr" id="seU-Ff-e68"/>
+                        <outlet property="tagListView" destination="NCR-p0-5BK" id="hkx-sm-bYD"/>
                         <segue destination="KBf-0W-YuX" kind="show" identifier="viewPost" id="HIO-6u-qer"/>
                     </connections>
                 </viewController>
@@ -334,7 +351,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tags:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6He-kC-uKt">
                                 <rect key="frame" x="20" y="392" width="560" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>

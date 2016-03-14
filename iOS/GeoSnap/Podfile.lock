@@ -1,0 +1,12 @@
+PODS:
+  - TagListView (0.5)
+
+DEPENDENCIES:
+  - TagListView
+
+SPEC CHECKSUMS:
+  TagListView: d9e6f0f30eca6a84138669f8449b89df068e6573
+
+PODFILE CHECKSUM: 162ad293ad49f29304c1ffcfed83788038d3effa
+
+COCOAPODS: 1.0.0.beta.5
