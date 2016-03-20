@@ -51,6 +51,9 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
         retrieveUserLike()
         retrieveCommentsForPost()
         
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: "longPressComment:")
+        self.view.addGestureRecognizer(longPressRecognizer)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -288,22 +291,44 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
         like.saveInBackground()
     }
     
-    @IBAction func longPressComment(sender: UILongPressGestureRecognizer) {
-        report()
+    @IBAction func longPressComment(longPressGestureRecognizer: UILongPressGestureRecognizer) {
+        if longPressGestureRecognizer.state == UIGestureRecognizerState.Began {
+            
+            let touchPoint = longPressGestureRecognizer.locationInView(self.commentsTableView)
+            if let indexPath = self.commentsTableView.indexPathForRowAtPoint(touchPoint) {
+                
+                // your code here, get the row for the indexPath or do whatever you want
+                let commentToReport = commentsForPost[indexPath.row]
+                showReportDialog(commentToReport)
+            }
+        }
     }
+        
     
-    func report() {
+    func showReportDialog(commentToReport: PFObject) {
         let reportAlert = UIAlertController(title: "Report", message: "Are you sure you wish to report this item as inappropriate?", preferredStyle: .Alert)
         
-        reportAlert.addAction(UIAlertAction(title: "Yes", style: .Default, handler: { (action) in
-            print("OK Clicked")
-        }))
+        let confirmAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+            self.report(commentToReport)
+        }
         
-        reportAlert.addAction(UIAlertAction(title: "No", style: .Cancel, handler: { (action) in
-            print("No Clicked")
-        }))
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Destructive, handler: nil)
+        
+        reportAlert.addAction(confirmAction)
+        reportAlert.addAction(cancelAction)
         
         presentViewController(reportAlert, animated: true, completion: nil)
     }
     
+    func report(itemToReport: PFObject) {
+        let report = PFObject(className: "Report")
+        
+        report["class"] = itemToReport.parseClassName
+        report["reporter"] = PFUser.currentUser()
+        report["reportedItem"] = itemToReport
+        
+        report.saveInBackground()
+        
+        displayAlert("Report Successful", message: "Your report has successfully been sent.")
+    }
 }

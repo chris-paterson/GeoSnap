@@ -325,7 +325,6 @@
                                         <connections>
                                             <outlet property="comment" destination="qg7-uo-cf8" id="zKY-9k-Xld"/>
                                             <outlet property="commentCreator" destination="hnD-NA-Ym9" id="19q-st-l5j"/>
-                                            <outletCollection property="gestureRecognizers" destination="gPm-Ur-baX" appends="YES" id="BLX-Zl-8A9"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -413,11 +412,6 @@
                         <action selector="likeButtonTapped:" destination="KBf-0W-YuX" id="UrP-So-bPW"/>
                     </connections>
                 </tapGestureRecognizer>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="gPm-Ur-baX">
-                    <connections>
-                        <action selector="longPressComment:" destination="KBf-0W-YuX" id="MZZ-Rs-xdf"/>
-                    </connections>
-                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1444" y="106"/>
         </scene>
