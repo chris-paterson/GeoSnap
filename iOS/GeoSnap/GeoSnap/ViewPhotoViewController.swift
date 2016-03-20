@@ -287,4 +287,23 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
         
         like.saveInBackground()
     }
+    
+    @IBAction func longPressComment(sender: UILongPressGestureRecognizer) {
+        report()
+    }
+    
+    func report() {
+        let reportAlert = UIAlertController(title: "Report", message: "Are you sure you wish to report this item as inappropriate?", preferredStyle: .Alert)
+        
+        reportAlert.addAction(UIAlertAction(title: "Yes", style: .Default, handler: { (action) in
+            print("OK Clicked")
+        }))
+        
+        reportAlert.addAction(UIAlertAction(title: "No", style: .Cancel, handler: { (action) in
+            print("No Clicked")
+        }))
+        
+        presentViewController(reportAlert, animated: true, completion: nil)
+    }
+    
 }
