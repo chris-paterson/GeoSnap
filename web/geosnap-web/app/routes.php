@@ -12,9 +12,16 @@
 */
 
 use Parse\ParseObject;
-Parse\ParseClient::initialize('yRxNdukOZCMQD9jRrxRMevl6mlEy8uA0M9TgAvmF', 
+use Parse\ParseClient;
+use Parse\ParseUser;
+
+session_start();
+
+ParseClient::initialize('yRxNdukOZCMQD9jRrxRMevl6mlEy8uA0M9TgAvmF', 
         'mEmX6ZTOkZj2pfsN0nb8ZQNnUjWkFGuQSKNsqJjm', 
         'VlJkPaGucGAyN9SarlnZF55yd6pd6SfCkeLC1oOD');
+
+ParseClient::setStorage( new Parse\ParseSessionStorage() );
 
 
 Route::get('/', array(
@@ -31,7 +38,8 @@ Route::post('login', function () {
     $userInfo = Input::only('username', 'password');
 
     try {
-        $user = Parse\ParseUser::logIn($userInfo["username"], $userInfo["password"]);
+        $user = ParseUser::logIn($userInfo["username"], $userInfo["password"]);
+
         if ($user->isAdmin) {
           return Redirect::route("home");
         }
@@ -40,11 +48,4 @@ Route::post('login', function () {
 
     return Redirect::route('login')
         ->withInput();
-
-
-    // try {
-    //   $user = ParseUser::logIn("Chris", "a");
-    // } catch (ParseException $error) {
-    //   // The login failed. Check error to see why.
-    // }
 });

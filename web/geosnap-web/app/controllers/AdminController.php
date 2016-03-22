@@ -1,9 +1,17 @@
 <?php
+use Parse\ParseUser;
+use Parse\ParseClient;
 
 class AdminController extends \BaseController {
-
 	public function home() {
-		$username = Parse\ParseUser::getCurrentUser();
+		$currentUser = ParseUser::getCurrentUser();
+		$username = $currentUser->getUsername();
+
+		// if ($currentUser) {
+		// 	$username = $currentUser->getUsername();
+		// } else {
+		// 	$username = "no username";
+		// }
 
 		return View::make('master', compact('username'));
 	}
