@@ -51,8 +51,11 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
         retrieveUserLike()
         retrieveCommentsForPost()
         
-        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: "longPressComment:")
-        self.view.addGestureRecognizer(longPressRecognizer)
+        let longPressRecognizerComment = UILongPressGestureRecognizer(target: self, action: "longPressComment:")
+        self.view.addGestureRecognizer(longPressRecognizerComment)
+        
+        let longPressRecognizerPhoto = UILongPressGestureRecognizer(target: self, action: "longPressPhoto:")
+        self.postPhoto.addGestureRecognizer(longPressRecognizerPhoto)
         
     }
 
@@ -303,13 +306,20 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
             }
         }
     }
+    
+    func longPressPhoto(longPressGestureRecognizer: UILongPressGestureRecognizer) {
+        if longPressGestureRecognizer.state == UIGestureRecognizerState.Began {
+            post.objectId = postId
+            showReportDialog(post)
+        }
+    }
         
     
-    func showReportDialog(commentToReport: PFObject) {
-        let reportAlert = UIAlertController(title: "Report", message: "Are you sure you wish to report this item as inappropriate?", preferredStyle: .Alert)
+    func showReportDialog(itemToReport: PFObject) {
+        let reportAlert = UIAlertController(title: "Report", message: "Are you sure you wish to report this \(itemToReport.parseClassName.lowercaseString) as inappropriate?", preferredStyle: .Alert)
         
         let confirmAction = UIAlertAction(title: "OK", style: .Default) { (action) in
-            self.report(commentToReport)
+            self.report(itemToReport)
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .Destructive, handler: nil)
@@ -325,7 +335,7 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
         
         report["class"] = itemToReport.parseClassName
         report["reporter"] = PFUser.currentUser()
-        report["reportedItem"] = itemToReport
+        report["reportedItem"] = itemToReport.objectId
         
         report.saveInBackground()
         
