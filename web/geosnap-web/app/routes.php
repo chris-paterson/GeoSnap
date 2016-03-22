@@ -10,22 +10,17 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+
 use Parse\ParseObject;
 Parse\ParseClient::initialize('yRxNdukOZCMQD9jRrxRMevl6mlEy8uA0M9TgAvmF', 
         'mEmX6ZTOkZj2pfsN0nb8ZQNnUjWkFGuQSKNsqJjm', 
         'VlJkPaGucGAyN9SarlnZF55yd6pd6SfCkeLC1oOD');
 
-Route::get('/', function() {
-    // $app_id, $rest_key, $master_key
-    
 
-    $testObject = ParseObject::create("TestObject");
-    $testObject->set("foo", "bar");
-    $testObject->save();
-
-	return View::make('master');
-});
-
+Route::get('/', array(
+    'as' => 'home',
+    'uses' => 'AdminController@home'
+));
 
 Route::get('login', array(
     'as' => 'login',
@@ -33,10 +28,23 @@ Route::get('login', array(
 ));
 
 Route::post('login', function () {
-    if (Auth::attempt(Input::only('username', 'password'))) {
-        return View::make('master');
-    } else {
-        return Redirect::route('login')
-            ->withInput();
+    $userInfo = Input::only('username', 'password');
+
+    try {
+        $user = Parse\ParseUser::logIn($userInfo["username"], $userInfo["password"]);
+        if ($user->isAdmin) {
+          return Redirect::route("home");
+        }
+    } catch (ParseException $error) {
     }
+
+    return Redirect::route('login')
+        ->withInput();
+
+
+    // try {
+    //   $user = ParseUser::logIn("Chris", "a");
+    // } catch (ParseException $error) {
+    //   // The login failed. Check error to see why.
+    // }
 });

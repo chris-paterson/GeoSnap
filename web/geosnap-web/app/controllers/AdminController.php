@@ -1,9 +1,11 @@
 <?php
 
-class UserController extends \BaseController {
+class AdminController extends \BaseController {
 
-	public function login() {
-		return View::make('login');
+	public function home() {
+		$username = Parse\ParseUser::getCurrentUser();
+
+		return View::make('master', compact('username'));
 	}
 
 	/**
