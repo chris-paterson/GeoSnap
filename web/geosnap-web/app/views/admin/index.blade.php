@@ -35,7 +35,7 @@
 
 
       <div role="tabpanel" class="tab-pane" id="posts">
-        <table id="reported-posts">
+        <table id="reported-posts" width="100%">
           <thead>
             <tr>
               <th>Photo</th>
@@ -47,7 +47,7 @@
               <tr>
                 <td>
                   <a onclick="setModalImage(this)" href="" data-toggle="modal" data-target="#photo-modal" data-src="{{ $post->get('photo')->getURL() }}">
-                    <img src="{{ $post->get('photo')->getURL() }}" width="64" height="64" />
+                    <img src="{{ $post->get('photo')->getURL() }}" height="64px" />
                   </a>
                 </td>
                 <td>
@@ -88,8 +88,8 @@
 
   <script type="text/javascript">
   $(document).ready(function() {
-    $('#reported-posts').DataTable();
-    $('#reported-comments').DataTable();
+    $('#reported-posts').DataTable({"bSort" : false, bFilter: false, "bLengthChange": false});
+    $('#reported-comments').DataTable({"bSort" : false, bFilter: false, "bLengthChange": false,});
     
     $('#comments').click(function (e) {
       e.preventDefault()
@@ -118,6 +118,7 @@
           objectId: element.getAttribute("data-id"),
         }
       }).done(function(msg) {
+        element.closest("tr").remove();
       })
     }
   </script>

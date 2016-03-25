@@ -1,8 +1,7 @@
 # TODO
 
 ## Web
-1. Make delete/forgive work.
-2. Clean up view.
+1. Make delete work.
 3. Auth checks.
 5. Log out.
 
