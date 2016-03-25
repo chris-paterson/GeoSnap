@@ -64,8 +64,11 @@ class AdminController extends \BaseController {
 		$query = new ParseQuery('Report');
 		$query->equalTo('reportedItem', $objectInfo['objectId']);
 		$itemsToDestroy = $query->find();
-		$itemsToDestroy[0]->destroy();
-		// ParseObject::destroyAll($itemsToDestroy);
+
+		// Individually destroy each instance of report against the item as won't allow batch DELETE
+		foreach ($itemsToDestroy as $item) {
+			$item->destroy();
+		}
 
 		return "deleted";
 	}
