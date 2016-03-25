@@ -45,10 +45,15 @@ class AdminController extends \BaseController {
 		error_log('num comments:' + count($reportedComments));
 		error_log('num posts:' + count($reportedPosts));
 
-		// $query->containedIn("playerName", ["Jonathan Walsh", "Dario Wunsch", "Shawn Simon"]);
+		$commentQuery = new ParseQuery("Comment");
+		$commentQuery->containedIn("objectId", $reportedComments);
+		$comments = $commentQuery->find();
 
+		$postQuery = new ParseQuery("Post");
+		$postQuery->containedIn("objectId", $reportedPosts);
+		$posts = $postQuery->find();
 
-		return View::make('admin.index', compact('reportedItems'));
+		return View::make('admin.index', compact('comments', 'posts'));
 	}
 
 

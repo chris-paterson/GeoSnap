@@ -12,19 +12,17 @@
     <!-- Tab panes -->
     <div class="tab-content">
       <div role="tabpanel" class="tab-pane active" id="comments">
-        <table id="reported-items">
+        <table id="reported-comments">
           <thead>
             <tr>
-              <th>Reported Item</th>
-              <th>Type</th>
+              <th>Comment</th>
               <th>Action</th> <!-- Delete/Not offensive -->
             </tr>
           </thead>
           <tbody>
-            @foreach($reportedItems as $item)
+            @foreach($comments as $comment)
               <tr>
-                <td>{{{ $item->getObjectId() }}}</td>
-                <td>{{{ $item->get('class') }}}</td>
+                <td>{{{ $comment->get('comment') }}}</td>
                 <td>
                   <button type="button" class="btn btn-default">It's Fine</button>
                   <button type="button" class="btn btn-danger">Delete Item</button>
@@ -37,7 +35,25 @@
 
 
       <div role="tabpanel" class="tab-pane" id="posts">
-        sdfsdf
+        <table id="reported-posts">
+          <thead>
+            <tr>
+              <th>Photo</th>
+              <th>Action</th> <!-- Delete/Not offensive -->
+            </tr>
+          </thead>
+          <tbody>
+            @foreach($posts as $post)
+              <tr>
+                <td><img src="{{ $post->get('photo')->getURL() }}" width="64" height="64"></td>
+                <td>
+                  <button type="button" class="btn btn-default">It's Fine</button>
+                  <button type="button" class="btn btn-danger">Delete Item</button>
+                </td>
+              </tr>
+            @endforeach
+          </tbody>
+        </table>
       </div>
     </div>
 
@@ -54,7 +70,8 @@
 
   <script type="text/javascript">
   $(document).ready(function() {
-    $('#reported-items').DataTable();
+    $('#reported-posts').DataTable();
+    $('#reported-comments').DataTable();
     
     $('#comments').click(function (e) {
       e.preventDefault()
