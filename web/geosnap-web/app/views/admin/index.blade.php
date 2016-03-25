@@ -24,8 +24,8 @@
               <tr>
                 <td>{{{ $comment->get('comment') }}}</td>
                 <td>
-                  <button type="button" class="btn btn-default">It's Fine</button>
-                  <button type="button" class="btn btn-danger">Delete Item</button>
+                  <button type="button" class="btn btn-default">Allow</button>
+                  <button type="button" class="btn btn-danger">Delete</button>
                 </td>
               </tr>
             @endforeach
@@ -45,7 +45,11 @@
           <tbody>
             @foreach($posts as $post)
               <tr>
-                <td><img src="{{ $post->get('photo')->getURL() }}" width="64" height="64"></td>
+                <td>
+                  <a onclick="setModalImage(this)" href="" data-toggle="modal" data-target="#photo-modal" data-src="{{ $post->get('photo')->getURL() }}">
+                    <img src="{{ $post->get('photo')->getURL() }}" width="64" height="64" />
+                  </a>
+                </td>
                 <td>
                   <button type="button" class="btn btn-default">It's Fine</button>
                   <button type="button" class="btn btn-danger">Delete Item</button>
@@ -56,10 +60,25 @@
         </table>
       </div>
     </div>
-
   </div>
 
-
+  <!-- Modal -->
+  <div class="modal fade" id="photo-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+          <img id="photo-modal-image" src="" width="100%" height="100%"/>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 @stop
 
@@ -82,6 +101,15 @@
       e.preventDefault()
       $(this).tab('show')
     });
+
+    $('#photo-modal').modal({
+      show: false
+    });
   });
+
+  function setModalImage(element) {
+    console.log(element.getAttribute('data-src'));
+      $('#photo-modal-image').attr("src", element.getAttribute('data-src'));
+    }
   </script>
 @stop
