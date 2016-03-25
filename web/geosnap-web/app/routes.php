@@ -24,21 +24,6 @@ ParseClient::initialize('yRxNdukOZCMQD9jRrxRMevl6mlEy8uA0M9TgAvmF',
 ParseClient::setStorage( new Parse\ParseSessionStorage() );
 
 
-Route::get('/', array(
-    'as' => 'home',
-    'uses' => 'AdminController@home'
-));
-
-Route::get('login', array(
-    'as' => 'login',
-    'uses' => 'UserController@login'
-));
-
-Route::get('index', array(
-    'as' => 'index',
-    'uses' => 'AdminController@index'
-));
-
 Route::post('login', function () {
     $userInfo = Input::only('username', 'password');
 
@@ -54,3 +39,28 @@ Route::post('login', function () {
     return Redirect::route('login')
         ->withInput();
 });
+
+Route::get('/', array(
+    'as' => 'home',
+    'uses' => 'AdminController@home'
+));
+
+Route::get('login', array(
+    'as' => 'login',
+    'uses' => 'UserController@login'
+));
+
+Route::get('index', array(
+    'as' => 'index',
+    'uses' => 'AdminController@index'
+));
+
+Route::post('delete-item', array(
+    'as' => 'delete-item',
+    'uses' => 'AdminController@deleteItem'
+));
+
+Route::post('allow-item', array(
+    'as' => 'allow-item',
+    'uses' => 'AdminController@allowItem'
+));

@@ -24,7 +24,7 @@
               <tr>
                 <td>{{{ $comment->get('comment') }}}</td>
                 <td>
-                  <button type="button" class="btn btn-default">Allow</button>
+                  <button type="submit" onclick="allowItem(this)" data-id="{{ $comment->getObjectId() }}" class="btn btn-default">Allow</button>
                   <button type="button" class="btn btn-danger">Delete</button>
                 </td>
               </tr>
@@ -51,7 +51,7 @@
                   </a>
                 </td>
                 <td>
-                  <button type="button" class="btn btn-default">It's Fine</button>
+                  <button type="button" onclick="allowItem(this)" data-id="{{ $post->getObjectId() }}" class="btn btn-default">Allow</button>
                   <button type="button" class="btn btn-danger">Delete Item</button>
                 </td>
               </tr>
@@ -74,7 +74,6 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>
@@ -108,8 +107,18 @@
   });
 
   function setModalImage(element) {
-    console.log(element.getAttribute('data-src'));
-      $('#photo-modal-image').attr("src", element.getAttribute('data-src'));
+    $('#photo-modal-image').attr("src", element.getAttribute('data-src'));
+  }
+
+    function allowItem(element) {
+      $.ajax({
+        type: "POST",
+        url: "{{ route('allow-item') }}",
+        data: {
+          objectId: element.getAttribute("data-id"),
+        }
+      }).done(function(msg) {
+      })
     }
   </script>
 @stop

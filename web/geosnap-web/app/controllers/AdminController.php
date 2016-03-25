@@ -2,6 +2,7 @@
 use Parse\ParseUser;
 use Parse\ParseClient;
 use Parse\ParseQuery;
+use Parse\ParseObject;
 
 class AdminController extends \BaseController {
 	public function home() {
@@ -42,9 +43,6 @@ class AdminController extends \BaseController {
 			}
 		}
 
-		error_log('num comments:' + count($reportedComments));
-		error_log('num posts:' + count($reportedPosts));
-
 		$commentQuery = new ParseQuery("Comment");
 		$commentQuery->containedIn("objectId", $reportedComments);
 		$comments = $commentQuery->find();
@@ -54,6 +52,28 @@ class AdminController extends \BaseController {
 		$posts = $postQuery->find();
 
 		return View::make('admin.index', compact('comments', 'posts'));
+	}
+
+	public function deleteItem() {
+		// Need class and id
+	}
+
+	public function allowItem() {
+		$objectInfo = Input::only('objectId');
+
+		$query = new ParseQuery('Report');
+		$query->equalTo('reportedItem', $objectInfo['objectId']);
+		$itemsToDestroy = $query->find();
+		$itemsToDestroy[0]->destroy();
+		// ParseObject::destroyAll($itemsToDestroy);
+
+		return "deleted";
+	}
+
+	// Since both forgiving and deleting an item invovle removing from a table
+	// (comment/post or report), we can do it all in here.
+	private function removeFromTable($table, $id) {
+		
 	}
 
 
