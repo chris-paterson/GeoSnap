@@ -1,0 +1,11 @@
+# TODO
+
+## Web
+1. Make delete/forgive work.
+2. Clean up view.
+3. Auth checks.
+4. Modal for images.
+5. Log out.
+
+## Mobile
+1. Add checks for longpressgesture
