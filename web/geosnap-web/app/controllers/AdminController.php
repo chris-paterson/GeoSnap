@@ -22,6 +22,32 @@ class AdminController extends \BaseController {
 		$query = new ParseQuery("Report");
 		$reportedItems = $query->find();
 
+
+		// php doesn't have sets so we must create one...
+		$reportedComments = [];
+		$reportedPosts = [];
+
+		foreach ($reportedItems as $reportedItem) {
+			$reportedClass = $reportedItem->get('class');
+			$reportedId = $reportedItem->get('reportedItem');
+
+			if ($reportedClass == "Comment") {
+				if (!in_array($reportedId, $reportedComments)) {
+					array_push($reportedComments ,$reportedId);
+				}
+			} else {
+				if (!in_array($reportedId, $reportedPosts)) {
+					array_push($reportedPosts, $reportedId);
+				}
+			}
+		}
+
+		error_log('num comments:' + count($reportedComments));
+		error_log('num posts:' + count($reportedPosts));
+
+		// $query->containedIn("playerName", ["Jonathan Walsh", "Dario Wunsch", "Shawn Simon"]);
+
+
 		return View::make('admin.index', compact('reportedItems'));
 	}
 
