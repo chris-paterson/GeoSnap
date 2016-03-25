@@ -34,6 +34,11 @@ Route::get('login', array(
     'uses' => 'UserController@login'
 ));
 
+Route::get('index', array(
+    'as' => 'index',
+    'uses' => 'AdminController@index'
+));
+
 Route::post('login', function () {
     $userInfo = Input::only('username', 'password');
 

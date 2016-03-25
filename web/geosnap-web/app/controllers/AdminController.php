@@ -1,17 +1,12 @@
 <?php
 use Parse\ParseUser;
 use Parse\ParseClient;
+use Parse\ParseQuery;
 
 class AdminController extends \BaseController {
 	public function home() {
 		$currentUser = ParseUser::getCurrentUser();
 		$username = $currentUser->getUsername();
-
-		// if ($currentUser) {
-		// 	$username = $currentUser->getUsername();
-		// } else {
-		// 	$username = "no username";
-		// }
 
 		return View::make('master', compact('username'));
 	}
@@ -23,7 +18,11 @@ class AdminController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		// Get reported items
+		$query = new ParseQuery("Report");
+		$reportedItems = $query->find();
+
+		return View::make('admin.index', compact('reportedItems'));
 	}
 
 
