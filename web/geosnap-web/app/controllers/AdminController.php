@@ -55,30 +55,30 @@ class AdminController extends \BaseController {
 	}
 
 	public function deleteItem() {
-		// Need class and id
+		$objectInfo = Input::only('objectId', 'objectClass');
+
+		$query = new ParseQuery($objectInfo['objectClass']);
+		$objectToDestroy = $query->get($objectInfo['objectId']);
+		$objectToDestroy->destroy();
+
+		$this->removeAllFromReportTable($objectInfo['objectId']);
 	}
 
 	public function allowItem() {
 		$objectInfo = Input::only('objectId');
+		$this->removeAllFromReportTable($objectInfo['objectId']);
+	}
 
+	private function removeAllFromReportTable($objectId) {
 		$query = new ParseQuery('Report');
-		$query->equalTo('reportedItem', $objectInfo['objectId']);
+		$query->equalTo('reportedItem', $objectId);
 		$itemsToDestroy = $query->find();
 
 		// Individually destroy each instance of report against the item as won't allow batch DELETE
 		foreach ($itemsToDestroy as $item) {
 			$item->destroy();
 		}
-
-		return "deleted";
 	}
-
-	// Since both forgiving and deleting an item invovle removing from a table
-	// (comment/post or report), we can do it all in here.
-	private function removeFromTable($table, $id) {
-		
-	}
-
 
 	/**
 	 * Show the form for creating a new resource.

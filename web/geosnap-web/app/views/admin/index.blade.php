@@ -25,7 +25,7 @@
                 <td>{{{ $comment->get('comment') }}}</td>
                 <td>
                   <button type="submit" onclick="allowItem(this)" data-id="{{ $comment->getObjectId() }}" class="btn btn-default">Allow</button>
-                  <button type="button" class="btn btn-danger">Delete</button>
+                  <button type="button" onclick="deleteItem(this)" class="btn btn-danger" data-id="{{ $comment->getObjectId() }}" data-class="Comment">Delete</button>
                 </td>
               </tr>
             @endforeach
@@ -39,6 +39,7 @@
           <thead>
             <tr>
               <th>Photo</th>
+              <th>Description</th>
               <th>Action</th> <!-- Delete/Not offensive -->
             </tr>
           </thead>
@@ -51,8 +52,11 @@
                   </a>
                 </td>
                 <td>
+                  {{ $post->get('comment') }}
+                </td>
+                <td>
                   <button type="button" onclick="allowItem(this)" data-id="{{ $post->getObjectId() }}" class="btn btn-default">Allow</button>
-                  <button type="button" class="btn btn-danger">Delete Item</button>
+                  <button type="button" onclick="deleteItem(this)" class="btn btn-danger" data-id="{{ $post->getObjectId() }}" data-class="Post">Delete Item</button>
                 </td>
               </tr>
             @endforeach
@@ -116,6 +120,19 @@
         url: "{{ route('allow-item') }}",
         data: {
           objectId: element.getAttribute("data-id"),
+        }
+      }).done(function(msg) {
+        element.closest("tr").remove();
+      })
+    }
+
+    function deleteItem(element) {
+      $.ajax({
+        type: "POST",
+        url: "{{ route('delete-item') }}",
+        data: {
+          objectId: element.getAttribute("data-id"),
+          objectClass: element.getAttribute("data-class")
         }
       }).done(function(msg) {
         element.closest("tr").remove();
