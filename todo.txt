@@ -1,6 +1,7 @@
 # TODO
 
 ## Web
+1. invalid login causes ‘invalid login parameters’ error.
 
 ## Mobile
 1. Add checks for longpressgesture.
