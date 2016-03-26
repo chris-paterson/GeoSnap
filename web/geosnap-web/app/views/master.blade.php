@@ -31,7 +31,7 @@
               <!-- <li class="active"><a href="#">Home</a></li> -->
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="./">Log out</a></li>
+              <li>{{ link_to('logout', 'Log Out' )}}</li>
               <!-- <li>Log out</li> -->
             </ul>
           </div><!--/.nav-collapse -->

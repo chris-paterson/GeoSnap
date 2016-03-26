@@ -40,27 +40,32 @@ Route::post('login', function () {
         ->withInput();
 });
 
-Route::get('/', array(
-    'as' => 'home',
-    'uses' => 'AdminController@home'
-));
-
 Route::get('login', array(
     'as' => 'login',
     'uses' => 'UserController@login'
 ));
 
-Route::get('index', array(
-    'as' => 'index',
-    'uses' => 'AdminController@index'
-));
 
-Route::post('delete-item', array(
-    'as' => 'delete-item',
-    'uses' => 'AdminController@deleteItem'
-));
+Route::group(['before' => 'auth'], function () {
+    Route::get('logout', function() {
+        ParseUser::logOut();
+        return Redirect::route('login');
+    });
 
-Route::post('allow-item', array(
-    'as' => 'allow-item',
-    'uses' => 'AdminController@allowItem'
-));
+    Route::get('/', array(
+        'as' => 'home',
+        'uses' => 'AdminController@index'
+    ));
+
+
+
+    Route::post('delete-item', array(
+        'as' => 'delete-item',
+        'uses' => 'AdminController@deleteItem'
+    ));
+
+    Route::post('allow-item', array(
+        'as' => 'allow-item',
+        'uses' => 'AdminController@allowItem'
+    ));
+});

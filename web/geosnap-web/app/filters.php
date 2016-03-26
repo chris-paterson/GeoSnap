@@ -1,5 +1,5 @@
 <?php
-
+use Parse\ParseUser;
 /*
 |--------------------------------------------------------------------------
 | Application & Route Filters
@@ -13,7 +13,7 @@
 
 App::before(function($request)
 {
-	//
+	
 });
 
 
@@ -35,16 +35,8 @@ App::after(function($request, $response)
 
 Route::filter('auth', function()
 {
-	if (Auth::guest())
-	{
-		if (Request::ajax())
-		{
-			return Response::make('Unauthorized', 401);
-		}
-		else
-		{
-			return Redirect::guest('login');
-		}
+	if (ParseUser::getCurrentUser() == null) {
+		return Redirect::route('login');
 	}
 });
 
