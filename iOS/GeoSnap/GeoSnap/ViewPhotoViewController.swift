@@ -316,7 +316,7 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
             self.report(itemToReport)
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Destructive, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
         
         reportAlert.addAction(confirmAction)
         reportAlert.addAction(cancelAction)

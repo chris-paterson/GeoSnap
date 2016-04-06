@@ -24,6 +24,7 @@ class ManagePostsViewController: ViewControllerParent, UITableViewDataSource, UI
         super.viewDidLoad()
         
         postTableView.tableFooterView = UIView() // Hide empty cells in comments table
+        postTableView.allowsSelection = false
         populateTableView()
     }
     
@@ -91,6 +92,33 @@ class ManagePostsViewController: ViewControllerParent, UITableViewDataSource, UI
         cell.postDate.text = "\(date) at \(time)"
 
         return cell
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            showDeleteConformation(userPosts[indexPath.row].postInformation, indexPath: indexPath)
+        }
+    }
+    
+    func showDeleteConformation(postToDelete: PFObject, indexPath: NSIndexPath) {
+        let confirmAlert = UIAlertController(title: "Delete", message: "This action is irreversible. Are you sure you wish to delete this post?", preferredStyle: .Alert)
+        
+        let confirmAction = UIAlertAction(title: "Delete", style: .Destructive) { (action) in
+            self.userPosts.removeAtIndex(indexPath.row)
+            self.postTableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+            self.deletePost(postToDelete)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
+        
+        confirmAlert.addAction(confirmAction)
+        confirmAlert.addAction(cancelAction)
+        
+        presentViewController(confirmAlert, animated: true, completion: nil)
+    }
+    
+    func deletePost(postToDelete: PFObject) {
+        postToDelete.deleteInBackground()
     }
 
 
