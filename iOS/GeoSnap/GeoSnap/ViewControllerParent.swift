@@ -52,4 +52,15 @@ class ViewControllerParent: UIViewController, CLLocationManagerDelegate {
     func stopSpinner(spinner: UIActivityIndicatorView) {
         spinner.stopAnimating()
     }
+    
+    func humanReadableDate(createdAt: NSDate) -> (String, String) {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd'/'MM'/'yyyy'"
+        let date = dateFormatter.stringFromDate(createdAt)
+        
+        dateFormatter.dateFormat = "HH:mm"
+        let time = dateFormatter.stringFromDate(createdAt)
+        
+        return (date, time)
+    }
 }

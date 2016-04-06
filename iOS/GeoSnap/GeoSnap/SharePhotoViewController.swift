@@ -29,7 +29,7 @@ class SharePhotoViewController: ViewControllerParent, UINavigationControllerDele
         super.viewDidLoad()
         
         // Dismiss keyboard when user clicks outside of it.
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "dismissKeyboard"))
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(SharePhotoViewController.dismissKeyboard)))
         
         spinner = UIActivityIndicatorView(frame: CGRectMake(0, 0, 50, 50))
         

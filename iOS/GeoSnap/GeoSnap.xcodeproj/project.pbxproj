@@ -34,6 +34,8 @@
 		5A4695AD1C67C402008D6413 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A4695A41C67C402008D6413 /* SystemConfiguration.framework */; };
 		5AA9DE651C6E07150038D5E4 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA9DE641C6E07150038D5E4 /* ImageCollectionViewCell.swift */; };
 		5AA9DE6E1C722C090038D5E4 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA9DE6D1C722C090038D5E4 /* CommentTableViewCell.swift */; };
+		5AE151D61CB50F6A00AB4965 /* ManagePostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE151D51CB50F6A00AB4965 /* ManagePostsViewController.swift */; };
+		5AE151D81CB5103500AB4965 /* ManagePhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE151D71CB5103500AB4965 /* ManagePhotosTableViewCell.swift */; };
 		5AE8A91A1C8440F50072E277 /* PostsCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE8A9191C8440F50072E277 /* PostsCollectionHeaderView.swift */; };
 		5AE8A91C1C845E010072E277 /* FullscreenPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE8A91B1C845E010072E277 /* FullscreenPhotoViewController.swift */; };
 		5E8A9125E41A306874868C33 /* Pods_GeoSnapUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1411C80734DCCFA7D2A5AD8C /* Pods_GeoSnapUITests.framework */; };
@@ -90,6 +92,8 @@
 		5A4695A41C67C402008D6413 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5AA9DE641C6E07150038D5E4 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		5AA9DE6D1C722C090038D5E4 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		5AE151D51CB50F6A00AB4965 /* ManagePostsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagePostsViewController.swift; sourceTree = "<group>"; };
+		5AE151D71CB5103500AB4965 /* ManagePhotosTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagePhotosTableViewCell.swift; sourceTree = "<group>"; };
 		5AE8A9191C8440F50072E277 /* PostsCollectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsCollectionHeaderView.swift; sourceTree = "<group>"; };
 		5AE8A91B1C845E010072E277 /* FullscreenPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullscreenPhotoViewController.swift; sourceTree = "<group>"; };
 		688F3C079DA54CC48C4E9D3F /* Pods-GeoSnap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoSnap.release.xcconfig"; path = "Pods/Target Support Files/Pods-GeoSnap/Pods-GeoSnap.release.xcconfig"; sourceTree = "<group>"; };
@@ -232,6 +236,7 @@
 				5AE8A91B1C845E010072E277 /* FullscreenPhotoViewController.swift */,
 				5A105CFB1C68BE070095666A /* SharePhotoViewController.swift */,
 				5A4695941C67C3A6008D6413 /* SettingsViewController.swift */,
+				5AE151D51CB50F6A00AB4965 /* ManagePostsViewController.swift */,
 				5A4695931C67C3A6008D6413 /* LoginViewController.swift */,
 				5A4695951C67C3A6008D6413 /* SignUpViewController.swift */,
 			);
@@ -244,6 +249,7 @@
 				5AA9DE641C6E07150038D5E4 /* ImageCollectionViewCell.swift */,
 				5AA9DE6D1C722C090038D5E4 /* CommentTableViewCell.swift */,
 				5AE8A9191C8440F50072E277 /* PostsCollectionHeaderView.swift */,
+				5AE151D71CB5103500AB4965 /* ManagePhotosTableViewCell.swift */,
 			);
 			name = Layouts;
 			sourceTree = "<group>";
@@ -533,11 +539,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A4695971C67C3A6008D6413 /* LoginViewController.swift in Sources */,
+				5AE151D81CB5103500AB4965 /* ManagePhotosTableViewCell.swift in Sources */,
 				5AE8A91C1C845E010072E277 /* FullscreenPhotoViewController.swift in Sources */,
 				5AE8A91A1C8440F50072E277 /* PostsCollectionHeaderView.swift in Sources */,
 				5A4695961C67C3A6008D6413 /* HomeViewController.swift in Sources */,
 				5A105D001C68C63E0095666A /* ViewControllerParent.swift in Sources */,
 				5A4695991C67C3A6008D6413 /* SignUpViewController.swift in Sources */,
+				5AE151D61CB50F6A00AB4965 /* ManagePostsViewController.swift in Sources */,
 				5A105D081C68FC720095666A /* ViewPhotoViewController.swift in Sources */,
 				5A105CFD1C68BE070095666A /* SharePhotoViewController.swift in Sources */,
 				5AA9DE651C6E07150038D5E4 /* ImageCollectionViewCell.swift in Sources */,

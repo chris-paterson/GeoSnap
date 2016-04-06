@@ -51,10 +51,10 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
         retrieveUserLike()
         retrieveCommentsForPost()
         
-        let longPressRecognizerComment = UILongPressGestureRecognizer(target: self, action: "longPressComment:")
+        let longPressRecognizerComment = UILongPressGestureRecognizer(target: self, action: #selector(ViewPhotoViewController.longPressComment(_:)))
         self.view.addGestureRecognizer(longPressRecognizerComment)
         
-        let longPressRecognizerPhoto = UILongPressGestureRecognizer(target: self, action: "longPressPhoto:")
+        let longPressRecognizerPhoto = UILongPressGestureRecognizer(target: self, action: #selector(ViewPhotoViewController.longPressPhoto(_:)))
         self.postPhoto.addGestureRecognizer(longPressRecognizerPhoto)
         
     }
@@ -88,13 +88,7 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
         postComment.text = post["comment"] as? String
         
         let creator: String! = post["creator"].username
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "dd'/'MM'/'yyyy'"
-        let date = dateFormatter.stringFromDate((post.createdAt as NSDate?)!)
-        
-        dateFormatter.dateFormat = "HH:mm"
-        let time = dateFormatter.stringFromDate((post.createdAt as NSDate?)!)
-        
+        let (date, time) = super.humanReadableDate(post.createdAt!)
         creatorUsername.text = "\(creator) on \(date) at \(time)"
         
         retrieveAndPopulateTags()

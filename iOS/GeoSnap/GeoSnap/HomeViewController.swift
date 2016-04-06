@@ -43,7 +43,7 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl.addTarget(self, action: #selector(HomeViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
         imageCollectionView!.addSubview(refreshControl)
         
         spinner = UIActivityIndicatorView(frame: CGRectMake(0, 0, 50, 50))

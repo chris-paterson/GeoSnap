@@ -16,7 +16,7 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
         
         let currentUsername: String! = PFUser.currentUser()?.username
-        loggedInLabel.text = "You are currently logged in as \(currentUsername)"
+        loggedInLabel.text = "\(currentUsername)"
     }
 
     override func didReceiveMemoryWarning() {
