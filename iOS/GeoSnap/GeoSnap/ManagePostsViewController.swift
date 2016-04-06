@@ -42,7 +42,7 @@ class ManagePostsViewController: ViewControllerParent, UITableViewDataSource, UI
                 for returnedPost in retrievedPosts {
                     let newPost = Post(postInformation: returnedPost, photo: UIImage(named: "polaroid.pdf")!)
                     self.userPosts.append(newPost)
-//                    self.postTableView.reloadData()
+                    self.postTableView.reloadData()
                     self.getThumbnailForPost(index)
                     index+=1
                 }
@@ -84,7 +84,7 @@ class ManagePostsViewController: ViewControllerParent, UITableViewDataSource, UI
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! ManagePhotosTableViewCell
         let post = userPosts[indexPath.row]
         
-        cell.photoThumbnail.image = UIImage(named: "polaroid.pdf")!
+        cell.photoThumbnail.image = post.photo
         cell.postComment.text = post.postInformation["comment"] as? String
         
         let (date, time) = super.humanReadableDate(post.postInformation.createdAt!)
