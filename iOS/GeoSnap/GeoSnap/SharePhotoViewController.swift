@@ -162,6 +162,8 @@ class SharePhotoViewController: ViewControllerParent, UINavigationControllerDele
         userHasTakenPhoto = false
         comment.text = ""
         imageView.image = UIImage(named: "polaroid.pdf")
+        tags.removeAll()
+        tagListView.removeAllTags()
     }
     
     
