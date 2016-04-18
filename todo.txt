@@ -1,8 +1,10 @@
 # TODO
 
 ## Web
-1. invalid login causes ‘invalid login parameters’ error.
+1. invalid login causes ‘invalid login parameters’ error
+	- Turns out this is just invalid username/password.
 
 ## Mobile
 1. Add checks for longpressgesture.
 2. Experiments with thumbnails.
+3. Cascade deletes.
