@@ -23,6 +23,10 @@ ParseClient::initialize('yRxNdukOZCMQD9jRrxRMevl6mlEy8uA0M9TgAvmF',
 
 ParseClient::setStorage( new Parse\ParseSessionStorage() );
 
+Route::get('login', array(
+    'as' => 'login',
+    'uses' => 'UserController@login'
+));
 
 Route::post('login', function () {
     $userInfo = Input::only('username', 'password');
@@ -34,16 +38,12 @@ Route::post('login', function () {
           return Redirect::route("home");
         }
     } catch (ParseException $error) {
+        
     }
 
     return Redirect::route('login')
         ->withInput();
 });
-
-Route::get('login', array(
-    'as' => 'login',
-    'uses' => 'UserController@login'
-));
 
 
 Route::group(['before' => 'auth'], function () {

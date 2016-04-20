@@ -26,7 +26,8 @@ $app = new Illuminate\Foundation\Application;
 
 $env = $app->detectEnvironment(array(
 
-	'local' => array('Hyperion.local'),
+	'local' => array('Hyperion.local', 
+                    'v1201-0a984de5.wifi.cf.ac.uk'),
 
 ));
 
