@@ -87,6 +87,14 @@ class SharePhotoViewController: ViewControllerParent, UINavigationControllerDele
         post["photo"] = PFFile(name: "image.jpg", data:photoData)
         post["location"] = PFGeoPoint(latitude: coords!.latitude, longitude: coords!.longitude)
         
+//        if (Reachability.connectedToNetwork()) {
+            saveInBackground(post)
+//        } else {
+//            saveEventually(post)
+//        }
+    }
+    
+    func saveInBackground(post: PFObject) {
         post.saveInBackgroundWithBlock { (success, error) -> Void in
             // Re-enable interaction
             UIApplication.sharedApplication().endIgnoringInteractionEvents()
@@ -107,8 +115,24 @@ class SharePhotoViewController: ViewControllerParent, UINavigationControllerDele
                 self.displayAlert("Error saving post", message: errorMessage)
             }
         }
-
     }
+    
+    func saveEventually(post: PFObject) {
+        // Re-enable interaction
+        UIApplication.sharedApplication().endIgnoringInteractionEvents()
+        super.stopSpinner(self.spinner)
+        
+        post.saveEventually()
+        let alert = UIAlertController(title: "No network connection",
+                                      message: "Photo will be uploaded once network connection has been restored.",
+                                      preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) in
+            self.resetElements()
+        }))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
     
     func saveTags(id: String) {
         var tagsToSave = [PFObject]()
