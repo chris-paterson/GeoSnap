@@ -44,6 +44,9 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
             switch source {
             case .GeoSnap:
                 retrievePost()
+                
+                let longPressRecognizerPhoto = UILongPressGestureRecognizer(target: self, action: #selector(ViewPhotoViewController.longPressPhoto(_:)))
+                self.postPhoto.addGestureRecognizer(longPressRecognizerPhoto)
             case.Flickr:
                 flickrPopulateView()
             }
@@ -51,12 +54,9 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
         retrieveUserLike()
         retrieveCommentsForPost()
         
+        // User is able to report comments but not photos from flickr. 
         let longPressRecognizerComment = UILongPressGestureRecognizer(target: self, action: #selector(ViewPhotoViewController.longPressComment(_:)))
         self.view.addGestureRecognizer(longPressRecognizerComment)
-        
-        let longPressRecognizerPhoto = UILongPressGestureRecognizer(target: self, action: #selector(ViewPhotoViewController.longPressPhoto(_:)))
-        self.postPhoto.addGestureRecognizer(longPressRecognizerPhoto)
-        
     }
 
     override func didReceiveMemoryWarning() {
