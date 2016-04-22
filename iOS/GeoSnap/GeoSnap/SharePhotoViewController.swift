@@ -79,7 +79,8 @@ class SharePhotoViewController: ViewControllerParent, UINavigationControllerDele
         displaySpinner(spinner)
         UIApplication.sharedApplication().beginIgnoringInteractionEvents() // Prevent the user from pressing buttons while working.
         
-        let compressionQuality: CGFloat = 0.7
+        post = PFObject(className: "Post")
+        let compressionQuality: CGFloat = 0.5
         let photoData = UIImageJPEGRepresentation(imageView.image!, compressionQuality)!
         let thumbnailData = UIImageJPEGRepresentation(createThumbnail(imageView.image!), compressionQuality)!
         let coords = locationManager.location?.coordinate
