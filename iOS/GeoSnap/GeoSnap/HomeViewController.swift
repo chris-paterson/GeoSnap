@@ -213,6 +213,7 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
                 viewPhotoViewController.postId = post!.postInformation["objectId"] as! String
                 viewPhotoViewController.postSource = PostSource.Flickr
                 viewPhotoViewController.photo = post!.photo
+                viewPhotoViewController.flickrFullImageURL = post!.postInformation["urlFullImage"] as! String
             default: // Should never happen
                 print("Error: No post found")
             }
@@ -285,7 +286,8 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
                     let postInformation = PFObject(className: "postInformation")
                     postInformation["date"] = photoEntry.valueForKey("datetaken")
                     postInformation["objectId"] = photoEntry.valueForKey("id")
-                    postInformation["url"] = photoEntry.valueForKey("url_m")
+                    postInformation["urlThumbnail"] = photoEntry.valueForKey("url_m")
+                    postInformation["urlFullImage"] = photoEntry.valueForKey("url_l")
                     
                     let placeholderPhoto = UIImage(named: "polaroid.pdf")!
                     
@@ -306,7 +308,7 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
     
     func getFlickrImageForPost(index: Int) {
         if !isRefreshing {
-            let urlString = flickrPostsAtLocation[index].postInformation["url"] as! String
+            let urlString = flickrPostsAtLocation[index].postInformation["urlThumbnail"] as! String
             let url = NSURL(string: urlString)
             let data = NSData(contentsOfURL: url!)
             

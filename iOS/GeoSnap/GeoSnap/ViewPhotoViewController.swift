@@ -27,6 +27,8 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
     var commentsForPost = [PFObject]()
     var photo: UIImage = UIImage(named: "polaroid.pdf")!
     
+    var flickrFullImageURL: String = String()
+    
     private var post: PFObject = PFObject(className: "Post")
     
     override func viewDidLoad() {
@@ -141,6 +143,16 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
     
     func flickrPopulateView() {
         creatorUsername.text = "Flickr"
+//        getFullImageFlickr()
+    }
+    
+    
+    func getFullImageFlickr() {
+        let url = NSURL(string: flickrFullImageURL)
+        let data = NSData(contentsOfURL: url!)
+        
+        let fullSizePhoto = UIImage(data: data!)!
+        photo = fullSizePhoto
     }
     
     
