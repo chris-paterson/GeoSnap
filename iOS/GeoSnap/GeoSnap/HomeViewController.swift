@@ -111,7 +111,7 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
     
     func getImageForPost(index: Int) {
         var post = geoSnapPostsAtLocation[index]
-        if let userImageFile = post.postInformation["photo"] as? PFFile {
+        if let userImageFile = post.postInformation["thumbnail"] as? PFFile {
             userImageFile.getDataInBackgroundWithBlock {
                 (imageData: NSData?, error: NSError?) -> Void in
                 if error == nil {

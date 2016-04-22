@@ -79,12 +79,15 @@ class SharePhotoViewController: ViewControllerParent, UINavigationControllerDele
         displaySpinner(spinner)
         UIApplication.sharedApplication().beginIgnoringInteractionEvents() // Prevent the user from pressing buttons while working.
         
-        let photoData = UIImageJPEGRepresentation(imageView.image!, 0.7)!
+        let compressionQuality: CGFloat = 0.7
+        let photoData = UIImageJPEGRepresentation(imageView.image!, compressionQuality)!
+        let thumbnailData = UIImageJPEGRepresentation(createThumbnail(imageView.image!), compressionQuality)!
         let coords = locationManager.location?.coordinate
         
         post["comment"] = comment.text
         post["creator"] = PFUser.currentUser()
-        post["photo"] = PFFile(name: "image.jpg", data:photoData)
+        post["photo"] = PFFile(name: "image.jpg", data: photoData)
+        post["thumbnail"] = PFFile(name: "thumbnail.jpg", data: thumbnailData)
         post["location"] = PFGeoPoint(latitude: coords!.latitude, longitude: coords!.longitude)
         
 //        if (Reachability.connectedToNetwork()) {
@@ -92,6 +95,21 @@ class SharePhotoViewController: ViewControllerParent, UINavigationControllerDele
 //        } else {
 //            saveEventually(post)
 //        }
+    }
+    
+    func createThumbnail(image: UIImage) -> UIImage {
+        // Scales the image to 10% of current size.
+        let size = CGSizeApplyAffineTransform(image.size, CGAffineTransformMakeScale(0.1, 0.1))
+        let hasAlpha = false
+        let scale: CGFloat = 0.0 // Automatically use scale factor of main screen
+        
+        UIGraphicsBeginImageContextWithOptions(size, !hasAlpha, scale)
+        image.drawInRect(CGRect(origin: CGPointZero, size: size))
+        
+        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return scaledImage
     }
     
     func saveInBackground(post: PFObject) {
