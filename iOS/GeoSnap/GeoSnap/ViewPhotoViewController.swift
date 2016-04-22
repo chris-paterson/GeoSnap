@@ -90,7 +90,7 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
         let creator: String! = post["creator"].username
         let (date, time) = super.humanReadableDate(post.createdAt!)
         creatorUsername.text = "\(creator) on \(date) at \(time)"
-        
+        getFullImageGeo()
         retrieveAndPopulateTags()
     }
     
@@ -126,6 +126,19 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
     
     func flickrPopulateView() {
         creatorUsername.text = "Flickr"
+    }
+    
+    func getFullImageGeo() {
+        if let userImageFile = post["photo"] as? PFFile {
+            userImageFile.getDataInBackgroundWithBlock {
+                (imageData: NSData?, error: NSError?) -> Void in
+                if error == nil {
+                    if let imageData = imageData {
+                        self.photo = UIImage(data:imageData)!
+                    }
+                }
+            }
+        }
     }
     
     
