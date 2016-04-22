@@ -103,7 +103,7 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
                 (imageData: NSData?, error: NSError?) -> Void in
                 if error == nil {
                     if let imageData = imageData {
-                        self.photo = UIImage(data:imageData)!
+                        self.postPhoto.image = UIImage(data:imageData)!
                     }
                 }
             }
@@ -143,7 +143,7 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
     
     func flickrPopulateView() {
         creatorUsername.text = "Flickr"
-//        getFullImageFlickr()
+        getFullImageFlickr()
     }
     
     
@@ -152,7 +152,7 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
         let data = NSData(contentsOfURL: url!)
         
         let fullSizePhoto = UIImage(data: data!)!
-        photo = fullSizePhoto
+        postPhoto.image = fullSizePhoto
     }
     
     
