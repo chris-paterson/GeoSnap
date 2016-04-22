@@ -231,10 +231,11 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
         let lon = "&lon=\(coords!.longitude)"
         let radius = "&radius=\(0.05)"
         let sort = "&sort=date-posted-desc"
-        let extras = "&extras=date_taken,url_l"
+        let extras = "&extras=date_taken,url_l,url_m"
         
         let requestURL = NSURL(string: baseURL + apiString + format + radius + lat + lon + sort + extras)!
         let session = NSURLSession.sharedSession()
+        print(requestURL)
         
         let task = session.dataTaskWithURL(requestURL) { (data, response, error) in
             if let urlContent = data {
@@ -268,13 +269,14 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
          */
         do {
             let jsonResult = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers)
+            print(jsonResult)
             let photos = jsonResult.valueForKey("photos")
             let photo = photos?.valueForKey("photo")
             
             var flickrPhotosForLocation = photo as AnyObject! as! NSArray
             
             // Filter out nil urls as they are useless to us.
-            flickrPhotosForLocation = flickrPhotosForLocation.filter() { $0.valueForKey!("url_l") !== nil }
+            flickrPhotosForLocation = flickrPhotosForLocation.filter() { $0.valueForKey!("url_m") !== nil }
             
             flickrPostsAtLocation.removeAll()
             // Add entries to array to preserve desc date order
@@ -283,7 +285,7 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
                     let postInformation = PFObject(className: "postInformation")
                     postInformation["date"] = photoEntry.valueForKey("datetaken")
                     postInformation["objectId"] = photoEntry.valueForKey("id")
-                    postInformation["url"] = photoEntry.valueForKey("url_l")
+                    postInformation["url"] = photoEntry.valueForKey("url_m")
                     
                     let placeholderPhoto = UIImage(named: "polaroid.pdf")!
                     
