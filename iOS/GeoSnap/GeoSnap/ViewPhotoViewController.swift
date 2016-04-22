@@ -95,6 +95,20 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
     }
     
     
+    func getFullImageGeo() {
+        if let userImageFile = post["photo"] as? PFFile {
+            userImageFile.getDataInBackgroundWithBlock {
+                (imageData: NSData?, error: NSError?) -> Void in
+                if error == nil {
+                    if let imageData = imageData {
+                        self.photo = UIImage(data:imageData)!
+                    }
+                }
+            }
+        }
+    }
+    
+    
     func retrieveAndPopulateTags() {
         let query = PFQuery(className: "Tag")
         query.whereKey("forPost", equalTo: postId)
@@ -124,21 +138,9 @@ class ViewPhotoViewController: ViewControllerParent, UITableViewDataSource, UITa
         }
     }
     
+    
     func flickrPopulateView() {
         creatorUsername.text = "Flickr"
-    }
-    
-    func getFullImageGeo() {
-        if let userImageFile = post["photo"] as? PFFile {
-            userImageFile.getDataInBackgroundWithBlock {
-                (imageData: NSData?, error: NSError?) -> Void in
-                if error == nil {
-                    if let imageData = imageData {
-                        self.photo = UIImage(data:imageData)!
-                    }
-                }
-            }
-        }
     }
     
     
