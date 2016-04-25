@@ -102,8 +102,10 @@ class SharePhotoViewController: ViewControllerParent, UINavigationControllerDele
         // Scales the image to 10% of current size.
         let size = CGSizeApplyAffineTransform(image.size, CGAffineTransformMakeScale(0.1, 0.1))
         let hasAlpha = false
-        let scale: CGFloat = 0.0 // Automatically use scale factor of main screen
+        let scale: CGFloat = 0.0 // Automatically use scale factor of main screen.
         
+        // Setting hasAlpha to false for images without transparency may
+        // result in a pink hue.
         UIGraphicsBeginImageContextWithOptions(size, !hasAlpha, scale)
         image.drawInRect(CGRect(origin: CGPointZero, size: size))
         

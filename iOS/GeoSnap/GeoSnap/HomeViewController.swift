@@ -6,10 +6,8 @@
 //  Copyright © 2016 Christopher Paterson. All rights reserved.
 //
 
-// TODO: Add map display - Does it add a lot to the user experience or is it just aesthetic?
 // TODO: Currently updating collection view on main thread for flickr (else all things show up at once) which blocks clicking.
 // TODO: Refreshing still kind of messed up.
-// TODO: THUMBNAILS
 
 import UIKit
 import Parse
