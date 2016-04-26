@@ -32,7 +32,7 @@ class ViewControllerParent: UIViewController, CLLocationManagerDelegate {
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-        print("Error with location: " + error.localizedDescription)
+//        print("Error with location: " + error.localizedDescription)
     }
     
     func displayAlert(title: String, message: String) {

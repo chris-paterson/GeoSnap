@@ -234,7 +234,7 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
         
         let requestURL = NSURL(string: baseURL + apiString + format + radius + lat + lon + sort + extras)!
         let session = NSURLSession.sharedSession()
-        print(requestURL)
+//        print(requestURL)
         
         let task = session.dataTaskWithURL(requestURL) { (data, response, error) in
             if let urlContent = data {
@@ -268,7 +268,7 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
          */
         do {
             let jsonResult = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers)
-            print(jsonResult)
+//            print(jsonResult)
             let photos = jsonResult.valueForKey("photos")
             let photo = photos?.valueForKey("photo")
             
