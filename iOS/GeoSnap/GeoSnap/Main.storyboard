@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Wpg-i1-Yzn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Wpg-i1-Yzn">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -831,8 +831,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S29-Uh-5Be">
-                                <rect key="frame" x="256" y="550" width="89" height="30"/>
-                                <state key="normal" title="Back to login"/>
+                                <rect key="frame" x="254" y="550" width="93" height="30"/>
+                                <state key="normal" title="Back to Login"/>
                                 <connections>
                                     <action selector="returnToLogin:" destination="ASG-8v-pUv" eventType="touchUpInside" id="MW5-2z-IuO"/>
                                 </connections>
@@ -910,6 +910,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="SLb-sg-soZ"/>
-        <segue reference="O69-4L-GYg"/>
+        <segue reference="MXV-ep-GL9"/>
     </inferredMetricsTieBreakers>
 </document>

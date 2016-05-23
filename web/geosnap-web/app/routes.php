@@ -14,6 +14,7 @@
 use Parse\ParseObject;
 use Parse\ParseClient;
 use Parse\ParseUser;
+use Parse\ParseException;
 
 session_start();
 
@@ -38,7 +39,8 @@ Route::post('login', function () {
           return Redirect::route("home");
         }
     } catch (ParseException $error) {
-        
+        return Redirect::route('login')
+            ->withInput();
     }
 
     return Redirect::route('login')

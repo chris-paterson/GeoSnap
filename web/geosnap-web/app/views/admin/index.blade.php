@@ -56,7 +56,7 @@
                 </td>
                 <td>
                   <button type="button" onclick="allowItem(this)" data-id="{{ $post->getObjectId() }}" class="btn btn-default">Allow</button>
-                  <button type="button" onclick="deleteItem(this)" class="btn btn-danger" data-id="{{ $post->getObjectId() }}" data-class="Post">Delete Item</button>
+                  <button type="button" onclick="deleteItem(this)" class="btn btn-danger" data-id="{{ $post->getObjectId() }}" data-class="Post">Delete</button>
                 </td>
               </tr>
             @endforeach
@@ -127,16 +127,19 @@
     }
 
     function deleteItem(element) {
-      $.ajax({
-        type: "POST",
-        url: "{{ route('delete-item') }}",
-        data: {
-          objectId: element.getAttribute("data-id"),
-          objectClass: element.getAttribute("data-class")
-        }
-      }).done(function(msg) {
-        element.closest("tr").remove();
-      })
+      if (confirm('Are you sure this item should be deleted?')) {
+          $.ajax({
+            type: "POST",
+            url: "{{ route('delete-item') }}",
+            data: {
+              objectId: element.getAttribute("data-id"),
+              objectClass: element.getAttribute("data-class")
+            }
+          }).done(function(msg) {
+            element.closest("tr").remove();
+          })
+      }
+      
     }
   </script>
 @stop

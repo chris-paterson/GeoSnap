@@ -276,6 +276,7 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
             
             // Filter out nil urls as they are useless to us.
             flickrPhotosForLocation = flickrPhotosForLocation.filter() { $0.valueForKey!("url_m") !== nil }
+            flickrPhotosForLocation = flickrPhotosForLocation.filter() { $0.valueForKey!("url_l") !== nil }
             
             flickrPostsAtLocation.removeAll()
             // Add entries to array to preserve desc date order
