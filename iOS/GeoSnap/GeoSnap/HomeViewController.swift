@@ -224,7 +224,7 @@ class HomeViewController: ViewControllerParent, UICollectionViewDelegate, UIColl
         
         // https://www.flickr.com/services/api/flickr.photos.search.html
         let baseURL = "https://api.flickr.com/services/rest/?&method=flickr.photos.search"
-        let apiString = "&api_key=ad451e2f60097f08356235f79adbbe36"
+        let apiString = "// Your Flickr API key here.
         let format = "&format=json&nojsoncallback=1"
         let lat = "&lat=\(coords!.latitude)"
         let lon = "&lon=\(coords!.longitude)"
